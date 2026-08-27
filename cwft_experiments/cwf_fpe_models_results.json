@@ -1,0 +1,79 @@
+{
+  "params": {
+    "N": 4000,
+    "sigma": 2.0
+  },
+  "rows": [
+    {
+      "model": "FHRR",
+      "resolution": 0.590738423028786,
+      "cell": 1.181476846057572,
+      "wigner_excess": 0.1406494722905972,
+      "continuous_phase": true
+    },
+    {
+      "model": "HRR",
+      "resolution": 0.6107634543178974,
+      "cell": 1.2215269086357947,
+      "wigner_excess": 0.06260551512670046,
+      "continuous_phase": true
+    },
+    {
+      "model": "MAP",
+      "resolution": 0.6808510638297872,
+      "cell": 1.3617021276595744,
+      "wigner_excess": 0.06657298695474612,
+      "continuous_phase": false
+    },
+    {
+      "model": "BSC",
+      "resolution": 0.6808510638297872,
+      "cell": 1.3617021276595744,
+      "wigner_excess": 0.06657298695474612,
+      "continuous_phase": false
+    }
+  ],
+  "hrr_matched": {
+    "resolution": 1.1914893617021276,
+    "cell": 1.1739323639005108,
+    "phase_std": 0.9852646625593574,
+    "default_phase_std": 1.8158709374699695,
+    "default_cell_shape_true": 1.1090676063646372
+  },
+  "map_checks": {
+    "homomorphism_violation": [
+      0.198,
+      0.27975,
+      0.27225
+    ],
+    "stationarity": [
+      {
+        "gap": 0.5,
+        "mean": 0.4841951219512195,
+        "sd": 0.055266304078059554,
+        "minmax": [
+          0.33,
+          0.768
+        ]
+      },
+      {
+        "gap": 1.0,
+        "mean": 0.08252439024390244,
+        "sd": 0.05454523198177152,
+        "minmax": [
+          -0.2035,
+          0.169
+        ]
+      },
+      {
+        "gap": 2.0,
+        "mean": -0.027853658536585363,
+        "sd": 0.06912468796757863,
+        "minmax": [
+          -0.3725,
+          0.1315
+        ]
+      }
+    ]
+  }
+}

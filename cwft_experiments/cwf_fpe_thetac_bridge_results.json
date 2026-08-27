@@ -1,0 +1,135 @@
+{
+  "params": {
+    "thetas": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "theta_optimum_resonator": 0.75,
+    "wigner": {
+      "N": 3000,
+      "omega0": 4.0,
+      "sigma": 1.0,
+      "centers": [
+        2.0,
+        8.0
+      ],
+      "floor_center": 5.0,
+      "grid": [
+        -6.0,
+        16.0,
+        220
+      ],
+      "seeds": 8
+    },
+    "period": {
+      "N": 4000,
+      "sigma": 2.0,
+      "delta": 3.0,
+      "pairs": 5,
+      "ds": [
+        2.0,
+        12.0,
+        400
+      ],
+      "trials": 200,
+      "hit_window": 0.3
+    },
+    "channel": "cwf_resonator_halting.py resonator() noise, FHRR branch, LITERAL: state + theta_c*std(|state|)*(g+ig'), i.e. sd per real and imaginary part separately; applied ONE-SHOT to the static bundle; phasor projection OMITTED (would erase |b|^2, the readout carrier); single-atom baselines use the coherent bundle's scale since std(|atom|)=0; resonator optimum was measured on the BIPOLAR branch; the resonator injects this noise EVERY iteration, the static analogue once -- these are the stated mismatches"
+  },
+  "rows": [
+    {
+      "theta_c": 0.0,
+      "wigner_excess": 0.16444587551064882,
+      "wigner_excess_sd": 0.008793506719864685,
+      "neg_cat": 0.20416781522395366,
+      "neg_incoherent": 0.03972193971330486,
+      "neg_floor": 0.06410417692534506,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.91,
+      "argmax_accuracy_se": 0.02023610634484806,
+      "null_accuracy": 0.115
+    },
+    {
+      "theta_c": 0.25,
+      "wigner_excess": 0.16247956163665503,
+      "wigner_excess_sd": 0.008408529353808794,
+      "neg_cat": 0.20388115923027356,
+      "neg_incoherent": 0.04140159759361853,
+      "neg_floor": 0.06546715728828506,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.905,
+      "argmax_accuracy_se": 0.02073342711661533,
+      "null_accuracy": 0.105
+    },
+    {
+      "theta_c": 0.5,
+      "wigner_excess": 0.15961509846107375,
+      "wigner_excess_sd": 0.008461074771551209,
+      "neg_cat": 0.20395529730197018,
+      "neg_incoherent": 0.04434019884089644,
+      "neg_floor": 0.06865990591188545,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.905,
+      "argmax_accuracy_se": 0.02073342711661533,
+      "null_accuracy": 0.11
+    },
+    {
+      "theta_c": 0.75,
+      "wigner_excess": 0.15607080580101398,
+      "wigner_excess_sd": 0.009027225915508412,
+      "neg_cat": 0.20431403788885602,
+      "neg_incoherent": 0.04824323208784204,
+      "neg_floor": 0.07342163697354095,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.9,
+      "argmax_accuracy_se": 0.021213203435596423,
+      "null_accuracy": 0.11
+    },
+    {
+      "theta_c": 1.0,
+      "wigner_excess": 0.15220070184632817,
+      "wigner_excess_sd": 0.010169386739958512,
+      "neg_cat": 0.20493966822253784,
+      "neg_incoherent": 0.05273896637620971,
+      "neg_floor": 0.0794499445293885,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.895,
+      "argmax_accuracy_se": 0.021676600286945368,
+      "null_accuracy": 0.105
+    },
+    {
+      "theta_c": 1.5,
+      "wigner_excess": 0.14383516690545714,
+      "wigner_excess_sd": 0.013330812692350593,
+      "neg_cat": 0.20691573742989716,
+      "neg_incoherent": 0.06308057052444002,
+      "neg_floor": 0.09411955778761905,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.88,
+      "argmax_accuracy_se": 0.022978250586152115,
+      "null_accuracy": 0.1
+    },
+    {
+      "theta_c": 2.0,
+      "wigner_excess": 0.13542271009824292,
+      "wigner_excess_sd": 0.016230925574478174,
+      "neg_cat": 0.20988629367788514,
+      "neg_incoherent": 0.07446358357964225,
+      "neg_floor": 0.11015760723870488,
+      "channel_scale": 0.6132855605071423,
+      "argmax_accuracy": 0.815,
+      "argmax_accuracy_se": 0.027456784225396828,
+      "null_accuracy": 0.1
+    }
+  ],
+  "at_optimum": {
+    "theta_c": 0.75,
+    "excess_fraction_retained": 0.9490709652365736,
+    "accuracy_fraction_retained": 0.9937106918238994
+  }
+}

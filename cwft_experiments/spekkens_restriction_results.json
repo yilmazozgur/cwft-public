@@ -1,0 +1,26 @@
+{
+  "LP_validation": {
+    "PR": 1.0,
+    "Tsirelson": 0.4142135623730949,
+    "local": 0.0
+  },
+  "spekkens_check": {
+    "complementarity_P": 0.5,
+    "knowledge_balance": true
+  },
+  "spekkens_bell": {
+    "chsh": 0.0,
+    "success": true,
+    "noncontextual_fraction": 1.0,
+    "contextual_fraction": 0.0
+  },
+  "rule110_kb": {
+    "success": true,
+    "noncontextual_fraction": 0.989266532209161,
+    "contextual_fraction": 0.010733467790838946
+  },
+  "local_max_chsh": 2,
+  "quantum_chsh": 2.82842712474619,
+  "quantum_CF": 0.4142135623730949,
+  "runtime_s": 2.4
+}

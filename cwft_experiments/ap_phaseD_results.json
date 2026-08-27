@@ -1,0 +1,74 @@
+{
+  "lp_validation": {
+    "PR": 1.0,
+    "Tsirelson": 0.4142135623730949,
+    "local": 0.0
+  },
+  "D1_bandwidth": {
+    "sigma": 1.0,
+    "rows": [
+      {
+        "hbar_c": 0.1,
+        "V_empirical": 0.0015170114023321472,
+        "V_closedform": 1.9287498479639315e-22
+      },
+      {
+        "hbar_c": 0.25,
+        "V_empirical": 0.0019069757245458168,
+        "V_closedform": 0.00033546262790251185
+      },
+      {
+        "hbar_c": 0.5,
+        "V_empirical": 0.13461008507943714,
+        "V_closedform": 0.1353352832366127
+      },
+      {
+        "hbar_c": 1.0,
+        "V_empirical": 0.6059752601847112,
+        "V_closedform": 0.6065306597126334
+      },
+      {
+        "hbar_c": 2.0,
+        "V_empirical": 0.8822497629428045,
+        "V_closedform": 0.8824969025845955
+      },
+      {
+        "hbar_c": 4.0,
+        "V_empirical": 0.9691617491909528,
+        "V_closedform": 0.9692332344763441
+      },
+      {
+        "hbar_c": 10.0,
+        "V_empirical": 0.9950005654878603,
+        "V_closedform": 0.9950124791926823
+      }
+    ],
+    "matches_closed_form": true,
+    "label": "standard hbar->0 limit; NOT CWF-specific"
+  },
+  "D2_host_invariance": {
+    "CF_by_hbar_c": {
+      "0.1": 1.0,
+      "1.0": 1.0,
+      "10.0": 1.0,
+      "100.0": 1.0
+    },
+    "CF_invariant": true,
+    "geometric_phase_invariant": true,
+    "label": "contextuality is a real substrate property (hbar_c gauge, B2)"
+  },
+  "D3_host_lock": {
+    "C": 10.0,
+    "sigma": 1.0,
+    "V_target": 0.9,
+    "Wt_target": 0.5,
+    "cwf_hbar_forced_by_V": 2.178442285330266,
+    "cwf_Wt_at_that_hbar": 0.01014843218188471,
+    "cwf_can_reach_target": false,
+    "lock_holds": true,
+    "label": "CWF-SPECIFIC: reachable (coherence,decoherence) set is 1-D; QM+bath is 2-D; falsifiable"
+  },
+  "G2_passed_narrowly": true,
+  "verdict": "PHASE D: G2 PASSED NARROWLY -- and the firewall did its job by saying exactly how narrowly. The path-integral FORM itself is NOT CWF-specific: D1 (hbar_c as interference bandwidth) is the standard hbar->0 limit, and D2 (geometric/contextual phase host-invariant, dynamical phase host-tunable) is the standard geometric-vs-dynamical-phase distinction. So the 'single generator' does NOT, by itself, produce new dynamics -- it is a UNIFYING CONTAINER (it folds the book's D1 + D2-D5 path-integral cases, and Imafuku's C_c->Euclidean half, into one weight). The CWF-SPECIFIC, falsifiable content is exactly two things, both OUTSIDE the path integral's generic structure: (1) the IDENTIFICATIONS -- A_hol = self-reference carrying contextuality (Phase C, the Imafuku-complement), and C_c = self-description; and (2) the HOST LOCK (D3) -- because hbar_c = k_B T tau ln2 sits in BOTH the phase and cost sectors, phase-coherence and decoherence are LOCKED to one thermodynamic knob, so the reachable (coherence, decoherence) set is 1-dimensional, where standard open-systems QM (independent hbar and decoherence rate) fills a 2-D region. Falsification handle: find a computational substrate with INDEPENDENTLY tunable phase-coherence and decoherence -> refutes the single-hbar_c claim. Net: the action principle's value is UNIFICATION + GROUNDING + one structural prediction (the lock), exactly as the plan's honest job stated -- NOT a source of broadly new physics. Overclaiming 'a single generator of all five projections gives new predictions' would fail this firewall; the honest claim survives it.",
+  "note": "Firewall result: the path-integral FORM reproduces standard QM/influence-functional structure (D1 hbar->0, D2 geometric-vs-dynamical). CWF-specific content = the identifications (Phase C: A_hol=self-reference/contextuality; C_c=self-description) PLUS the host lock (D3: hbar_c=k_B T tau ln2 in both sectors -> 1-parameter coherence/decoherence curve, vs QM's 2-D). Honest job of the action principle = unification + grounding + one structural prediction (the lock), NOT new dynamics."
+}

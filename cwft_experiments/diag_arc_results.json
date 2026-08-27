@@ -1,0 +1,73 @@
+{
+  "lp_validation": {
+    "PR": 1.0,
+    "Tsirelson": 0.4142135623730949,
+    "local": 0.0
+  },
+  "cocycle_validation": {
+    "octant": -0.7853981633974482,
+    "octant_ok": true,
+    "great_circle_real": -3.141592653589793,
+    "real_is_Z2": true
+  },
+  "B1a_local_i_forcing": [
+    {
+      "dim": 2,
+      "n_transpositions": 1,
+      "has_minus1_eigenvalue": true,
+      "sqrt_is_complex": true,
+      "sqrt_max_imag": 0.5
+    },
+    {
+      "dim": 4,
+      "n_transpositions": 2,
+      "has_minus1_eigenvalue": true,
+      "sqrt_is_complex": true,
+      "sqrt_max_imag": 0.5
+    },
+    {
+      "dim": 6,
+      "n_transpositions": 3,
+      "has_minus1_eigenvalue": true,
+      "sqrt_is_complex": true,
+      "sqrt_max_imag": 0.5
+    }
+  ],
+  "B1b_z2_to_u1_lift": {
+    "z2_odd_holonomy": "NOT",
+    "z2_even_holonomy": "I",
+    "u1_octant_phase": -0.7853981633974482,
+    "u1_real_loop_phase": -3.141592653589793,
+    "lift_nontrivial_needs_sigmaY": true
+  },
+  "C_meta_fixed_point": {
+    "structure": "odd 3-cycle (frustrated)",
+    "cf": 1.0,
+    "lp_ok": true,
+    "predicates": [
+      "truth: 'this cell is false'",
+      "irreducibility: 'this cell's computation is shortcuttable'",
+      "meta: 'the irreducibility-claim about this cell is shortcuttable'"
+    ],
+    "identical_cf": true,
+    "note": "CF depends only on the cyclic frustration, not the predicate content"
+  },
+  "C_two_faces": {
+    "face1_classical_mixture": {
+      "cf": 0.0,
+      "num_definite_grounds": 2,
+      "has_definite_ground": true
+    },
+    "face2_selfref_superposition": {
+      "cf": 1.0,
+      "has_definite_ground": false
+    },
+    "criterion": "contextual(no global section) <=> frustrated(no definite ground)"
+  },
+  "D_nogo_check": {
+    "collapsed_object": "single self-loop / odd Liar cycle = the sigma_Y eigenstate (|0>+i|1>)/r2",
+    "is_reducible": true,
+    "reason": "the self-ref-superposition collapse yields the phase corner: a fixed qubit superposition with trivial (free) dynamics -- predictable, hence REDUCIBLE. Collapsing irreducibility converts it to phase (i); it does NOT produce an irreducible exact object. Triple-point NO-GO reinforced."
+  },
+  "headline": "i-forcing is dimension-independent (B1a); the contextual obstruction lifts Z2->U(1) via the i-carrying (sigma_Y) realization (B1b); the meta-tower is a fixed point (CF is predicate-content-independent); classical mixture(definite ground)->CF=0, self-ref superposition->CF>0; the collapsed object is reducible (NO-GO reinforced)."
+}

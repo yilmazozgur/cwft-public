@@ -1,0 +1,58 @@
+{
+  "benchmarks": {
+    "complex_max": 8.485281374238571,
+    "real_bound": 7.66,
+    "tsirelson": 2.8284271247461903
+  },
+  "validation_T_maxent": 8.485281374238566,
+  "T_vs_concurrence": [
+    {
+      "concurrence": 0.0,
+      "T": 2.8284271247461894
+    },
+    {
+      "concurrence": 0.19509032201612825,
+      "T": 3.0437283197396265
+    },
+    {
+      "concurrence": 0.3826834323650898,
+      "T": 3.6568542494923797
+    },
+    {
+      "concurrence": 0.5555702330196022,
+      "T": 4.574462049199984
+    },
+    {
+      "concurrence": 0.7071067811865475,
+      "T": 5.656854249492379
+    },
+    {
+      "concurrence": 0.8314696123025452,
+      "T": 6.7392464497847735
+    },
+    {
+      "concurrence": 0.9238795325112867,
+      "T": 7.656854249492378
+    },
+    {
+      "concurrence": 0.9807852804032304,
+      "T": 8.269980179245131
+    },
+    {
+      "concurrence": 1.0,
+      "T": 8.485281374238568
+    }
+  ],
+  "concurrence_at_real_bound": 0.9241714974676374,
+  "vsa_source_concurrence": {
+    "mean": 3.708403539510888e-17,
+    "max": 1.665695898455916e-16
+  },
+  "vsa_source_chsh": {
+    "mean": 0.5375379220079111,
+    "max": 1.3892778057932225
+  },
+  "T_vsa_native": 2.8284271247461894,
+  "reaches_complex_tier": false,
+  "verdict": "NEGATIVE (clean): the product-VSA route does NOT reach the complex tier. Renou T is monotone in source entanglement, crossing the real bound 7.66 only near concurrence C~0.92 and reaching 6sqrt2=8.49 only at C=1 (maximal entanglement). VSA-native sources -- built by dimension-preserving binding -- are separable (concurrence 2e-16, CHSH<=2), so T_VSA=2.83 < 7.66. The obstruction is EXACTLY the tensor product / entanglement VSA structurally lacks. Forming the true tensor product is possible but is not a native VSA operation (dimension doubling, which VSA avoids); doing so is quantum mechanics in a hypervector container, not VSA. So the strong horn's COMPLEX tier is unreachable natively -- a clean split: VSA reaches single-system contextuality (Stage 1, CF>0) but not the complex-vs-real network separation, for the same reason it has no quantum speedup: no tensor product, no entanglement."
+}

@@ -1,0 +1,43 @@
+{
+  "phase_leg": {
+    "gamma_qubit_selfloop": -0.7853981633974481,
+    "solid_angle": 1.5707963267948961,
+    "equals_minus_Omega_over_2": true,
+    "is_U1_genuine": true,
+    "gauge_invariant": true,
+    "gauge_drift": 0.0,
+    "gamma_real_loop": -3.141592653589793,
+    "real_loop_is_Z2": true
+  },
+  "contextuality_leg": {
+    "3": {
+      "CF_realised_quantum": 6.661338147750939e-16,
+      "max_adjacent_overlap": 3.3306690738754696e-16
+    },
+    "5": {
+      "CF_realised_quantum": 0.4721359549995803,
+      "max_adjacent_overlap": 1.1102230246251565e-16
+    },
+    "7": {
+      "CF_realised_quantum": 0.6353344147881914,
+      "max_adjacent_overlap": 4.996003610813204e-16
+    }
+  },
+  "phase1_classical": {
+    "max_realised_CF": 0.0,
+    "holonomy_phases": [
+      3.141592653589793,
+      0.0
+    ]
+  },
+  "split": {
+    "classical_realised_CF": 0.0,
+    "quantum_realised_CF": 0.6353344147881914,
+    "classical_holonomy": "Z2 {0,pi}",
+    "quantum_holonomy": "U(1) -Omega/2"
+  },
+  "kill_criterion_fires": false,
+  "cf_positive": true,
+  "u1_gauge_invariant": true,
+  "compression_note": "Compression is NOT the discriminator at the analytic-host level: the SUBSTRATE description length is identical for the classical and quantum realisations of the same cycle (the n edge-signs + O(1) for the realisation choice), so it is flat across the classical<->quantum dial -- only CF and the holonomy character differ. The quantitative RLCT / C_q<C_mu comparison is the Phase-3 (learned-substrate) leg, where compression is the natural measure (sr3's CF magnitude is itself real-realisable, carrying no compression signature beyond the classical)."
+}

@@ -1,0 +1,12 @@
+{
+  "params": {
+    "n": 24,
+    "M": 1000000,
+    "instances": 500,
+    "seed": 20260728
+  },
+  "failures_J1_ne_intersection": 0,
+  "failures_multiplicity_gt_2": 0,
+  "max_nonsignal_multiplicity": 2,
+  "instances_attaining_multiplicity_2": 494
+}

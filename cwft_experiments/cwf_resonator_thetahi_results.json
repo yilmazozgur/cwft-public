@@ -1,0 +1,108 @@
+{
+  "params": {
+    "N": 256,
+    "D": 128,
+    "F": 2,
+    "T": 150,
+    "n_inst": 500,
+    "readout": "final-state at cap AND first-hitting"
+  },
+  "rows": [
+    {
+      "theta": 0.0,
+      "succ": 0.276,
+      "nohalt": 0.484,
+      "se": 0.01999119806314769,
+      "ever": 0.342,
+      "ever_se": 0.021214900423994452,
+      "occupancy": 0.22458497562528107,
+      "median_first_hit": 13.0,
+      "cycle_detected": 0.24,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 0.1,
+      "succ": 0.304,
+      "nohalt": 0.696,
+      "se": 0.020571047615520213,
+      "ever": 0.38,
+      "ever_se": 0.021707141681944216,
+      "occupancy": 0.24548000000000003,
+      "median_first_hit": 13.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 0.25,
+      "succ": 0.318,
+      "nohalt": 0.682,
+      "se": 0.020826713614970557,
+      "ever": 0.388,
+      "ever_se": 0.021792475765731623,
+      "occupancy": 0.26325333333333334,
+      "median_first_hit": 13.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 0.5,
+      "succ": 0.368,
+      "nohalt": 0.632,
+      "se": 0.021567382780485908,
+      "ever": 0.416,
+      "ever_se": 0.02204286732709699,
+      "occupancy": 0.30860000000000004,
+      "median_first_hit": 14.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 0.75,
+      "succ": 0.392,
+      "nohalt": 0.608,
+      "se": 0.021832819332372078,
+      "ever": 0.46,
+      "ever_se": 0.022289010745208053,
+      "occupancy": 0.32472,
+      "median_first_hit": 12.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 1.0,
+      "succ": 0.372,
+      "nohalt": 0.628,
+      "se": 0.021615549958305478,
+      "ever": 0.464,
+      "ever_se": 0.022302645582979615,
+      "occupancy": 0.31562666666666667,
+      "median_first_hit": 14.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 1.5,
+      "succ": 0.112,
+      "nohalt": 0.888,
+      "se": 0.014103616557464968,
+      "ever": 0.45,
+      "ever_se": 0.022248595461286987,
+      "occupancy": 0.09993333333333333,
+      "median_first_hit": 26.0,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    },
+    {
+      "theta": 2.0,
+      "succ": 0.004,
+      "nohalt": 0.996,
+      "se": 0.002822764602300376,
+      "ever": 0.244,
+      "ever_se": 0.019207498535728174,
+      "occupancy": 0.004586666666666667,
+      "median_first_hit": 64.5,
+      "cycle_detected": 0.0,
+      "spurious_fp": 0.0
+    }
+  ]
+}

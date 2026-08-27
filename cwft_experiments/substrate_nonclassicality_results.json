@@ -1,0 +1,58 @@
+{
+  "LP_validation": {
+    "PR": 1.0,
+    "Tsirelson": 0.4142135623730949,
+    "local": 0.0
+  },
+  "substrates": {
+    "Rule110": {
+      "kind": "classical CA",
+      "CHSH": 0.1703977408175015,
+      "CF": 0.0,
+      "irreducible": true,
+      "encoding": false,
+      "nonclassical": false
+    },
+    "Rule30": {
+      "kind": "classical CA",
+      "CHSH": 0.021372066610297173,
+      "CF": 0.0,
+      "irreducible": false,
+      "encoding": false,
+      "nonclassical": false
+    },
+    "Rule90": {
+      "kind": "classical CA",
+      "CHSH": 0.04292664567519144,
+      "CF": 0.0,
+      "irreducible": false,
+      "encoding": false,
+      "nonclassical": false
+    },
+    "reservoir": {
+      "kind": "classical reservoir",
+      "CHSH": 0.4511628037532284,
+      "CF": 0.0,
+      "irreducible": false,
+      "encoding": false,
+      "nonclassical": false
+    },
+    "BellPair": {
+      "kind": "quantum (bare)",
+      "CHSH": 2.82842712474619,
+      "CF": 0.4142135623730947,
+      "irreducible": false,
+      "encoding": false,
+      "nonclassical": true
+    },
+    "PerfectTensorQEC": {
+      "kind": "encoding/QEC",
+      "CHSH": 2.82842712474619,
+      "CF": 0.4142135623730947,
+      "irreducible": false,
+      "encoding": true,
+      "nonclassical": true
+    }
+  },
+  "runtime_s": 44.3
+}

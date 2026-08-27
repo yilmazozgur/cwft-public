@@ -1,0 +1,135 @@
+{
+  "params": {
+    "N": 4000,
+    "sigma": 2.0,
+    "C": 6,
+    "P": 4,
+    "box": 10.0,
+    "r_shift": 20.0,
+    "jitter": 0.1,
+    "grid": [
+      0.0,
+      30.0
+    ],
+    "grid_cap": 2000000,
+    "trials": {
+      "1": 100,
+      "2": 100,
+      "3": 60,
+      "4": 50
+    },
+    "min_point_dist": 2.0,
+    "class_margin": 0.5,
+    "notes": "grid decode shared by routes b and c and included in both times; sub-bin quadratic peak refinement; route-c templates anchored at each of the 4 constellation points"
+  },
+  "per_m": [
+    {
+      "m": 1,
+      "trials": 100,
+      "B": 60,
+      "grid_points": 60,
+      "bin_width": 0.5084745762711864,
+      "class_sep": 0.6496554930770908,
+      "suppression_radius": 1.0,
+      "encode_ms": 0.33031691003998276,
+      "a": {
+        "acc": 1.0,
+        "ms": 0.02542469053878449,
+        "mem_MB": 0.192
+      },
+      "b": {
+        "acc": 1.0,
+        "ms": 0.4546494399983203,
+        "decode_ms": 0.39055108034517616,
+        "mem_MB": 3.84048,
+        "loc_err_mean": 0.0201078877854186
+      },
+      "c": {
+        "acc": 1.0,
+        "ms": 0.5415518998779589,
+        "mem_MB": 5.37648
+      }
+    },
+    {
+      "m": 2,
+      "trials": 100,
+      "B": 60,
+      "grid_points": 3600,
+      "bin_width": 0.5084745762711864,
+      "class_sep": 2.5115639085421404,
+      "suppression_radius": 1.0,
+      "encode_ms": 0.4133936497964896,
+      "a": {
+        "acc": 1.0,
+        "ms": 0.033502430087537505,
+        "mem_MB": 0.192
+      },
+      "b": {
+        "acc": 1.0,
+        "ms": 1.6126471201278036,
+        "decode_ms": 1.315750619978644,
+        "mem_MB": 7.7232,
+        "loc_err_mean": 0.030699199084365077
+      },
+      "c": {
+        "acc": 1.0,
+        "ms": 1.5213754999422235,
+        "mem_MB": 9.2592
+      }
+    },
+    {
+      "m": 3,
+      "trials": 60,
+      "B": 125,
+      "grid_points": 1953125,
+      "bin_width": 0.24193548387096775,
+      "class_sep": 1.0057154195646996,
+      "suppression_radius": 1.0,
+      "encode_ms": 0.3860026834445307,
+      "a": {
+        "acc": 1.0,
+        "ms": 0.04965044960651236,
+        "mem_MB": 0.192
+      },
+      "b": {
+        "acc": 1.0,
+        "ms": 325.3152386509707,
+        "decode_ms": 221.4656638836459,
+        "mem_MB": 51.25,
+        "loc_err_mean": 0.02279956450167534
+      },
+      "c": {
+        "acc": 1.0,
+        "ms": 222.2410716502054,
+        "mem_MB": 52.786
+      }
+    },
+    {
+      "m": 4,
+      "trials": 50,
+      "B": 37,
+      "grid_points": 1874161,
+      "bin_width": 0.8333333333333334,
+      "class_sep": 1.2206158174669668,
+      "suppression_radius": 1.25,
+      "encode_ms": 0.3476441801467445,
+      "a": {
+        "acc": 1.0,
+        "ms": 0.04758967974339612,
+        "mem_MB": 0.192
+      },
+      "b": {
+        "acc": 1.0,
+        "ms": 534.0490700199734,
+        "decode_ms": 422.3812109604478,
+        "mem_MB": 86.02722,
+        "loc_err_mean": 0.17746139353884416
+      },
+      "c": {
+        "acc": 1.0,
+        "ms": 423.1415423004364,
+        "mem_MB": 87.56322
+      }
+    }
+  ]
+}

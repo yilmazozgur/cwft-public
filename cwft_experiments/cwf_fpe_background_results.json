@@ -1,0 +1,50 @@
+{
+  "params": {
+    "sigma": 2.0,
+    "omega0": 8.0,
+    "k": 200,
+    "N_ref": 1000,
+    "d_null": 1.7,
+    "sets": 400,
+    "hwhm": 0.5887050112577373
+  },
+  "rows": [
+    {
+      "range": 400.0,
+      "hwhms": 679.4574402304153,
+      "hwhms_over_k2": 0.016986436005760382,
+      "background_sd": 6.4719677714743105,
+      "background_mean": -0.20276345071655968,
+      "ratio_to_codebook_noise": 1.023307955053147,
+      "drop_vs_smallest_range": 1.0
+    },
+    {
+      "range": 4000.0,
+      "hwhms": 6794.5744023041525,
+      "hwhms_over_k2": 0.1698643600576038,
+      "background_sd": 2.0948916262019597,
+      "background_mean": -0.06833347918324137,
+      "ratio_to_codebook_noise": 0.3312314495006132,
+      "drop_vs_smallest_range": 3.0894045737382574
+    },
+    {
+      "range": 24000.0,
+      "hwhms": 40767.44641382492,
+      "hwhms_over_k2": 1.019186160345623,
+      "background_sd": 0.8351160373020734,
+      "background_mean": -0.04179805290429858,
+      "ratio_to_codebook_noise": 0.13204343942043448,
+      "drop_vs_smallest_range": 7.749782643837921
+    },
+    {
+      "range": 120000.0,
+      "hwhms": 203837.23206912458,
+      "hwhms_over_k2": 5.095930801728114,
+      "background_sd": 0.37441346617804744,
+      "background_mean": -0.008561721505313633,
+      "ratio_to_codebook_noise": 0.05919996698805242,
+      "drop_vs_smallest_range": 17.285616987922786
+    }
+  ],
+  "codebook_noise_at_N_ref": 6.324555320336759
+}

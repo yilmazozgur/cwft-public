@@ -1,0 +1,162 @@
+{
+  "E1_gibbons_hawking": {
+    "rows": [
+      {
+        "kappa": 0.5,
+        "beta_smooth": 12.563728361142276,
+        "T_c": 0.07959420732884115,
+        "T_c_closed": 0.07957747154594767,
+        "deficit_at_beta_star": 0.0013211266084480755
+      },
+      {
+        "kappa": 1.0,
+        "beta_smooth": 6.2821142430867685,
+        "T_c": 0.15918207808787663,
+        "T_c_closed": 0.15915494309189535,
+        "deficit_at_beta_star": 0.001071064092817764
+      },
+      {
+        "kappa": 2.0,
+        "beta_smooth": 3.1413071840590128,
+        "T_c": 0.31833881292305155,
+        "T_c_closed": 0.3183098861837907,
+        "deficit_at_beta_star": 0.0005709390615606935
+      },
+      {
+        "kappa": 4.0,
+        "beta_smooth": 1.5709036545451354,
+        "T_c": 0.6365762770407177,
+        "T_c_closed": 0.6366197723675814,
+        "deficit_at_beta_star": -0.0004293110009552237
+      }
+    ],
+    "T_c_recovered": true,
+    "label": "STANDARD GH smoothness->temperature; CWF input = kappa=g'(x_h)"
+  },
+  "E2_wick_rotation": {
+    "rows": [
+      {
+        "theta": 0.0,
+        "sign_changes_ReK": 10,
+        "imag_fraction": 0.5991341658211279
+      },
+      {
+        "theta": 0.2617993877991494,
+        "sign_changes_ReK": 10,
+        "imag_fraction": 0.5207318465132218
+      },
+      {
+        "theta": 0.5235987755982988,
+        "sign_changes_ReK": 10,
+        "imag_fraction": 0.4369631565523233
+      },
+      {
+        "theta": 0.7853981633974483,
+        "sign_changes_ReK": 8,
+        "imag_fraction": 0.3452417223376151
+      },
+      {
+        "theta": 1.0471975511965976,
+        "sign_changes_ReK": 6,
+        "imag_fraction": 0.2418598068836695
+      },
+      {
+        "theta": 1.308996938995747,
+        "sign_changes_ReK": 2,
+        "imag_fraction": 0.12523620980435246
+      },
+      {
+        "theta": 1.5707963267948966,
+        "sign_changes_ReK": 0,
+        "imag_fraction": 2.963237133231914e-17
+      }
+    ],
+    "photon_oscillations": 10,
+    "blackhole_oscillations": 0,
+    "rotation_realised": true,
+    "label": "photon (oscillatory) -> black hole (thermal heat kernel) via t->i tau"
+  },
+  "E3_G7_refinement": {
+    "dynamical": [
+      {
+        "theta": 0.0,
+        "re_exponent": 0.0,
+        "im_exponent": 2.0
+      },
+      {
+        "theta": 0.2617993877991494,
+        "re_exponent": -0.5176380902050416,
+        "im_exponent": 1.9318516525781368
+      },
+      {
+        "theta": 0.5235987755982988,
+        "re_exponent": -0.9999999999999998,
+        "im_exponent": 1.7320508075688774
+      },
+      {
+        "theta": 0.7853981633974483,
+        "re_exponent": -1.414213562373095,
+        "im_exponent": 1.4142135623730951
+      },
+      {
+        "theta": 1.0471975511965976,
+        "re_exponent": -1.732050807568877,
+        "im_exponent": 1.0000000000000002
+      },
+      {
+        "theta": 1.308996938995747,
+        "re_exponent": -1.9318516525781368,
+        "im_exponent": 0.517638090205042
+      },
+      {
+        "theta": 1.5707963267948966,
+        "re_exponent": -2.0,
+        "im_exponent": 1.2246467991473532e-16
+      }
+    ],
+    "S_E": 2.0,
+    "dynamical_rotates": true,
+    "geometric": [
+      {
+        "theta": 0.0,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 0.2617993877991494,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 0.5235987755982988,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 0.7853981633974483,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 1.0471975511965976,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 1.308996938995747,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      },
+      {
+        "theta": 1.5707963267948966,
+        "magnitude": 1.0,
+        "phase": 0.7853981633974483
+      }
+    ],
+    "geometric_never_damps": true,
+    "label": "dynamical phase Wick-dual to cost; geometric/contextual holonomy topological, does NOT rotate -> A_c & C_c one analytic object in the dynamical sector ONLY"
+  },
+  "corner_duality_bridge": true,
+  "verdict": "PHASE E: the corner duality holds as a BRIDGE (Status B), not a general theorem, exactly as G5 cautioned. (E1) On a gain horizon with surface gravity kappa = g'(x_h), the Euclidean continuation is smooth only at period beta = 2pi/kappa, giving the substrate temperature T_c = kappa/2pi (the Gibbons-Hawking mechanism -- STANDARD; the CWF input is only kappa from the gain gradient). (E2) Rotating t = T0 e^{-i theta} carries the free propagator from oscillatory (theta=0, the photon/Lorentzian corner, pure phase) to a real damped heat kernel (theta=pi/2, the black-hole/Euclidean/thermal corner) -- Movement VI's 'the mirror is time' made precise as t -> i tau. (E3 / G7) BUT the unity is PARTIAL: only the DYNAMICAL phase A_dyn = int L dt rotates into a real Euclidean cost (exp(i S_L) -> exp(-S_E)); the GEOMETRIC/contextual holonomy A_sr (Phase C; host-invariant, Phase D) is a topological phase (oint A), NOT an action, and does NOT rotate into a cost (|exp(i gamma)|=1 at every theta). So A_c and C_c form one analytic (Wick-dual) object in the DYNAMICAL sector only; the contextual phase -- the deepest CWF content -- stands OUTSIDE the photon/black-hole rotation, consistent with it being the separate (irreducibility/self-reference) axis. Net: the two exact corners are dynamical-sector Wick duals of one Z_c (a genuine, if conditional, bridge that sharpens Movement VI); the corner duality is rigorous WHERE the analog-gravity Rindler near-horizon and an analytic action hold (Ch5 kinematics-yes), and S in general (no clean horizon / no analytic continuation). The reviewer's 'do not say exact' is honoured: it is a bridge conjecture, made concrete, not an exact universal claim.",
+  "note": "Corner duality = BRIDGE (B), not a theorem (G5). GH smoothness->T_c=kappa/2pi and the t->i tau propagator rotation are STANDARD; CWF content = identifications (A_c=self-ref phase, C_c=self-description cost, kappa from gain horizon). G7: A_c and C_c are one analytic object only in the dynamical sector; the contextual holonomy stands apart (topological, host-invariant) -- so the photon/black-hole Wick duality is the dynamical sector's, and contextuality is the separate axis. Sharpens Movement VI ('mirror is time' = t->i tau) as a conditional bridge, not an exact universal claim."
+}

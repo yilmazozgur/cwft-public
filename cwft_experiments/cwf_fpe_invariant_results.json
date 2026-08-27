@@ -1,0 +1,148 @@
+{
+  "types": [
+    [
+      0.0,
+      1.0,
+      6.0,
+      10.0
+    ],
+    [
+      0.0,
+      3.0,
+      4.0,
+      9.0
+    ],
+    [
+      0.0,
+      2.0,
+      3.0,
+      10.0
+    ],
+    [
+      0.0,
+      1.0,
+      2.0,
+      4.0
+    ],
+    [
+      0.0,
+      2.0,
+      6.0,
+      12.0
+    ],
+    [
+      0.0,
+      1.0,
+      9.0,
+      10.0
+    ]
+  ],
+  "rows": [
+    {
+      "R": 0.0,
+      "coherent": 1.0,
+      "naive": 1.0,
+      "decohered": 0.2,
+      "decode": 1.0,
+      "refunbind": 0.97,
+      "rawspec": 1.0
+    },
+    {
+      "R": 1.0,
+      "coherent": 1.0,
+      "naive": 0.51,
+      "decohered": 0.12,
+      "decode": 1.0,
+      "refunbind": 0.99,
+      "rawspec": 1.0
+    },
+    {
+      "R": 3.0,
+      "coherent": 1.0,
+      "naive": 0.22,
+      "decohered": 0.16,
+      "decode": 1.0,
+      "refunbind": 0.98,
+      "rawspec": 1.0
+    },
+    {
+      "R": 8.0,
+      "coherent": 1.0,
+      "naive": 0.22,
+      "decohered": 0.2,
+      "decode": 1.0,
+      "refunbind": 0.99,
+      "rawspec": 1.0
+    },
+    {
+      "R": 20.0,
+      "coherent": 1.0,
+      "naive": 0.14,
+      "decohered": 0.19,
+      "decode": 1.0,
+      "refunbind": 0.99,
+      "rawspec": 1.0
+    }
+  ],
+  "route_cost_ms": {
+    "fingerprint": 0.27489128999150125,
+    "decode": 0.5499858733310248,
+    "refunbind": 0.5288229233337916,
+    "rawspec": 0.22301099665734606
+  },
+  "noise": [
+    {
+      "noise": 0.1,
+      "coherent": 1.0,
+      "rawspec": 1.0
+    },
+    {
+      "noise": 0.3,
+      "coherent": 0.8,
+      "rawspec": 0.76
+    },
+    {
+      "noise": 0.6,
+      "coherent": 0.64,
+      "rawspec": 0.6
+    },
+    {
+      "noise": 1.0,
+      "coherent": 0.43,
+      "rawspec": 0.39
+    },
+    {
+      "noise": 1.5,
+      "coherent": 0.3,
+      "rawspec": 0.32
+    }
+  ],
+  "collisions": {
+    "reflection_sim": 0.9999999999997421,
+    "homometric_sim": 0.9999999999997942,
+    "control_sim": 0.7017259072934925,
+    "homometric_pair": [
+      [
+        0.0,
+        1.0,
+        4.0,
+        10.0,
+        12.0,
+        17.0
+      ],
+      [
+        0.0,
+        1.0,
+        8.0,
+        11.0,
+        13.0,
+        17.0
+      ]
+    ]
+  },
+  "rawspec": {
+    "variant": "cosine similarity on mean-centered raw |b|^2 N-vectors; templates = root-0 class bundles (fingerprint protocol)",
+    "overall_acc": 1.0,
+    "cost_ms": 0.22301099665734606
+  }
+}

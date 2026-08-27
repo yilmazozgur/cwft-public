@@ -1,0 +1,163 @@
+{
+  "part1": {
+    "params": {
+      "B": 4000000,
+      "D0": 7,
+      "N": 4000,
+      "sigma": 2.0,
+      "omega0": 8.0,
+      "reps": 7
+    },
+    "rows": [
+      {
+        "k": 40,
+        "s": 40,
+        "J_true": 20,
+        "J_hash": 20,
+        "t_hash_ms": 0.006246002158150077,
+        "t_sort_ms": 0.033325006370432675,
+        "t_pair_ms": 0.009413997759111226,
+        "t_fpe_query_ms": 0.0009300129022449255,
+        "t_fpe_build_ms": 5.102424998767674,
+        "state_hash_bytes": 640,
+        "state_bundle_bytes": 64000
+      },
+      {
+        "k": 400,
+        "s": 400,
+        "J_true": 200,
+        "J_hash": 200,
+        "t_hash_ms": 0.026825000531971455,
+        "t_sort_ms": 0.017049998859874904,
+        "t_pair_ms": 0.12728999718092382,
+        "t_fpe_query_ms": 0.0009250070434063673,
+        "t_fpe_build_ms": 45.533342999988236,
+        "state_hash_bytes": 6400,
+        "state_bundle_bytes": 64000
+      },
+      {
+        "k": 4000,
+        "s": 4000,
+        "J_true": 2000,
+        "J_hash": 2000,
+        "t_hash_ms": 0.2945870073745027,
+        "t_sort_ms": 0.078242999734357,
+        "t_pair_ms": 42.65065099752974,
+        "t_fpe_query_ms": 0.0010039948392659426,
+        "t_fpe_build_ms": 466.55224201094825,
+        "state_hash_bytes": 64000,
+        "state_bundle_bytes": 64000
+      },
+      {
+        "k": 40000,
+        "s": 40000,
+        "J_true": 20000,
+        "J_hash": 20000,
+        "t_hash_ms": 3.2565459987381473,
+        "t_sort_ms": 0.7929660059744492,
+        "t_pair_ms": null,
+        "t_fpe_query_ms": 0.0010450021363794804,
+        "t_fpe_build_ms": 4591.2145509937545,
+        "state_hash_bytes": 640000,
+        "state_bundle_bytes": 64000
+      },
+      {
+        "k": 400000,
+        "s": 400000,
+        "J_true": 200000,
+        "J_hash": 200000,
+        "t_hash_ms": 44.9885109992465,
+        "t_sort_ms": 9.496666010818444,
+        "t_pair_ms": null,
+        "t_fpe_query_ms": 0.0009760115062817931,
+        "t_fpe_build_ms": 46318.41519800946,
+        "state_hash_bytes": 6400000,
+        "state_bundle_bytes": 64000
+      }
+    ],
+    "state_crossover_s": 4000
+  },
+  "part2": {
+    "params": {
+      "N": 4000,
+      "sigma": 2.0,
+      "cell": 1.1774100225154747,
+      "k": 20,
+      "pairs": 10,
+      "trials": 40,
+      "truncation_worst": 0.0030747673057881096
+    },
+    "rows_m": [
+      {
+        "m": 1,
+        "acc_hash": 0.8125,
+        "t_hash_ms": 0.15606604974891525,
+        "acc_pairs": 0.825,
+        "t_pairs_ms": 0.005813749521621503,
+        "acc_bundle": 0.825,
+        "t_bundle_ms": 1.6048128869442735,
+        "neighbor_cells": 3
+      },
+      {
+        "m": 2,
+        "acc_hash": 1.0,
+        "t_hash_ms": 0.18351424987486098,
+        "acc_pairs": 1.0,
+        "t_pairs_ms": 0.012412862452038098,
+        "acc_bundle": 1.0,
+        "t_bundle_ms": 1.6257430381301674,
+        "neighbor_cells": 9
+      },
+      {
+        "m": 3,
+        "acc_hash": 1.0,
+        "t_hash_ms": 0.4666955117500038,
+        "acc_pairs": 1.0,
+        "t_pairs_ms": 0.012792299639841076,
+        "acc_bundle": 1.0,
+        "t_bundle_ms": 1.6128786375702475,
+        "neighbor_cells": 27
+      },
+      {
+        "m": 4,
+        "acc_hash": 1.0,
+        "t_hash_ms": 1.4566428248144803,
+        "acc_pairs": 1.0,
+        "t_pairs_ms": 0.01307471284235362,
+        "acc_bundle": 1.0,
+        "t_bundle_ms": 1.616609049597173,
+        "neighbor_cells": 81
+      },
+      {
+        "m": 6,
+        "acc_hash": 1.0,
+        "t_hash_ms": 14.25670867520239,
+        "acc_pairs": 1.0,
+        "t_pairs_ms": 0.015812550191185437,
+        "acc_bundle": 1.0,
+        "t_bundle_ms": 1.628257612537709,
+        "neighbor_cells": 729
+      }
+    ],
+    "rows_k": [
+      {
+        "k": 20,
+        "t_hash_ms": 0.4656980017898604,
+        "t_pairs_ms": 0.012853008229285479,
+        "t_bundle_query_ms": 0.0009530049283057451
+      },
+      {
+        "k": 200,
+        "t_hash_ms": 4.690105997724459,
+        "t_pairs_ms": 1.021753007080406,
+        "t_bundle_query_ms": 0.0010740041034296155
+      },
+      {
+        "k": 2000,
+        "t_hash_ms": 45.588206994580105,
+        "t_pairs_ms": 166.4849270018749,
+        "t_bundle_query_ms": 0.0011130032362416387
+      }
+    ]
+  }
+}

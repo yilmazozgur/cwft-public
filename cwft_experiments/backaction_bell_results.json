@@ -1,0 +1,46 @@
+{
+  "controls": {
+    "PR_box_CF": 1.0,
+    "complexQM_signaling": 0.0,
+    "complexQM_CF_ns": 0.4142135623730949
+  },
+  "sweep": {
+    "beta=0.0": {
+      "signaling": 0.007774999999999976,
+      "CF_raw": 0.007775000000000087,
+      "CF_ns": 1.1102230246251565e-16,
+      "verdict": "fully classical"
+    },
+    "beta=0.1": {
+      "signaling": 0.008074999999999943,
+      "CF_raw": 0.008074999999999943,
+      "CF_ns": 0.0,
+      "verdict": "fully classical"
+    },
+    "beta=0.25": {
+      "signaling": 0.0048499999999999654,
+      "CF_raw": 0.004850000000000021,
+      "CF_ns": 0.0,
+      "verdict": "fully classical"
+    },
+    "beta=0.5": {
+      "signaling": 0.0062249999999999805,
+      "CF_raw": 0.006224999999999925,
+      "CF_ns": 0.0,
+      "verdict": "fully classical"
+    },
+    "beta=0.75": {
+      "signaling": 0.0018000000000000238,
+      "CF_raw": 0.0017999999999999128,
+      "CF_ns": 0.0,
+      "verdict": "fully classical"
+    },
+    "beta=1.0": {
+      "signaling": 0.005424999999999958,
+      "CF_raw": 0.005425000000000013,
+      "CF_ns": 0.0,
+      "verdict": "fully classical"
+    }
+  },
+  "runtime_s": 1.8
+}

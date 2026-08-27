@@ -1,0 +1,30 @@
+{
+  "params": {
+    "D": 256,
+    "base": 10000.0
+  },
+  "identity_max_abs_diff": 0.0,
+  "kernel_is_FT": {
+    "corr": 0.9615861018100782
+  },
+  "squeezed_rope": {
+    "base_hwhm": 52.50625312656328,
+    "rows": [
+      {
+        "gamma": 0.5,
+        "hwhm": 4.610305152576288,
+        "log_bandwidth": 4.569192293910059
+      },
+      {
+        "gamma": 1.0,
+        "hwhm": 52.50625312656328,
+        "log_bandwidth": 9.138384587820118
+      },
+      {
+        "gamma": 2.0,
+        "hwhm": 512.0,
+        "log_bandwidth": 18.276769175640236
+      }
+    ]
+  }
+}

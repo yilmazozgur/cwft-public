@@ -1,0 +1,24 @@
+{
+  "validation": [
+    {
+      "name": "local",
+      "chsh": 2.0,
+      "cf": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "name": "Tsirelson",
+      "chsh": 2.8284271247461903,
+      "cf": 0.41421356237309503,
+      "predicted": 0.41421356237309515
+    },
+    {
+      "name": "PR box",
+      "chsh": 4.0,
+      "cf": 1.0,
+      "predicted": 1.0
+    }
+  ],
+  "fpe_definite_ground_CF": 0.0,
+  "note": "Safe-horn baseline established. The forward experiment -- a self-referential, definite-ground-free VSA predicted to give CF>0 -- is specified in SELFREF_VSA_PLAN.md."
+}

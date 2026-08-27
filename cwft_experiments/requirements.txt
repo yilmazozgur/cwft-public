@@ -1,0 +1,6 @@
+# Minimum versions for the experiments and figures of
+# "The Physics of Hyperdimensional Computing: A Phase-Space Lens for VSA".
+# CPU-only. No GPU, no network, no shared state between scripts.
+numpy>=1.24
+scipy>=1.10          # cwf_fpe_highdim.py only (separable Gaussian smoothing)
+matplotlib>=3.6      # make_figures.py only

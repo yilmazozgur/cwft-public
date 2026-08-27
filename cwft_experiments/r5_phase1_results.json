@@ -1,0 +1,63 @@
+{
+  "substrate": "continuous-time inhibitory ring, g=1.8 asym=0.15 dt=0.15",
+  "rings": {
+    "4": {
+      "parity": "even",
+      "tail_spread": 9.325873406851315e-15,
+      "settled": true,
+      "top2_pca_var": 1.0,
+      "CF_constraint": 0.0,
+      "CF_realised": 0.0
+    },
+    "5": {
+      "parity": "odd",
+      "tail_spread": 0.6837336386244448,
+      "settled": false,
+      "top2_pca_var": 0.9923237077573306,
+      "CF_constraint": 1.0,
+      "CF_realised": 0.0,
+      "pancharatnam_phase": 3.141592653589793,
+      "gauge_gate": {
+        "winding_native": 4.441583171013505,
+        "winding_abs_mean": 4.435593276291089,
+        "winding_signed_std": 4.435693596826996,
+        "sign_flips": 5,
+        "n_gauges": 10
+      }
+    },
+    "6": {
+      "parity": "even",
+      "tail_spread": 9.325873406851315e-15,
+      "settled": true,
+      "top2_pca_var": 1.0,
+      "CF_constraint": 0.0,
+      "CF_realised": 0.0
+    },
+    "7": {
+      "parity": "odd",
+      "tail_spread": 0.76642176553499,
+      "settled": false,
+      "top2_pca_var": 0.9743382856887917,
+      "CF_constraint": 1.0,
+      "CF_realised": 0.0,
+      "pancharatnam_phase": 0.0,
+      "gauge_gate": {
+        "winding_native": 3.116816737728344,
+        "winding_abs_mean": 3.127263574231012,
+        "winding_signed_std": 2.4942187794269395,
+        "sign_flips": 8,
+        "n_gauges": 10
+      }
+    }
+  },
+  "verdict": {
+    "max_realised_CF_odd": 0.0,
+    "odd_pancharatnam_phases": [
+      3.141592653589793,
+      0.0
+    ],
+    "odd_holonomy_is_Z2": true,
+    "kill_criterion_fires": false
+  },
+  "runtime_s": 0.11
+}

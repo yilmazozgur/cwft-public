@@ -1,0 +1,68 @@
+{
+  "chsh_validation": [
+    {
+      "name": "local",
+      "cf": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "name": "Tsirelson",
+      "cf": 0.41421356237309503,
+      "predicted": 0.41421356237309515
+    },
+    {
+      "name": "PR box",
+      "cf": 1.0,
+      "predicted": 1.0
+    }
+  ],
+  "ring": [
+    {
+      "n": 4,
+      "cf": null,
+      "note": "no single-cycle star polygon"
+    },
+    {
+      "n": 5,
+      "cf": 0.47213595499957894,
+      "cf_decohered": 0.0,
+      "sum_Pi": 2.23606797749979,
+      "adj_orth": 1.6653345369377348e-16,
+      "parity": "odd"
+    },
+    {
+      "n": 6,
+      "cf": null,
+      "note": "no single-cycle star polygon"
+    },
+    {
+      "n": 7,
+      "cf": 0.6353344147881917,
+      "cf_decohered": 0.0,
+      "sum_Pi": 3.317667207394096,
+      "adj_orth": 4.996003610813204e-16,
+      "parity": "odd"
+    },
+    {
+      "n": 9,
+      "cf": 0.7201791628681291,
+      "cf_decohered": 0.0,
+      "sum_Pi": 4.360089581434064,
+      "adj_orth": 3.3306690738754696e-16,
+      "parity": "odd"
+    }
+  ],
+  "vsa_native": {
+    "D": 1024,
+    "n": 5,
+    "cf": 0.47213595499957783,
+    "projector_idempotency_err": 6.938893903907228e-18,
+    "has_definite_assignment": false
+  },
+  "scorecard": {
+    "frustrated_ring_odd": 0.47213595499957783,
+    "decohered": 0.0,
+    "even_ring": "no frustrated construction (CF=0, perfect graph)",
+    "definite_ground_FPE": 0.0
+  }
+}

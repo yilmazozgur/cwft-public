@@ -1,0 +1,35 @@
+{
+  "W": 31,
+  "T": 30,
+  "B1_saddle": {
+    "per_rule": {
+      "90": {
+        "C_dyn_trajectory": 0,
+        "min_perturbed": 1,
+        "mean_perturbed": 8.385
+      },
+      "110": {
+        "C_dyn_trajectory": 0,
+        "min_perturbed": 1,
+        "mean_perturbed": 8.42
+      }
+    },
+    "trajectory_is_unique_minimum": true,
+    "label": "C_dyn derivable from T (G1); min C_dyn = deterministic trajectory (G6)"
+  },
+  "B2_reducibility": {
+    "superposition_residual_rule90": 0.0,
+    "superposition_residual_rule110": 15.633333333333333,
+    "linear_split": true,
+    "label": "Rule 90 linear over GF(2) (reducible); Rule 110 nonlinear"
+  },
+  "B3_shortcut": {
+    "rule90_closed_form_matches": true,
+    "rule110_not_linear": true,
+    "shortcut_split": true,
+    "label": "Rule 90 saddle reachable by M^t.s_0 (no stepping); Rule 110 run-only"
+  },
+  "all_pass": true,
+  "verdict": "PHASE B PASS -- the action's COST sector has a clean classical limit, and 'reducibility' is the shortcut-reachability of its saddle. (B1) C_dyn = sum Hamming(s_{k+1}, T(s_k)) is DERIVABLE from the rule T (G1, for this term), is >=0, and vanishes EXACTLY on the deterministic trajectory; perturbed histories cost more -> the trajectory is the unique global minimum, so the cost-dominated path integral is dominated by it = the effective/classical dynamics (G6; a genuine minimum, so 'stationary != minimum' does not bite). (B2) Rule 90 is LINEAR over GF(2) (superposition residual 0.000=0) and (B3) its saddle is reachable by the closed form state_t=M^t.s_0 WITHOUT stepping -> REDUCIBLE. Rule 110 is NONLINEAR (residual 15.6>0), no linear shortcut reproduces it -> the saddle is RUN-ONLY -> IRREDUCIBLE. So the action principle's classical limit reproduces the substrate's deterministic dynamics, and the reducible/irreducible axis is exactly whether that saddle has a finite shortcut. Honest scope: this confirms the COST sector (C_dyn derivable, classical limit clean); 'no shortcut for Rule 110' is shown for LINEAR shortcuts + cites universality (proving NO shortcut exists is undecidable, the open part); and the harder Koopman-MDL identity / description cost C_desc remain open (G1 for those terms).",
+  "note": "Cost-sector classical limit. C_dyn = sum Hamming(s_{k+1},T(s_k)) derivable from T (G1); its unique minimum is the deterministic trajectory = the effective/classical dynamics (G6, a clean global minimum). Reducible (Rule 90, linear GF(2), closed-form shortcut M^t.s_0) vs irreducible (Rule 110, nonlinear, run-only). Cannot prove NO shortcut for 110 (undecidable); shows linear shortcut fails + universality. Phase-sector (A_c) is Phases C/D; Koopman-MDL identity and C_desc remain open."
+}

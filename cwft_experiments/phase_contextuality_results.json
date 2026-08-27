@@ -1,0 +1,65 @@
+{
+  "controls": {
+    "LP_validation": {
+      "PR": 1.0,
+      "Tsirelson": 0.4142135623730949,
+      "local": 0.0
+    },
+    "PR_box": {
+      "success": true,
+      "noncontextual_fraction": 0.0,
+      "contextual_fraction": 1.0
+    },
+    "omniscient_Rule110": {
+      "success": true,
+      "noncontextual_fraction": 1.0,
+      "contextual_fraction": 0.0
+    },
+    "sampling_floor_CF": 0.015510257488022079
+  },
+  "substrates": {
+    "Rule110": {
+      "rule": 110,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.9810665857327352,
+      "contextual_fraction": 0.018933414267264803
+    },
+    "Rule54": {
+      "rule": 54,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.986925488141372,
+      "contextual_fraction": 0.013074511858627957
+    },
+    "Rule30": {
+      "rule": 30,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.9868574856435816,
+      "contextual_fraction": 0.013142514356418444
+    },
+    "Rule90": {
+      "rule": 90,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.9826814613794519,
+      "contextual_fraction": 0.017318538620548107
+    },
+    "Rule184": {
+      "rule": 184,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.9947856057600977,
+      "contextual_fraction": 0.005214394239902331
+    },
+    "Rule22": {
+      "rule": 22,
+      "sampling_floor": 0.015510257488022079,
+      "success": true,
+      "noncontextual_fraction": 0.9903888122240931,
+      "contextual_fraction": 0.00961118777590686
+    }
+  },
+  "runtime_s": 129.0
+}

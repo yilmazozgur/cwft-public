@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the Computational Wave Field Theory book (preferred-citation) and this repository."
+title: "Computational Wave Field Theory — code base"
+type: software
+authors:
+  - family-names: Yilmaz
+    given-names: Ozgur
+    orcid: "https://orcid.org/0009-0002-8781-5386"
+    affiliation: "Adana Alparslan Türkeş Science and Technology University"
+repository-code: "https://github.com/yilmazozgur/cwft-public"
+license: MIT
+preferred-citation:
+  type: book
+  title: "Computational Wave Field Theory"
+  authors:
+    - family-names: Yilmaz
+      given-names: Ozgur
+      orcid: "https://orcid.org/0009-0002-8781-5386"
+  doi: "10.5281/zenodo.20665921"
+  publisher: "Zenodo"
+  year: 2026

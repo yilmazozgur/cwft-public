@@ -1,0 +1,650 @@
+{
+  "params": {
+    "R": 40.0,
+    "hbar_c": 1.1774100225154747,
+    "Ns": [
+      512,
+      1024
+    ],
+    "sigmas": [
+      0.03,
+      0.04984985125143472,
+      0.08283358899300557,
+      0.13764140299746028,
+      0.22871344884873923,
+      0.38004438014374253,
+      0.6315051939703089,
+      1.0493479994642778,
+      1.743661389476162,
+      2.897375363275222,
+      4.814457695961383,
+      8.0,
+      11.31,
+      16.0,
+      22.63
+    ],
+    "trials": 16,
+    "code_seeds": 5,
+    "kmax_estimator": "median over codebook seeds",
+    "threshold": 0.5,
+    "spacing_cells": 2.0,
+    "criterion": "recall>=0.95 and FP<0.01 (part-3 criterion)",
+    "arm_A": "library = 4N uniform grid over [0,R] (literal)",
+    "arm_B": "library = RSA (random sequential adsorption) packing of [0,R] at min-separation max(2*hbar_c/sigma, R/4N); stored items drawn uniformly from it; PERIODIC libraries are unusable (quenched kernel revivals, see rsa_library docstring)",
+    "note": "arm A is DEGENERATE (k_max<=1 everywhere): every candidate within the kernel half-width of a stored item fires deterministically, so the 1% per-candidate FP budget is unmeetable on a dense grid; an attribution-window repair goes vacuous at high load (no far candidates left).  The geometric budget is only measurable at cell granularity."
+  },
+  "per_N": {
+    "512": {
+      "rows": [
+        {
+          "sigma": 0.03,
+          "k_max": 0,
+          "k_max_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "n_lib": 1,
+          "packing_fraction": 1.9623500375257912,
+          "library_exhausted": false,
+          "fill_fraction": 0.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 1.019186160345623,
+          "ratio_to_geometric": 0.0,
+          "hwhm": 39.247000750515824
+        },
+        {
+          "sigma": 0.04984985125143472,
+          "k_max": 0,
+          "k_max_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "n_lib": 1,
+          "packing_fraction": 1.180956405042019,
+          "library_exhausted": false,
+          "fill_fraction": 0.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 1.6935426163583398,
+          "ratio_to_geometric": 0.0,
+          "hwhm": 23.619128100840378
+        },
+        {
+          "sigma": 0.08283358899300557,
+          "k_max": 2,
+          "k_max_per_seed": [
+            2,
+            0,
+            0,
+            2,
+            2
+          ],
+          "n_lib": 2,
+          "packing_fraction": 1.421416163212359,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 2.8140949171142933,
+          "ratio_to_geometric": 0.7107080816061795,
+          "hwhm": 14.21416163212359
+        },
+        {
+          "sigma": 0.13764140299746028,
+          "k_max": 2,
+          "k_max_per_seed": [
+            3,
+            2,
+            3,
+            2,
+            2
+          ],
+          "n_lib": 2,
+          "packing_fraction": 0.855418498267705,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 4.676073767518869,
+          "ratio_to_geometric": 0.4277092491338525,
+          "hwhm": 8.55418498267705
+        },
+        {
+          "sigma": 0.22871344884873923,
+          "k_max": 4,
+          "k_max_per_seed": [
+            3,
+            4,
+            3,
+            4,
+            4
+          ],
+          "n_lib": 4,
+          "packing_fraction": 1.0295940430631698,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 7.770052725051719,
+          "ratio_to_geometric": 0.5147970215315849,
+          "hwhm": 5.1479702153158495
+        },
+        {
+          "sigma": 0.38004438014374253,
+          "k_max": 5,
+          "k_max_per_seed": [
+            5,
+            6,
+            5,
+            5,
+            5
+          ],
+          "n_lib": 5,
+          "packing_fraction": 0.774521400678355,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 12.911199085321108,
+          "ratio_to_geometric": 0.3872607003391775,
+          "hwhm": 3.09808560271342
+        },
+        {
+          "sigma": 0.6315051939703089,
+          "k_max": 9,
+          "k_max_per_seed": [
+            9,
+            10,
+            9,
+            8,
+            9
+          ],
+          "n_lib": 9,
+          "packing_fraction": 0.8390026165911066,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 21.454045129363898,
+          "ratio_to_geometric": 0.4195013082955534,
+          "hwhm": 1.8644502590913483
+        },
+        {
+          "sigma": 1.0493479994642778,
+          "k_max": 14,
+          "k_max_per_seed": [
+            14,
+            13,
+            15,
+            13,
+            15
+          ],
+          "n_lib": 14,
+          "packing_fraction": 0.7854277286292092,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 35.64936528134527,
+          "ratio_to_geometric": 0.39271386431460453,
+          "hwhm": 1.1220396123274416
+        },
+        {
+          "sigma": 1.743661389476162,
+          "k_max": 23,
+          "k_max_per_seed": [
+            22,
+            23,
+            21,
+            23,
+            23
+          ],
+          "n_lib": 23,
+          "packing_fraction": 0.7765392604693602,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 59.23718521610411,
+          "ratio_to_geometric": 0.3882696302346801,
+          "hwhm": 0.6752515308429219
+        },
+        {
+          "sigma": 2.897375363275222,
+          "k_max": 37,
+          "k_max_per_seed": [
+            37,
+            33,
+            38,
+            35,
+            38
+          ],
+          "n_lib": 38,
+          "packing_fraction": 0.7721053582268972,
+          "library_exhausted": true,
+          "fill_fraction": 0.9736842105263158,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 98.43216238588259,
+          "ratio_to_geometric": 0.37589339808414735,
+          "hwhm": 0.40637124117205115
+        },
+        {
+          "sigma": 4.814457695961383,
+          "k_max": 59,
+          "k_max_per_seed": [
+            63,
+            59,
+            63,
+            58,
+            36
+          ],
+          "n_lib": 60,
+          "packing_fraction": 0.73367143105431,
+          "library_exhausted": true,
+          "fill_fraction": 0.9833333333333333,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 163.5609551097772,
+          "ratio_to_geometric": 0.36072178693503576,
+          "hwhm": 0.24455714368477002
+        },
+        {
+          "sigma": 8.0,
+          "k_max": 42,
+          "k_max_per_seed": [
+            39,
+            48,
+            90,
+            42,
+            37
+          ],
+          "n_lib": 102,
+          "packing_fraction": 0.7505988893536151,
+          "library_exhausted": false,
+          "fill_fraction": 0.4117647058823529,
+          "k_max_dense_armA": 1,
+          "geometric_ideal": 271.7829760921661,
+          "ratio_to_geometric": 0.15453506545515605,
+          "hwhm": 0.14717625281443433
+        },
+        {
+          "sigma": 11.31,
+          "k_max": 58,
+          "k_max_per_seed": [
+            45,
+            43,
+            141,
+            92,
+            58
+          ],
+          "n_lib": 140,
+          "packing_fraction": 0.7287241518663415,
+          "library_exhausted": false,
+          "fill_fraction": 0.4142857142857143,
+          "k_max_dense_armA": 2,
+          "geometric_ideal": 384.23318245029986,
+          "ratio_to_geometric": 0.1509500028865993,
+          "hwhm": 0.10410345026662021
+        },
+        {
+          "sigma": 16.0,
+          "k_max": 47,
+          "k_max_per_seed": [
+            47,
+            61,
+            31,
+            58,
+            43
+          ],
+          "n_lib": 197,
+          "packing_fraction": 0.7248430451110891,
+          "library_exhausted": false,
+          "fill_fraction": 0.23857868020304568,
+          "k_max_dense_armA": 3,
+          "geometric_ideal": 543.5659521843322,
+          "ratio_to_geometric": 0.08646604852848017,
+          "hwhm": 0.07358812640721717
+        },
+        {
+          "sigma": 22.63,
+          "k_max": 37,
+          "k_max_per_seed": [
+            37,
+            30,
+            29,
+            56,
+            45
+          ],
+          "n_lib": 274,
+          "packing_fraction": 0.7127935178286348,
+          "library_exhausted": false,
+          "fill_fraction": 0.13503649635036497,
+          "k_max_dense_armA": 4,
+          "geometric_ideal": 768.8060936207148,
+          "ratio_to_geometric": 0.04812656963441512,
+          "hwhm": 0.05202872392909742
+        }
+      ],
+      "summary": {
+        "plateau_k": 47.333333333333336,
+        "plateau_over_N": 0.09244791666666667,
+        "stat_prediction_007N": 35.84,
+        "stat_prediction_capacity": 33.575448224324965,
+        "geometric_slope_c": 0.3130385561951299,
+        "slope_ratio_to_ideal": 0.3685747334979195,
+        "lattice_bound_slope": 0.42466090014400953,
+        "mean_packing_fraction": 0.7843474038974626,
+        "expected_rsa_slope": 0.3330816745647135,
+        "mean_fill_fraction": 0.995224171539961,
+        "n_branch_points": 9,
+        "sigma_star_measured": 3.7801520289267905,
+        "sigma_star_predicted": 3.552682190876361,
+        "sigma_star_ideal_line": 1.3932685266433116,
+        "dense_armA_kmax_max": 4
+      }
+    },
+    "1024": {
+      "rows": [
+        {
+          "sigma": 0.03,
+          "k_max": 0,
+          "k_max_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "n_lib": 1,
+          "packing_fraction": 1.9623500375257912,
+          "library_exhausted": false,
+          "fill_fraction": 0.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 1.019186160345623,
+          "ratio_to_geometric": 0.0,
+          "hwhm": 39.247000750515824
+        },
+        {
+          "sigma": 0.04984985125143472,
+          "k_max": 0,
+          "k_max_per_seed": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "n_lib": 1,
+          "packing_fraction": 1.180956405042019,
+          "library_exhausted": false,
+          "fill_fraction": 0.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 1.6935426163583398,
+          "ratio_to_geometric": 0.0,
+          "hwhm": 23.619128100840378
+        },
+        {
+          "sigma": 0.08283358899300557,
+          "k_max": 2,
+          "k_max_per_seed": [
+            0,
+            2,
+            2,
+            2,
+            2
+          ],
+          "n_lib": 2,
+          "packing_fraction": 1.421416163212359,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 2.8140949171142933,
+          "ratio_to_geometric": 0.7107080816061795,
+          "hwhm": 14.21416163212359
+        },
+        {
+          "sigma": 0.13764140299746028,
+          "k_max": 2,
+          "k_max_per_seed": [
+            2,
+            2,
+            2,
+            3,
+            3
+          ],
+          "n_lib": 2,
+          "packing_fraction": 0.855418498267705,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 4.676073767518869,
+          "ratio_to_geometric": 0.4277092491338525,
+          "hwhm": 8.55418498267705
+        },
+        {
+          "sigma": 0.22871344884873923,
+          "k_max": 3,
+          "k_max_per_seed": [
+            3,
+            3,
+            3,
+            4,
+            4
+          ],
+          "n_lib": 3,
+          "packing_fraction": 0.7721955322973775,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 7.770052725051719,
+          "ratio_to_geometric": 0.38609776614868874,
+          "hwhm": 5.1479702153158495
+        },
+        {
+          "sigma": 0.38004438014374253,
+          "k_max": 5,
+          "k_max_per_seed": [
+            5,
+            7,
+            5,
+            5,
+            6
+          ],
+          "n_lib": 5,
+          "packing_fraction": 0.774521400678355,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 12.911199085321108,
+          "ratio_to_geometric": 0.3872607003391775,
+          "hwhm": 3.09808560271342
+        },
+        {
+          "sigma": 0.6315051939703089,
+          "k_max": 8,
+          "k_max_per_seed": [
+            8,
+            8,
+            9,
+            7,
+            7
+          ],
+          "n_lib": 8,
+          "packing_fraction": 0.7457801036365393,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 21.454045129363898,
+          "ratio_to_geometric": 0.3728900518182697,
+          "hwhm": 1.8644502590913483
+        },
+        {
+          "sigma": 1.0493479994642778,
+          "k_max": 14,
+          "k_max_per_seed": [
+            12,
+            14,
+            15,
+            14,
+            15
+          ],
+          "n_lib": 14,
+          "packing_fraction": 0.7854277286292092,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 35.64936528134527,
+          "ratio_to_geometric": 0.39271386431460453,
+          "hwhm": 1.1220396123274416
+        },
+        {
+          "sigma": 1.743661389476162,
+          "k_max": 22,
+          "k_max_per_seed": [
+            23,
+            21,
+            22,
+            22,
+            24
+          ],
+          "n_lib": 22,
+          "packing_fraction": 0.7427766839272141,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 59.23718521610411,
+          "ratio_to_geometric": 0.37138834196360704,
+          "hwhm": 0.6752515308429219
+        },
+        {
+          "sigma": 2.897375363275222,
+          "k_max": 34,
+          "k_max_per_seed": [
+            38,
+            38,
+            34,
+            23,
+            34
+          ],
+          "n_lib": 37,
+          "packing_fraction": 0.7517867961682947,
+          "library_exhausted": true,
+          "fill_fraction": 0.918918918918919,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 98.43216238588259,
+          "ratio_to_geometric": 0.3454155549962435,
+          "hwhm": 0.40637124117205115
+        },
+        {
+          "sigma": 4.814457695961383,
+          "k_max": 63,
+          "k_max_per_seed": [
+            60,
+            63,
+            63,
+            63,
+            61
+          ],
+          "n_lib": 63,
+          "packing_fraction": 0.7703550026070256,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 0,
+          "geometric_ideal": 163.5609551097772,
+          "ratio_to_geometric": 0.38517750130351275,
+          "hwhm": 0.24455714368477002
+        },
+        {
+          "sigma": 8.0,
+          "k_max": 99,
+          "k_max_per_seed": [
+            99,
+            36,
+            104,
+            99,
+            99
+          ],
+          "n_lib": 99,
+          "packing_fraction": 0.72852245143145,
+          "library_exhausted": true,
+          "fill_fraction": 1.0,
+          "k_max_dense_armA": 1,
+          "geometric_ideal": 271.7829760921661,
+          "ratio_to_geometric": 0.36426122571572495,
+          "hwhm": 0.14717625281443433
+        },
+        {
+          "sigma": 11.31,
+          "k_max": 80,
+          "k_max_per_seed": [
+            63,
+            140,
+            76,
+            80,
+            103
+          ],
+          "n_lib": 141,
+          "packing_fraction": 0.7339293243796725,
+          "library_exhausted": false,
+          "fill_fraction": 0.5673758865248227,
+          "k_max_dense_armA": 1,
+          "geometric_ideal": 384.23318245029986,
+          "ratio_to_geometric": 0.20820690053324042,
+          "hwhm": 0.10410345026662021
+        },
+        {
+          "sigma": 16.0,
+          "k_max": 72,
+          "k_max_per_seed": [
+            60,
+            78,
+            58,
+            72,
+            195
+          ],
+          "n_lib": 195,
+          "packing_fraction": 0.7174842324703674,
+          "library_exhausted": false,
+          "fill_fraction": 0.36923076923076925,
+          "k_max_dense_armA": 2,
+          "geometric_ideal": 543.5659521843322,
+          "ratio_to_geometric": 0.1324586275329909,
+          "hwhm": 0.07358812640721717
+        },
+        {
+          "sigma": 22.63,
+          "k_max": 83,
+          "k_max_per_seed": [
+            77,
+            58,
+            149,
+            274,
+            83
+          ],
+          "n_lib": 276,
+          "packing_fraction": 0.7179963902215445,
+          "library_exhausted": false,
+          "fill_fraction": 0.3007246376811594,
+          "k_max_dense_armA": 4,
+          "geometric_ideal": 768.8060936207148,
+          "ratio_to_geometric": 0.10795960215287716,
+          "hwhm": 0.05202872392909742
+        }
+      ],
+      "summary": {
+        "plateau_k": 78.33333333333333,
+        "plateau_over_N": 0.07649739583333333,
+        "stat_prediction_007N": 71.68,
+        "stat_prediction_capacity": 61.55498841126244,
+        "geometric_slope_c": 0.31268552477748107,
+        "slope_ratio_to_ideal": 0.368159070768517,
+        "lattice_bound_slope": 0.42466090014400953,
+        "mean_packing_fraction": 0.7468580114149671,
+        "expected_rsa_slope": 0.31716139540724486,
+        "mean_fill_fraction": 0.991891891891892,
+        "n_branch_points": 10,
+        "sigma_star_measured": 6.26294848387036,
+        "sigma_star_predicted": 6.174563997042496,
+        "sigma_star_ideal_line": 2.3057612940928047,
+        "dense_armA_kmax_max": 4
+      }
+    }
+  }
+}

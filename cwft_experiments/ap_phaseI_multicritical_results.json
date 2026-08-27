@@ -1,0 +1,124 @@
+{
+  "setup": {
+    "n": 8,
+    "T": 24,
+    "reals": 40,
+    "ps": [
+      0.04,
+      0.08,
+      0.12,
+      0.16,
+      0.2,
+      0.26,
+      0.34
+    ],
+    "qs": [
+      0.05,
+      0.1,
+      0.18,
+      0.3
+    ],
+    "axes": "p=monitoring/entanglement; q=magic/phase"
+  },
+  "I3": [
+    [
+      -1.515649190931614,
+      -0.9066751753698716,
+      -0.5771226329101813,
+      -0.2842594645912765,
+      -0.13380924873671574,
+      -0.16949931391449463,
+      0.02292214595714127
+    ],
+    [
+      -1.2679453055531145,
+      -0.9385287640795914,
+      -0.5474914807581792,
+      -0.2808809215266265,
+      -0.15537331762427786,
+      -0.07595995953886346,
+      -0.019168260753659287
+    ],
+    [
+      -1.3702789446599304,
+      -0.8829501173453584,
+      -0.5171478675999028,
+      -0.42262802465016974,
+      -0.34663256067642917,
+      -0.12599186871661933,
+      -0.018389734315901015
+    ],
+    [
+      -1.3511071304590256,
+      -0.8531940541030846,
+      -0.636105519695724,
+      -0.46025858545577697,
+      -0.31895276394523436,
+      -0.1470857137315706,
+      -0.011565584894666978
+    ]
+  ],
+  "M2": [
+    [
+      2.964034367621643,
+      2.19472242633372,
+      1.303805934766881,
+      0.9789458103906693,
+      0.8964926307885157,
+      0.6672218721290031,
+      0.3751637827232133
+    ],
+    [
+      3.8156566496287057,
+      3.043425034936733,
+      2.216482507664487,
+      1.6750328203661575,
+      1.169019356814162,
+      0.9978079988723128,
+      0.5355520621418279
+    ],
+    [
+      4.5491096080438975,
+      3.278757512265261,
+      2.591874725681429,
+      2.357322135261902,
+      1.803790270477009,
+      1.287601611504815,
+      0.7970660592812655
+    ],
+    [
+      4.674354554275818,
+      3.7382390723708405,
+      3.1584697570500118,
+      2.665758362983418,
+      2.2282460081152573,
+      1.8255100694873687,
+      1.138018117719453
+    ]
+  ],
+  "ridges": {
+    "p_e": [
+      0.09945809935934498,
+      0.11017328459534668,
+      0.10062488986753816,
+      0.1116659185885427
+    ],
+    "p_m": [
+      0.11199874507966404,
+      0.1428020582588366,
+      0.16598103462550381,
+      0.19004085093272605
+    ],
+    "gaps": [
+      0.012540645720319057,
+      0.032628773663489916,
+      0.06535614475796565,
+      0.07837493234418334
+    ],
+    "crosses": false,
+    "diverging": true
+  },
+  "interior_multicritical_point": false,
+  "verdict": "NO interior multicritical point. The two critical lines share a common origin at the q=0 axis (the pure entanglement MIPT) and SPLAY APART as magic is injected: the gap p_m - p_e grows monotonically with q (+0.013, +0.033, +0.065, +0.078), the magic line moving to higher p (more injected magic takes more measurement to clear) while the entanglement line stays ~flat (q-independent, per Door 4). So the gravity (entanglement) and phase (magic) lines TOUCH only in the no-magic limit and diverge for q>0. This sharpens the book's 'triple point is asymptotic/empty' into a precise dynamical statement: the triple point is realised only DEGENERATELY at zero magic, not as an interior meeting -- switching the phase axis on pulls its critical line away from gravity's, exactly the axis-independence of Door 4 seen now at the level of the critical lines. For Ch6's phase diagram: draw two lines from a shared q=0 origin, diverging -- not a single triple point. STRONG small-N caveat: N=8 ridge topology; absolute ridge positions are biased low (crude half-range locator), but the divergence trend is the robust signal.",
+  "honesty": "N=8 state vector -- the only size with tractable non-Clifford magic + I3; this maps the TOPOLOGY of the entanglement and magic ridges (meet vs distinct), not a finite-size-scaled multicritical exponent. Clean entanglement-line location is the large-N stim result of phaseF/G (p_e~0.16)."
+}

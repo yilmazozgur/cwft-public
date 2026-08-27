@@ -1,0 +1,80 @@
+{
+  "part1_fourier_pair": {
+    "gaussian": {
+      "scale": 1.0,
+      "max_dev": 0.02038243081898456
+    },
+    "uniform": {
+      "scale": 2.0,
+      "max_dev": 0.01757583897384781
+    },
+    "laplace": {
+      "scale": 1.0,
+      "max_dev": 0.022311877244598516
+    }
+  },
+  "part2_uncertainty": {
+    "gaussian_sweep": [
+      {
+        "sigma": 0.5,
+        "resolution": 2.3755938984746185,
+        "product": 1.1877969492373093
+      },
+      {
+        "sigma": 1.0,
+        "resolution": 1.2003000750187547,
+        "product": 1.2003000750187547
+      },
+      {
+        "sigma": 2.0,
+        "resolution": 0.587646911727932,
+        "product": 1.175293823455864
+      },
+      {
+        "sigma": 4.0,
+        "resolution": 0.30007501875468867,
+        "product": 1.2003000750187547
+      },
+      {
+        "sigma": 8.0,
+        "resolution": 0.15003750937734434,
+        "product": 1.2003000750187547
+      }
+    ],
+    "distributions": {
+      "gaussian": {
+        "hwhm": 0.6001500375093773,
+        "bandwidth": 1.9803524464733355,
+        "product": 1.1885085950327594
+      },
+      "uniform": {
+        "hwhm": 0.9627406851712929,
+        "bandwidth": 1.1456716245087069,
+        "product": 1.1029846847608207
+      },
+      "laplace": {
+        "hwhm": 0.5001250312578145,
+        "bandwidth": 2.7947879388346197,
+        "product": 1.397743405268627
+      }
+    }
+  },
+  "part3_phase_space_capacity": {
+    "128": {
+      "k_max": 10,
+      "k_max_over_N": 0.078125
+    },
+    "256": {
+      "k_max": 18,
+      "k_max_over_N": 0.0703125
+    },
+    "512": {
+      "k_max": 34,
+      "k_max_over_N": 0.06640625
+    },
+    "1024": {
+      "k_max": 66,
+      "k_max_over_N": 0.064453125
+    }
+  }
+}

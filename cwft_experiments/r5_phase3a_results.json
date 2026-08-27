@@ -1,0 +1,60 @@
+{
+  "substrate": "trained autonomous self-model ring (Adam on W; h<-tanh(Wh))",
+  "rings": {
+    "4": {
+      "parity": "even",
+      "lawvere_floor": 6.823962545846977e-05,
+      "realised_CF": 0.0,
+      "holonomy_phase_example": 0.0,
+      "holonomy_all_Z2": true,
+      "participation_ratio": 1.0000000000000004,
+      "mdl_bits_per_step": 6.080000000000001
+    },
+    "5": {
+      "parity": "odd",
+      "lawvere_floor": 0.025188337701062363,
+      "realised_CF": 0.0,
+      "holonomy_phase_example": 0.0,
+      "holonomy_all_Z2": true,
+      "participation_ratio": 1.7336046401145648,
+      "mdl_bits_per_step": 40.64000000000001
+    },
+    "6": {
+      "parity": "even",
+      "lawvere_floor": 0.00031459642438689015,
+      "realised_CF": 0.0,
+      "holonomy_phase_example": 0.0,
+      "holonomy_all_Z2": true,
+      "participation_ratio": 0.666666666666667,
+      "mdl_bits_per_step": 6.293333333333333
+    },
+    "7": {
+      "parity": "odd",
+      "lawvere_floor": 0.03523856649796168,
+      "realised_CF": 1.1102230246251565e-16,
+      "holonomy_phase_example": 0.0,
+      "holonomy_all_Z2": true,
+      "participation_ratio": 1.3202273582927262,
+      "mdl_bits_per_step": 32.21333333333334
+    }
+  },
+  "collapse_demo": {
+    "ring": 5,
+    "mean_abs_h_anticollapse_off": 0.00019021511252503842,
+    "mean_abs_h_anticollapse_on": 0.3044004738330841,
+    "lawvere_floor_off": 2.528867071305285e-07,
+    "lawvere_floor_on": 0.01148988027125597,
+    "collapsed_when_off": true
+  },
+  "verdicts": {
+    "impossibility_holds": true,
+    "max_realised_CF": 1.1102230246251565e-16,
+    "all_holonomy_Z2": true,
+    "lawvere_even_floor": 0.00019141802492267997,
+    "lawvere_odd_floor": 0.03021345209951202,
+    "lawvere_clean": true,
+    "partic_ratio_even": 0.8333333333333337,
+    "partic_ratio_odd": 1.5269159992036454,
+    "collapse_demonstrated": true
+  }
+}
