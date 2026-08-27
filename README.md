@@ -1,7 +1,7 @@
 # Computational Wave Field Theory — code base
 
-Public mirror of the code, result records and reference figures behind **Computational Wave
-Field Theory (CWFT)**, Ozgur Yilmaz's research program on modelling computational substrates
+Experiments and code only: the scripts, result records and reference figures behind
+**Computational Wave Field Theory (CWFT)**, Ozgur Yilmaz's research program on modelling computational substrates
 with the complex-wave mathematics of quantum mechanics: each substrate with its own effective
 constants (ℏ_c, c_c, G_c), the epistemic wave as the best object an embedded observer can hold
 over a computationally irreducible ground, and the clean splits the program produced —
@@ -12,8 +12,9 @@ route to the imaginary unit.
 The canonical statement of the framework is the book *Computational Wave Field Theory*
 (Zenodo, latest version: [10.5281/zenodo.20665921](https://doi.org/10.5281/zenodo.20665921)).
 This repository is its replicability companion: every number in the book, and in the
-manuscripts derived from it, traces to a script here and to a committed record. Everything is
-seeded, CPU-only and toy-scale; negative results are kept, not hidden.
+manuscripts derived from it, traces to a script here and to a committed record. The book and
+the manuscripts themselves are not part of this repository. Everything is seeded, CPU-only
+and toy-scale; negative results are kept, not hidden.
 
 ## Layout
 
@@ -21,8 +22,6 @@ seeded, CPU-only and toy-scale; negative results are kept, not hidden.
 |---|---|
 | `cwft_experiments/` | all experiment scripts (~155), their records (`results.json`, one key per experiment, plus per-script `*_results.json`), the reference figures used in the book (`fig_*.png`), `REPORT.md` (the running write-up of the gravity testbed, including what failed), `run_all.sh`, and `SCRIPT_INDEX.md` — an auto-generated one-line-per-script index |
 | `cwft_experiments/README.md` | notes for the VSA / hyperdimensional-computing subset: runtimes of the long scripts, two estimator details that matter |
-| `cwft_manuscripts/<paper>/make_figures*.py` | per-manuscript figure builders; they read the committed records in `../../cwft_experiments` and never re-run an experiment |
-| `cwft_manuscripts/TJP_unified/tools/` | manuscript QA tools (theorem diff, numbers audit, figure-dpi gate, bibliography merge, similarity audit); they expect the LaTeX sources, which are not part of this repository |
 | `requirements.txt`, `CITATION.cff`, `LICENSE` | environment, citation metadata, MIT license |
 | `make_script_index.py` | generates `cwft_experiments/SCRIPT_INDEX.md` (run by the mirroring script in the working repository) |
 
