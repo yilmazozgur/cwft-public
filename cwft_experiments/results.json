@@ -131990,5 +131990,183 @@
     "verdict": "RESIDUAL CLOSED. Genuine same-T / different-S states constructed for free fermions by scaling only the range>=2 correlations of a beta=2.0 thermal state: density, bond energy and total energy stay BIT-IDENTICAL (drift 0 to machine precision) while the region entropy S varies by 10% over the valid (correlation-matrix-positive) range. On this exactly-fixed-T family, EVERY local (stress-energy) functional is EXACTLY invariant -- alpha_pure=dM_c/dS|_T=0 by construction (a function of bit-identical inputs) -- while the region entropy S and longer-range (r>=3; even ranges vanish at half-filling) correlation functionals respond. So a gravitating charge sourced by the stress-energy is exactly blind to entanglement at fixed T; entanglement gravitating beyond energy (alpha_pure!=0) requires the charge to be a non-local functional that does NOT derive from T_munu -- non-GR / stress-energy-non-conserving sourcing. There is no stress-energy channel for entanglement to gravitate. This closes the EP note's same-T/different-S residual and completes the conservation near-theorem. Honest scope: the free-fermion S-lever at fixed uniform T is intrinsically modest (~10%), because the thermal entropy dominates; the invariance conclusion is exact-by-construction and does not depend on the swing magnitude. Internal effective quantities; not physical gravity.",
     "firewall": "Internal effective quantities. Same-T is bit-identical; alpha_pure=0 for stress-energy sourcing is exact-by-construction; alpha_pure!=0 needs non-local (non-T_munu) sourcing = div T != 0. Not physical gravity.",
     "status": "R (exact same-T construction + exact invariance of stress-energy functionals); residual closed."
+  },
+  "SR14_light_metric": {
+    "seed_test6": 970,
+    "dt": 0.5,
+    "T": 3000,
+    "source_site": 80,
+    "threshold": 0.05,
+    "g_zero_horizon_recomputed": 135,
+    "g_zero_horizon_record": 135,
+    "transport_horizon_record": 138,
+    "gain_clock": {
+      "photon_last_site_reached": 135,
+      "lapse_fall_sites": 0,
+      "fit": {
+        "x_h": 140,
+        "t0": 533.547878208124,
+        "inv_kappa": 108.19300343307637,
+        "r2": 0.7941233659462779,
+        "kappa_fit": 0.00924274184345532,
+        "valid": false
+      },
+      "sep_vs_gzero": 0,
+      "sep_vs_transport": 3,
+      "reflected_by_core": true,
+      "packet_snapshots": [
+        {
+          "t": 40,
+          "peak": 86,
+          "width": 7.0
+        },
+        {
+          "t": 80,
+          "peak": 91,
+          "width": 6.0
+        },
+        {
+          "t": 120,
+          "peak": 96,
+          "width": 7.0
+        },
+        {
+          "t": 200,
+          "peak": 105,
+          "width": 7.0
+        },
+        {
+          "t": 400,
+          "peak": 123,
+          "width": 16.0
+        },
+        {
+          "t": 800,
+          "peak": 67,
+          "width": 8.0
+        },
+        {
+          "t": 1600,
+          "peak": 39,
+          "width": 10.0
+        },
+        {
+          "t": 3000,
+          "peak": 27,
+          "width": 10.0
+        }
+      ]
+    },
+    "core_vs_exterior": {
+      "rms_change_core": 1.9888836782364192,
+      "rms_change_ext": 1.142517392023485,
+      "flip_frac_core": 0.9998283787010507,
+      "flip_frac_ext": 0.5248806112702958,
+      "gain_core": -1.4363401528455022,
+      "gain_ext": 0.0992871833104875
+    },
+    "activity_clock": {
+      "activity_below_2pct_site": -1,
+      "photon_last_site_reached": 150,
+      "lapse_fall_sites": 0,
+      "fit": {
+        "x_h": 147,
+        "t0": 235.83648631332719,
+        "inv_kappa": 42.58417546057796,
+        "r2": 0.7535999141634006,
+        "kappa_fit": 0.023482901551674845,
+        "valid": false
+      },
+      "kappa_metric": 0.0003283674959962107,
+      "sep_vs_gzero": 15,
+      "sep_vs_transport": 12,
+      "blueshift_snapshots": [
+        {
+          "t": 40,
+          "peak": 91,
+          "width": 8.0
+        },
+        {
+          "t": 80,
+          "peak": 103,
+          "width": 8.0
+        },
+        {
+          "t": 120,
+          "peak": 114,
+          "width": 9.0
+        },
+        {
+          "t": 200,
+          "peak": 146,
+          "width": 13.0
+        },
+        {
+          "t": 400,
+          "peak": 216,
+          "width": 8.0
+        },
+        {
+          "t": 800,
+          "peak": 270,
+          "width": 10.0
+        },
+        {
+          "t": 1600,
+          "peak": 19,
+          "width": 11.0
+        },
+        {
+          "t": 3000,
+          "peak": 196,
+          "width": 12.0
+        }
+      ]
+    },
+    "blueshift_snapshots": [
+      {
+        "t": 40,
+        "peak": 86,
+        "width": 7.0
+      },
+      {
+        "t": 80,
+        "peak": 91,
+        "width": 6.0
+      },
+      {
+        "t": 120,
+        "peak": 96,
+        "width": 7.0
+      },
+      {
+        "t": 200,
+        "peak": 105,
+        "width": 7.0
+      },
+      {
+        "t": 400,
+        "peak": 123,
+        "width": 16.0
+      },
+      {
+        "t": 800,
+        "peak": 67,
+        "width": 8.0
+      },
+      {
+        "t": 1600,
+        "peak": 39,
+        "width": 10.0
+      },
+      {
+        "t": 3000,
+        "peak": 27,
+        "width": 10.0
+      }
+    ],
+    "control_uniform_reaches_end": true,
+    "control_mirror_horizon_expected": 160,
+    "identification": "the U(1) gauge sector is clocked by the substrate's lapse N(x)=max(g,0)/max g (status B); the photon horizon at N=0 is then by construction; measured content = the log-divergence surface gravity matching the metric's, coincidence with the reservoir's own transport horizon within the Test-6 tolerance, the kinematic blue-shift, and the controls."
   }
 }

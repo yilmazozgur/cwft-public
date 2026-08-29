@@ -133,6 +133,7 @@ first docstring (or comment) line. Library modules (imported, not run): `cwf_sub
 | `cwf_sr11_lattice_gauge.py` | cwf_sr11_lattice_gauge.py -- Segment 2 of the (C) bridge: lattice-gauge-on-substrate. |
 | `cwf_sr12_lattice_maxwell.py` | cwf_sr12_lattice_maxwell.py -- (C) full, the dynamical step: the self-reference U(1) |
 | `cwf_sr13_maxwell_action_theorem.py` | cwf_sr13_maxwell_action_theorem.py -- promote "the Maxwell action IS the self-consistency |
+| `cwf_sr14_light_metric.py` | cwf_sr14_light_metric.py -- does the gauge sector's photon see the substrate's effective |
 | `cwf_sr1_liar_forced_i.py` | cwf_sr1_liar_forced_i.py -- the trichotomy made exact. |
 | `cwf_sr2_selfref_contextuality.py` | cwf_sr2_selfref_contextuality.py -- does SELF-REFERENCE (no definite ground) |
 | `cwf_sr3_unitary_tsirelson.py` | cwf_sr3_unitary_tsirelson.py -- does INSISTING ON A UNITARY (linear + faithful) |
