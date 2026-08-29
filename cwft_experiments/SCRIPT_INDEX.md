@@ -98,6 +98,8 @@ first docstring (or comment) line. Library modules (imported, not run): `cwf_sub
 | `cwf_hp_phase3b_happy.py` | A3a Phase 3b -- HaPPY-like tree code: area-law via QEC encoding. |
 | `cwf_hp_phase4_scrambling.py` | A3a Phase 4 -- scrambling-time scaling across substrates. |
 | `cwf_hp_phase5_compare.py` | A3a Phase 5 -- cross-substrate aggregation and final figures. |
+| `cwf_ic1_sector_gate.py` | cwf_ic1_sector_gate.py -- M1/M2-gate of the "self-reference is first" branch |
+| `cwf_ic2_sector_purification.py` | cwf_ic2_sector_purification.py -- the M2-GATE exploration of the "self-reference is |
 | `cwf_invariance_gate.py` | Invariance gate -- numerical demonstration for the calibration chapter |
 | `cwf_kappa.py` | cwf_kappa.py -- surface gravity kappa_c and the Hawking-analog temperature T_c |
 | `cwf_nonlocalmagic_eca.py` | Initialize spacetime grid with a single active central cell |

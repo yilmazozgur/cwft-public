@@ -1,0 +1,80 @@
+{
+  "a_cycle": {
+    "n=3": {
+      "identity": true,
+      "commute": true,
+      "dims": {
+        "---": 16,
+        "--+": 0,
+        "-+-": 0,
+        "-++": 16,
+        "+--": 0,
+        "+-+": 16,
+        "++-": 16,
+        "+++": 0
+      }
+    },
+    "n=4": {
+      "identity": true,
+      "commute": true,
+      "dims": {
+        "----": 32,
+        "---+": 0,
+        "--+-": 0,
+        "--++": 32,
+        "-+--": 0,
+        "-+-+": 32,
+        "-++-": 32,
+        "-+++": 0,
+        "+---": 0,
+        "+--+": 32,
+        "+-+-": 32,
+        "+-++": 0,
+        "++--": 32,
+        "++-+": 0,
+        "+++-": 0,
+        "++++": 32
+      }
+    }
+  },
+  "b_gauge": {
+    "flip_12": true,
+    "flip_23": true,
+    "keep_31": true
+  },
+  "c_superselection": {
+    "max_cross_term": 4.440892098500626e-16
+  },
+  "d_renou": {
+    "T_reference": 8.485281374238566,
+    "T_definite_aligned": 8.485281374238566,
+    "T_anti_raw": 2.828427124746189,
+    "T_anti_relabeled": 8.485281374238566,
+    "T_anti_charlie_relabeled": 8.485281374238566,
+    "T_anti_both_relabeled": 8.485281374238566,
+    "T_indefinite_alice": 5.656854249492376,
+    "T_indefinite_charlie": 5.656854249492376,
+    "T_indefinite_both": 5.656854249492377,
+    "T_sr7_noY_alice": 5.656854249492377,
+    "T_sr7_noY_both": 5.656854249492377,
+    "real_bound": 7.66,
+    "witness_T_of_m": {
+      "intercept": 5.656854249492376,
+      "slope": 2.82842712474619,
+      "m_star": 0.7082189719444786
+    }
+  },
+  "e_conservation": {
+    "Jlinear_commute": true,
+    "Jlinear_max_dev": 4.107825191113079e-15,
+    "orthogonal_commute": false,
+    "orthogonal_max_dev": 0.3394723022384673
+  },
+  "verdict": {
+    "sign_is_gauge": true,
+    "mobius_impossible": true,
+    "definiteness_is_the_witness": true,
+    "indefinite_equals_sr7_real_ablation": true,
+    "Jlinear_dynamics_conserve_definiteness": true
+  }
+}
