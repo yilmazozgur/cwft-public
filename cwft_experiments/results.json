@@ -132168,5 +132168,361 @@
     "control_uniform_reaches_end": true,
     "control_mirror_horizon_expected": 160,
     "identification": "the U(1) gauge sector is clocked by the substrate's lapse N(x)=max(g,0)/max g (status B); the photon horizon at N=0 is then by construction; measured content = the log-divergence surface gravity matching the metric's, coincidence with the reservoir's own transport horizon within the Test-6 tolerance, the kinematic blue-shift, and the controls."
+  },
+  "SR15_soft_horizon": {
+    "seed": 970,
+    "dt": 0.5,
+    "T": 6000,
+    "source_site": 80,
+    "wells": {
+      "w=18": {
+        "w": 18,
+        "g_zero": 135,
+        "transport_horizon": 138,
+        "lapse_fall_sites": 1,
+        "x_half": 134,
+        "N_exterior": 0.2823024659383129,
+        "photon_last_site": 135,
+        "fit": {
+          "x_h": 138,
+          "t0": 315.0899519118771,
+          "inv_kappa": 18.55112678067953,
+          "r2": 0.9979736777241466,
+          "n_pts": 7,
+          "kappa_fit": 0.053905081444512115
+        },
+        "kappa_metric": 0.05470513972049517,
+        "kappa_ratio": 0.9853750802928063,
+        "sep_photon_fit_vs_gzero": 3,
+        "sep_photon_last_vs_gzero": 0,
+        "sep_photon_vs_transport": 3,
+        "sep_gzero_vs_transport": 3,
+        "packet_width_far": 6.0,
+        "packet_width_near": 17.0,
+        "reflected": false,
+        "first_lapse_zero": 136,
+        "launch_site_frozen": false,
+        "eikonal_rel_rms": 0.013092625308886408,
+        "eikonal_sites": 44,
+        "sqrt_lapse": {
+          "stall_site": 135,
+          "eikonal_rel_rms": 0.010950862113007142,
+          "eikonal_sites": 44
+        },
+        "snapshots": [
+          {
+            "t": 40,
+            "peak": 86,
+            "width": 7.0
+          },
+          {
+            "t": 80,
+            "peak": 91,
+            "width": 6.0
+          },
+          {
+            "t": 120,
+            "peak": 96,
+            "width": 7.0
+          },
+          {
+            "t": 200,
+            "peak": 105,
+            "width": 7.0
+          },
+          {
+            "t": 400,
+            "peak": 123,
+            "width": 16.0
+          },
+          {
+            "t": 800,
+            "peak": 67,
+            "width": 8.0
+          },
+          {
+            "t": 1600,
+            "peak": 39,
+            "width": 10.0
+          },
+          {
+            "t": 6000,
+            "peak": 121,
+            "width": 17.0
+          }
+        ]
+      },
+      "w=40": {
+        "w": 40,
+        "g_zero": 130,
+        "transport_horizon": 121,
+        "lapse_fall_sites": 4,
+        "x_half": 126,
+        "N_exterior": 0.2951409631044978,
+        "photon_last_site": 118,
+        "fit": {
+          "x_h": 118,
+          "t0": 107.30619764880976,
+          "inv_kappa": 16.238502293062204,
+          "r2": 0.9820599804512019,
+          "n_pts": 6,
+          "kappa_fit": 0.06158203398026699
+        },
+        "kappa_metric": 0.06142033771539019,
+        "kappa_ratio": 1.0026326176457392,
+        "sep_photon_fit_vs_gzero": 12,
+        "sep_photon_last_vs_gzero": 12,
+        "sep_photon_vs_transport": 3,
+        "sep_gzero_vs_transport": 9,
+        "packet_width_far": 19.0,
+        "packet_width_near": 5.0,
+        "reflected": true,
+        "first_lapse_zero": 119,
+        "launch_site_frozen": false,
+        "eikonal_rel_rms": 0.006696026736868326,
+        "eikonal_sites": 26,
+        "sqrt_lapse": {
+          "stall_site": 118,
+          "eikonal_rel_rms": 0.01683801602541185,
+          "eikonal_sites": 26
+        },
+        "snapshots": [
+          {
+            "t": 40,
+            "peak": 86,
+            "width": 12.0
+          },
+          {
+            "t": 80,
+            "peak": 96,
+            "width": 19.0
+          },
+          {
+            "t": 120,
+            "peak": 109,
+            "width": 18.0
+          },
+          {
+            "t": 200,
+            "peak": 117,
+            "width": 5.0
+          },
+          {
+            "t": 400,
+            "peak": 76,
+            "width": 8.0
+          },
+          {
+            "t": 800,
+            "peak": 30,
+            "width": 6.0
+          },
+          {
+            "t": 1600,
+            "peak": 60,
+            "width": 9.0
+          },
+          {
+            "t": 6000,
+            "peak": 30,
+            "width": 17.0
+          }
+        ]
+      },
+      "w=70": {
+        "w": 70,
+        "g_zero": 111,
+        "transport_horizon": 99,
+        "lapse_fall_sites": 7,
+        "x_half": 104,
+        "N_exterior": 0.7378435443963359,
+        "photon_last_site": 92,
+        "fit": {
+          "x_h": 100,
+          "t0": 179.31590930391675,
+          "inv_kappa": 67.9951576589051,
+          "r2": 0.9278449797816722,
+          "n_pts": 7,
+          "kappa_fit": 0.014706929646614818
+        },
+        "kappa_metric": 0.01806728953637734,
+        "kappa_ratio": 0.8140086323963177,
+        "sep_photon_fit_vs_gzero": 11,
+        "sep_photon_last_vs_gzero": 19,
+        "sep_photon_vs_transport": 7,
+        "sep_gzero_vs_transport": 12,
+        "packet_width_far": 2.0,
+        "packet_width_near": NaN,
+        "reflected": false,
+        "first_lapse_zero": 93,
+        "launch_site_frozen": false,
+        "eikonal_rel_rms": 0.0,
+        "eikonal_sites": 1,
+        "sqrt_lapse": {
+          "stall_site": 92,
+          "eikonal_rel_rms": 0.0,
+          "eikonal_sites": 1
+        },
+        "snapshots": [
+          {
+            "t": 40,
+            "peak": 88,
+            "width": 3.0
+          },
+          {
+            "t": 80,
+            "peak": 87,
+            "width": 2.0
+          },
+          {
+            "t": 120,
+            "peak": 87,
+            "width": 8.0
+          },
+          {
+            "t": 200,
+            "peak": 59,
+            "width": 15.0
+          },
+          {
+            "t": 400,
+            "peak": 15,
+            "width": 8.0
+          },
+          {
+            "t": 800,
+            "peak": 47,
+            "width": 9.0
+          },
+          {
+            "t": 1600,
+            "peak": 28,
+            "width": 5.0
+          },
+          {
+            "t": 6000,
+            "peak": 4,
+            "width": 5.0
+          }
+        ]
+      },
+      "w=100": {
+        "w": 100,
+        "g_zero": 75,
+        "transport_horizon": 84,
+        "lapse_fall_sites": 1,
+        "x_half": 74,
+        "N_exterior": 0.0,
+        "photon_last_site": 86,
+        "fit": {
+          "x_h": 86,
+          "t0": 0.0,
+          "inv_kappa": 0.0,
+          "r2": 0.0,
+          "n_pts": 6,
+          "kappa_fit": Infinity
+        },
+        "kappa_metric": 0.0,
+        "kappa_ratio": NaN,
+        "sep_photon_fit_vs_gzero": 11,
+        "sep_photon_last_vs_gzero": 11,
+        "sep_photon_vs_transport": 2,
+        "sep_gzero_vs_transport": 9,
+        "packet_width_far": 8.0,
+        "packet_width_near": NaN,
+        "reflected": false,
+        "first_lapse_zero": 80,
+        "launch_site_frozen": true,
+        "eikonal_rel_rms": NaN,
+        "eikonal_sites": 0,
+        "sqrt_lapse": {
+          "stall_site": 86,
+          "eikonal_rel_rms": NaN,
+          "eikonal_sites": 0
+        },
+        "snapshots": [
+          {
+            "t": 40,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 80,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 120,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 200,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 400,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 800,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 1600,
+            "peak": 80,
+            "width": 8.0
+          },
+          {
+            "t": 6000,
+            "peak": 80,
+            "width": 8.0
+          }
+        ]
+      }
+    },
+    "verdict": {
+      "wells_with_soft_lapse": [
+        "w=70"
+      ],
+      "wells_with_log_divergence_fit": [],
+      "kappa_ratios": {
+        "w=70": 0.8140086323963177
+      },
+      "photon_at_gzero_all": {
+        "w=18": 0,
+        "w=40": 12,
+        "w=70": 19,
+        "w=100": 11
+      },
+      "photon_vs_transport_all": {
+        "w=18": 3,
+        "w=40": 3,
+        "w=70": 7,
+        "w=100": 2
+      },
+      "eikonal_rel_rms": {
+        "w=18": 0.013092625308886408,
+        "w=40": 0.006696026736868326,
+        "w=70": 0.0,
+        "w=100": NaN
+      },
+      "first_zero_vs_transport": {
+        "w=18": 2,
+        "w=40": 2,
+        "w=70": 6,
+        "w=100": 4
+      },
+      "launch_frozen": {
+        "w=18": false,
+        "w=40": false,
+        "w=70": false,
+        "w=100": true
+      },
+      "note": "No well produced a linearly vanishing lapse: the reservoir's gain field flickers rather than ramps, so the log-divergence kappa fits (3 free parameters on 6-7 points) are NOT evidence and are recorded only. The testable content is the eikonal law (arrival time = sum of 1/(dt N) along the path) and the stall site = the first lapse zero, compared with the freshly measured transport horizon."
+    }
   }
 }

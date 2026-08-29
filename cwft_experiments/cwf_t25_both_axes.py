@@ -303,9 +303,9 @@ def plot(G, bulk, recon_deg, coincidence, kappa, shells):
     ax1.plot(shells, [prof_a[s] for s in shells], "s--", color="C0", lw=2,
              label="additive (Rule 90)")
     ax1.set_xlabel("bulk depth = CA time (shell)")
-    ax1.set_ylabel("dark (irreducible) fraction at budget $\\kappa$")
+    ax1.set_ylabel("dark (irreducible) fraction at the observer budget $\\kappa_{\\mathrm{obs}}$")
     ax1.set_title(f"(b) the same geometry: irreducible-ignorance core\n(universal) vs "
-                  f"transparent (additive), $\\kappa={kappa}$")
+                  f"transparent (additive), $\\kappa_{{\\mathrm{{obs}}}}={kappa}$")
     ax1.set_ylim(-0.05, 1.05); ax1.grid(alpha=0.3); ax1.legend(fontsize=9)
     fig.suptitle("T2.5: the both-axes substrate -- holographic encoding /\\ computational "
                  "irreducibility, with coinciding horizons", fontsize=11)
