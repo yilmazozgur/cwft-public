@@ -14,23 +14,50 @@
     {
       "dim": 2,
       "n_transpositions": 1,
+      "negated_multiplicity": 1,
+      "det": -1.0,
       "has_minus1_eigenvalue": true,
-      "sqrt_is_complex": true,
-      "sqrt_max_imag": 0.5
+      "real_sqrt_exists": false,
+      "real_sqrt_reason": "det N = -1: (det S)^2 = -1 has no real solution",
+      "parity_rule_holds": true,
+      "principal_sqrt_is_complex": true,
+      "principal_sqrt_max_imag": 0.5
     },
     {
       "dim": 4,
       "n_transpositions": 2,
+      "negated_multiplicity": 2,
+      "det": 1.0,
       "has_minus1_eigenvalue": true,
-      "sqrt_is_complex": true,
-      "sqrt_max_imag": 0.5
+      "real_sqrt_exists": true,
+      "real_sqrt_reason": "explicit real orthogonal root: |S^2-N|=8.9e-16, |S^T S-I|=8.9e-16",
+      "parity_rule_holds": true,
+      "principal_sqrt_is_complex": true,
+      "principal_sqrt_max_imag": 0.5
     },
     {
       "dim": 6,
       "n_transpositions": 3,
+      "negated_multiplicity": 3,
+      "det": -1.0,
       "has_minus1_eigenvalue": true,
-      "sqrt_is_complex": true,
-      "sqrt_max_imag": 0.5
+      "real_sqrt_exists": false,
+      "real_sqrt_reason": "det N = -1: (det S)^2 = -1 has no real solution",
+      "parity_rule_holds": true,
+      "principal_sqrt_is_complex": true,
+      "principal_sqrt_max_imag": 0.5
+    },
+    {
+      "dim": 8,
+      "n_transpositions": 4,
+      "negated_multiplicity": 4,
+      "det": 1.0,
+      "has_minus1_eigenvalue": true,
+      "real_sqrt_exists": true,
+      "real_sqrt_reason": "explicit real orthogonal root: |S^2-N|=1.3e-15, |S^T S-I|=1.3e-15",
+      "parity_rule_holds": true,
+      "principal_sqrt_is_complex": true,
+      "principal_sqrt_max_imag": 0.5
     }
   ],
   "B1b_z2_to_u1_lift": {
@@ -69,5 +96,5 @@
     "is_reducible": true,
     "reason": "the self-ref-superposition collapse yields the phase corner: a fixed qubit superposition with trivial (free) dynamics -- predictable, hence REDUCIBLE. Collapsing irreducibility converts it to phase (i); it does NOT produce an irreducible exact object. Triple-point NO-GO reinforced."
   },
-  "headline": "i-forcing is dimension-independent (B1a); the contextual obstruction lifts Z2->U(1) via the i-carrying (sigma_Y) realization (B1b); the meta-tower is a fixed point (CF is predicate-content-independent); classical mixture(definite ground)->CF=0, self-ref superposition->CF>0; the collapsed object is reducible (NO-GO reinforced)."
+  "headline": "i-forcing follows the negation-parity rule in every dimension tested (B1a): odd negated multiplicity (det=-1) admits no real square root, so the continuous reversible realization needs i; even multiplicity admits a real root (e.g. negating one bit of a 2-bit register); the contextual obstruction lifts Z2->U(1) via the i-carrying (sigma_Y) realization (B1b); the meta-tower is a fixed point (CF is predicate-content-independent); classical mixture(definite ground)->CF=0, self-ref superposition->CF>0; the collapsed object is reducible (NO-GO reinforced)."
 }

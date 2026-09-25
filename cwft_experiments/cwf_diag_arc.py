@@ -13,9 +13,13 @@ Outputs go to diag_arc_results.json (SEPARATE from the book's results.json) so t
 autonomous run never touches book artifacts.
 
 Claims tested:
-  B1(a) local i-forcing, dimension-independent: a faithful self-negation (any -1
-        eigenvalue), realized continuously+reversibly, passes through i (sqrt has
-        eigenvalue i on each negated eigenspace) -- NOT a qubit accident.
+  B1(a) local i-forcing, the negation-parity rule (any dimension): a faithful
+        self-negation N (a -1 eigenvalue) has a same-dimensional REAL square root
+        (a continuous real reversible realization) iff its negated eigenspace has
+        EVEN multiplicity; for ODD multiplicity det N = -1 and no real root exists,
+        so the continuous reversible realization must use i. The test checks the
+        EXISTENCE of a real root (constructing one for even parity) -- the principal
+        root being complex is not the test (it is complex in both cases).
   B1(b) Z2 -> U(1) lift: the Liar-cycle holonomy is Z2 for bare real flips and a
         genuine U(1) geometric phase when the edges use the i-carrying (sigma_Y)
         realization (reproduces sr9; the framework's lift of Abramsky's Z2 cocycle).
@@ -64,13 +68,18 @@ def validate_cocycle():
     return dict(octant=octant, octant_ok=abs(abs(octant)-np.pi/4) < 1e-9,
                 great_circle_real=great2, real_is_Z2=abs(abs(great2)-np.pi) < 1e-9 or abs(great2) < 1e-9)
 
-# ---- B1(a): local i-forcing, dimension-independent ----
+# ---- B1(a): local i-forcing, the negation-parity rule (any dimension) ----
 def b1_local_i_forcing():
-    """A faithful self-negation has a -1 eigenvalue; its continuous reversible sqrt
-    has eigenvalue i there (sqrt(-1)=i), for ANY dimension -- not a qubit accident."""
+    """A faithful self-negation N has a -1 eigenvalue. A same-dimensional REAL square
+    root S (S^2 = N; a continuous real reversible realization) exists iff the -1
+    eigenspace has EVEN multiplicity: for odd multiplicity det N = -1 and (det S)^2 = -1
+    has no real solution; for even multiplicity pair the negated eigenvectors and rotate
+    each pair by pi/2 (a real orthogonal root). The record tests EXISTENCE of a real
+    root -- the principal root is complex in both cases and is kept only for reference."""
     rows = []
-    # fixed-point-free involutions of size 2n (n transpositions). All have -1 eigenvalues.
-    for n in (1, 2, 3):
+    # fixed-point-free involutions of size 2n (n transpositions); the -1 eigenspace has
+    # multiplicity n (one antisymmetric vector per swapped pair).
+    for n in (1, 2, 3, 4):
         dim = 2*n
         # block-diagonal n copies of the 2x2 swap (each swap = a transposition, eigs {+1,-1})
         E = np.zeros((dim, dim))
@@ -78,14 +87,34 @@ def b1_local_i_forcing():
             E[2*k:2*k+2, 2*k:2*k+2] = NOT
         eig = np.linalg.eigvals(E)
         has_minus1 = np.any(np.abs(eig + 1) < 1e-9)
-        # principal sqrt: on a -1 eigenvalue, sqrt(-1)=i -> genuinely complex
+        neg_mult = int(np.sum(np.abs(eig + 1) < 1e-9))
+        det = float(np.linalg.det(E))
+        # principal sqrt (reference only): complex whenever a -1 eigenvalue is present
         w, V = np.linalg.eig(E.astype(complex))
         sq = V @ np.diag(np.sqrt(w.astype(complex))) @ np.linalg.inv(V)
-        max_imag = float(np.max(np.abs(sq.imag)))
-        # the continuous reversible path U(t)=exp(t*log E): on the -1 eigenspace it must
-        # pass through i (no real continuous reversible +1 -> -1 path on {|z|=1}).
-        rows.append(dict(dim=dim, n_transpositions=n, has_minus1_eigenvalue=bool(has_minus1),
-                         sqrt_is_complex=bool(max_imag > 1e-9), sqrt_max_imag=max_imag))
+        principal_max_imag = float(np.max(np.abs(sq.imag)))
+        # existence of a REAL root: impossible if det < 0; for even negated multiplicity,
+        # construct one explicitly and verify it (real, orthogonal, S^2 = E).
+        if det < 0:
+            real_exists, residual, reason = False, None, "det N = -1: (det S)^2 = -1 has no real solution"
+        else:
+            s2 = 1/np.sqrt(2)
+            plus = [s2*(np.eye(dim)[2*k] + np.eye(dim)[2*k+1]) for k in range(n)]
+            minus = [s2*(np.eye(dim)[2*k] - np.eye(dim)[2*k+1]) for k in range(n)]
+            S = sum(np.outer(u, u) for u in plus)            # identity on the +1 eigenspace
+            for a in range(0, len(minus), 2):                  # rotate each -1 pair by pi/2
+                va, vb = minus[a], minus[a+1]
+                S = S + np.outer(vb, va) - np.outer(va, vb)
+            residual = float(np.linalg.norm(S @ S - E))
+            orth = float(np.linalg.norm(S.T @ S - np.eye(dim)))
+            real_exists = bool(residual < 1e-12 and orth < 1e-12)
+            reason = f"explicit real orthogonal root: |S^2-N|={residual:.1e}, |S^T S-I|={orth:.1e}"
+        rows.append(dict(dim=dim, n_transpositions=n, negated_multiplicity=neg_mult,
+                         det=det, has_minus1_eigenvalue=bool(has_minus1),
+                         real_sqrt_exists=real_exists, real_sqrt_reason=reason,
+                         parity_rule_holds=bool(real_exists == (neg_mult % 2 == 0)),
+                         principal_sqrt_is_complex=bool(principal_max_imag > 1e-9),
+                         principal_sqrt_max_imag=principal_max_imag))
     return rows
 
 # ---- the self-referential Liar cycle (reused construction from sr2) ----
@@ -177,10 +206,12 @@ def main():
     meta = meta_fixed_point()
     faces = two_faces()
 
-    print("B1(a) local i-forcing (dimension-independent):")
+    print("B1(a) local i-forcing, negation-parity rule:")
     for r in b1a:
-        print(f"   dim {r['dim']}: -1 eigenvalue={r['has_minus1_eigenvalue']}, "
-              f"sqrt complex={r['sqrt_is_complex']} (max imag {r['sqrt_max_imag']:.3f})")
+        print(f"   dim {r['dim']}: negated multiplicity {r['negated_multiplicity']}, "
+              f"det {r['det']:+.0f}, real sqrt exists={r['real_sqrt_exists']} "
+              f"(parity rule holds={r['parity_rule_holds']}; principal sqrt complex="
+              f"{r['principal_sqrt_is_complex']})")
     print(f"\nB1(b) Z2->U(1) lift: odd holonomy={b1b['z2_odd_holonomy']} (Z2), "
           f"octant U(1) phase={b1b['u1_octant_phase']:.4f} (=-pi/4={-np.pi/4:.4f}), "
           f"real-loop phase={b1b['u1_real_loop_phase']:.4f}")
@@ -202,7 +233,10 @@ def main():
         lp_validation=val_lp, cocycle_validation=val_co,
         B1a_local_i_forcing=b1a, B1b_z2_to_u1_lift=b1b,
         C_meta_fixed_point=meta, C_two_faces=faces, D_nogo_check=nogo,
-        headline=("i-forcing is dimension-independent (B1a); the contextual obstruction "
+        headline=("i-forcing follows the negation-parity rule in every dimension tested (B1a): "
+                  "odd negated multiplicity (det=-1) admits no real square root, so the "
+                  "continuous reversible realization needs i; even multiplicity admits a real "
+                  "root (e.g. negating one bit of a 2-bit register); the contextual obstruction "
                   "lifts Z2->U(1) via the i-carrying (sigma_Y) realization (B1b); the "
                   "meta-tower is a fixed point (CF is predicate-content-independent); "
                   "classical mixture(definite ground)->CF=0, self-ref superposition->CF>0; "
