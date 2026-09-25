@@ -42,5 +42,7 @@
       "verdict": "fully classical"
     }
   },
-  "runtime_s": 1.8
+  "degenerate": true,
+  "note": "degenerate run: under the uniform preparation every context table is the uniform product at every beta, so there is no signalling above the sampling floor (max 0.0081) and CF_ns = 0; back-action is invisible and this is not a test of it (see the module docstring)",
+  "runtime_s": 1.7
 }

@@ -204,8 +204,13 @@ def main():
     frac_resp_in_wedge = (np.mean([v in wedgeA0 for v in responders]) if responders else 0.0)
     # causal-locality verdict: back-reaction on S(A) comes (almost) only from A's own side
     locality_ok = bool(mean_in > mean_out and frac_resp_in_wedge > 0.5)
-    checks["back-reaction is causally local (wedge-side)"] = locality_ok
-    print(f"(3) CAUSAL LOCALITY (region A0, unit matter scanned over {len(bulk)} bulk nodes): "
+    # NOT a verification check: the responders are the degenerate band that networkx's default
+    # min-cut partition happens to assign to A0's side (a tie-break), so their wedge-side placement
+    # is no evidence of causal locality. Recorded as an observation only (2026-09-25 review).
+    wedge_side_observation = dict(responders_on_wedge_side=locality_ok, mean_dS_in=mean_in,
+                                  mean_dS_out=mean_out, n_responders=len(responders),
+                                  caveat="min-cut tie-break (default partition among degenerate cuts); not a causal-locality test")
+    print(f"(3) RESPONDER LOCATION -- tie-break-sensitive, NOT a causal-locality test (region A0, unit matter scanned over {len(bulk)} bulk nodes): "
           f"mean dS for matter IN wedge = {mean_in:.3f}, OUT of wedge = {mean_out:.3f} "
           f"(max out {max_out:.3f}); {len(responders)} responders, "
           f"{100*frac_resp_in_wedge:.0f}% of them in A0's wedge. Back-reaction is "
@@ -294,10 +299,10 @@ def main():
         "node thickens its incident bonds) makes the areas back-react: matter now gravitates "
         f"(dArea(eps=1)={dS_vs_E[3]:.3f}>0), LINEAR at small energy and SATURATING at large "
         f"energy ({dS_vs_E} for eps={energies}) -- the RT surface reroutes around heavy matter, "
-        "a sensible nonlinear onset. (3) The back-reaction is causally LOCAL -- matter on A's "
-        f"wedge side moves S(A) while matter behind the complementary surface does not (mean "
-        f"{mean_out:.3f}); all {len(responders)} responders are wedge nodes adjacent to gamma_A "
-        "-- a holographic causality the min-cut structure respects, not imposed. (4) The "
+        f"a sensible nonlinear onset. (3) All {len(responders)} responders sit on A's wedge side "
+        f"(mean response outside {mean_out:.3f}), adjacent to gamma_A -- but this placement is "
+        "set by the min-cut solver's default partition among degenerate cuts (a tie-break), so it "
+        "is NOT evidence of causal locality and is not counted as a check. (4) The "
         f"small-energy response is linear, with a back-reaction coefficient that is ISOTROPIC "
         f"(CV {cv_rot:.3f} over rotations) AND SCALE-UNIVERSAL (CV {cv_size:.3f} over arc sizes) "
         "-- a single substrate Newton constant of LOCAL-LATTICE origin (a codim-1 surface crosses "
@@ -328,11 +333,11 @@ def main():
                        cv_scale=cv_size, linear=bool(linear_ok), isotropic=isotropic,
                        scale_universal=scale_universal, saturates_at_large_energy=saturation,
                        caveat="RT-surface-localised area response; not yet the modular-Hamiltonian first law"),
-        both_axes_link={int(r): leg5[r] for r in leg5}, verdict=verdict,
+        both_axes_link={int(r): leg5[r] for r in leg5}, wedge_side_observation=wedge_side_observation, verdict=verdict,
         note=("A3d dynamic-geometry back-reaction (min-cut=RT graph model). RIGID: matter that "
               "does not couple to edge weights changes no area (A3c obstruction restated). DYNAMIC: "
               "a local causal rule (energy thickens incident bonds) makes areas back-react -- "
-              "matter gravitates. Back-reaction is causally local (wedge-side). Small-eps response "
+              "matter gravitates. The wedge-side placement of the responders is a min-cut tie-break, not a causal-locality result. Small-eps response "
               "is a linear first law; cross-region Newton-constant consistency reported (CV). When a "
               "CA decides the matter pattern the geometry inherits its ANF degree (t24 link) -- a "
               "step toward the both-axes substrate. SCOPE: toy; min-cut=RT rigorous, energy->bond "
@@ -361,7 +366,7 @@ def plot(G, A0, wedge, dS_by_node, vc, dS_vs_E, energies, slope_cv, consistent):
                 s=60, facecolors="none", edgecolors="C0", linewidths=1.6, zorder=4,
                 label="region $A$ (boundary)")
     fig.colorbar(sc, ax=ax0, label=r"$\delta S(A)$ from unit matter here")
-    ax0.set_title("(a) back-reaction is causally local\nmatter on $A$'s wedge side moves $S(A)$")
+    ax0.set_title("(a) which bulk matter moves $S(A)$\n(responder placement: a min-cut tie-break)")
     ax0.legend(fontsize=8, loc="lower left"); ax0.set_aspect("equal"); ax0.axis("off")
     # (b) first law: dArea vs energy (back-reaction) + per-region slopes
     ax1.plot(energies, dS_vs_E, "o-", color="C3", lw=2, ms=6, label="central matter, region $A_0$")
@@ -372,7 +377,7 @@ def plot(G, A0, wedge, dS_by_node, vc, dS_vs_E, energies, slope_cv, consistent):
                   f"cross-region CV $={slope_cv:.2f}$ ({tag})")
     ax1.grid(alpha=0.3); ax1.legend(fontsize=8)
     fig.suptitle("A3d: a dynamic geometry evades the rigid-code obstruction "
-                 "(matter gravitates, causally, with a first law)", fontsize=11)
+                 "(matter gravitates, with a linear small-energy response)", fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     pth = os.path.join(HERE, "fig_A3d_dyngeom.png")
     plt.savefig(pth, dpi=130, bbox_inches="tight"); plt.close()

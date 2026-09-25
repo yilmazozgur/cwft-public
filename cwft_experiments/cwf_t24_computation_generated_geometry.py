@@ -111,8 +111,12 @@ def leg_a_generated(rule=110, n_in=3, T=1, c=1):
     w = np.linalg.eigvalsh(rho_a2); w = w[w > 1e-13]
     S_A = 1.0 + float(-np.sum(w * np.log2(w)))     # +1 from the always-present a1b1 Bell pair
     p1_direct = float((truth_table(rule, n_in, T, c) == 1).mean())
+    # NB (2026-09-25 review): p1 and p1_direct come from the same truth table, so their agreement
+    # is a consistency check, not evidence of generation; and S_A is the von Neumann entropy of the
+    # mixture, not the matter-weighted min-cut area, which is 1 + p1.
     return dict(rule=rule, n_in=n_in, T=T, cell=c, p1=p1, p1_direct=p1_direct,
-                area_S_A=S_A, generated_faithful=bool(abs(p1 - p1_direct) < 1e-12))
+                S_A_mixture=S_A, area_mincut=1.0 + p1,
+                p1_matches_truth_table=bool(abs(p1 - p1_direct) < 1e-12))
 
 
 # ----------------------------------------------------------------------------------------------
@@ -183,9 +187,9 @@ def main():
     print("LEG A  generated (not hand-set):")
     print(f"   Rule {a['rule']}, {a['n_in']} input qubits, T={a['T']} step -> circuit-produced "
           f"weight p1={a['p1']:.4f}  (direct count {a['p1_direct']:.4f}, "
-          f"faithful={a['generated_faithful']})")
-    print(f"   back-reacted area S_A = {a['area_S_A']:.4f}  (the geometry-superposition is "
-          f"GENERATED unitarily)\n")
+          f"consistent={a['p1_matches_truth_table']})")
+    print(f"   matter-weighted min-cut area 1+p1 = {a['area_mincut']:.4f};  S_A of the mixture = "
+          f"{a['S_A_mixture']:.4f}  (the circuit computes f(x); the min-cut follows it by construction)\n")
 
     # ---- LEG B ----
     b = leg_b_irreducibility(n=12, Tmax=8)
@@ -206,13 +210,13 @@ def main():
     # ---- verdict ----
     add_rules = [r for r, v in b["per_rule"].items() if v["reducible"]]
     irr_rules = [r for r, v in b["per_rule"].items() if not v["reducible"]]
-    generated = a["generated_faithful"]
+    generated = a["p1_matches_truth_table"]
     transfer = len(add_rules) > 0 and len(irr_rules) > 0 and \
         all(b["per_rule"][r]["saturated_degree"] >= 3 for r in irr_rules)
     verdict = (
-        "EMERGENCE CONFIRMED (with the necessary asymptotic caveat). (A) A substrate's own unitary "
-        "computation GENERATES the matter-weighted superposition of geometries -- the back-reaction "
-        "is sourced by the dynamics, not hand-assigned (upgrades Option 1). (B) The emergent min-cut "
+        "DEGREE TRANSFER CONFIRMED (with the necessary asymptotic caveat). (A) The circuit computes "
+        "f(x) and the reduced min-cut follows it by construction of the embedding (matter-weighted "
+        "min-cut area 1 + p1; the mixture entropy S_A is reported separately). (B) The emergent min-cut "
         "selector is a Boolean function of the matter seed whose ALGEBRAIC DEGREE is set by the "
         f"substrate: additive rules {sorted(add_rules)} stay degree<=1 (affine closed form -> "
         f"REDUCIBLE geometry, an O(n^3 log T) shortcut), while universal/chaotic rules "

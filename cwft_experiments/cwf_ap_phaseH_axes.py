@@ -38,6 +38,19 @@ T_GATE = np.array([[1, 0], [0, np.exp(1j * np.pi / 4)]], dtype=complex)
 PAULI_T = np.array([[1, 0, 0, 1], [0, 1, 1, 0], [0, 1j, -1j, 0], [1, 0, 0, -1]], dtype=complex)
 
 
+_CLIFFORD2 = None
+
+
+def random_clifford2(rng):
+    """A uniformly random 2-qubit Clifford tableau drawn from a SEEDED numpy rng
+    (stim.Tableau.random takes no seed, which broke bit-for-bit reproducibility): index
+    the full enumerated group (stim.Tableau.iter_all(2): all 11520 signed tableaux)."""
+    global _CLIFFORD2
+    if _CLIFFORD2 is None:
+        _CLIFFORD2 = list(stim.Tableau.iter_all(2))
+    return _CLIFFORD2[int(rng.integers(len(_CLIFFORD2)))]
+
+
 def apply_2q(psi, U, a, b, n):
     t = psi.reshape([2] * n)
     t = np.tensordot(U.reshape(2, 2, 2, 2), t, axes=([2, 3], [a, b]))
@@ -107,7 +120,7 @@ def _validate():
 
 def run(n, p, q, T, rng):
     psi = np.zeros(2 ** n, dtype=complex); psi[0] = 1.0
-    cliffs = [stim.Tableau.random(2).to_unitary_matrix(endian="little") for _ in range(4 * T)]
+    cliffs = [random_clifford2(rng).to_unitary_matrix(endian="little") for _ in range(4 * T)]
     ci = 0
     for layer in range(T):
         pairs = ([(a, a + 1) for a in range(0, n - 1, 2)] if layer % 2 == 0

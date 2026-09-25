@@ -48,7 +48,7 @@ import stim
 
 # import entropy machinery
 sys.path.insert(0, os.path.dirname(__file__) or ".")
-from cwf_pagecurve import gf2_rank, stabilizer_matrix, entropy_region
+from cwf_pagecurve import gf2_rank, stabilizer_matrix, entropy_region, random_clifford2
 
 L = 9
 N_QUBITS = L * L
@@ -87,7 +87,7 @@ def run_horizon(r_h, p, T=120, init_steps=40, seed=0, measure_every=1):
     for d in range(init_steps):
         layer = layers[d % 4]
         for (a, b) in layer:
-            t = stim.Tableau.random(2)
+            t = random_clifford2(rng)
             sim.do_tableau(t, [a, b])
 
     # ---- measure initial S ----
@@ -99,7 +99,7 @@ def run_horizon(r_h, p, T=120, init_steps=40, seed=0, measure_every=1):
     for t in range(T):
         layer = layers[t % 4]
         for (a, b) in layer:
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(rng)
             sim.do_tableau(tab, [a, b])
         # horizon erasure: reset each interior qubit with prob p
         for q in horizon:

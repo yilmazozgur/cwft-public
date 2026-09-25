@@ -58,7 +58,10 @@ def m_disp(T, s, c_c=1.0):
 
 def catalog_check():
     # (name, shift s, period T) from Cook--Martinez glider data (chapter table).
-    cat = [("A", 2, 3), ("B", -2, 4), ("C", 0, 7), ("D", 6, 30)]
+    # D is (s, T) = (2, 10) (v = +1/5), Ebar is (-8, 30) (v = -4/15), as in the chapter's
+    # glider table; the old entry D = (6, 30) was three copies of D's displacement vector
+    # (m_disp divides by the copy number), so it did not reproduce the table's 0.616.
+    cat = [("A", 2, 3), ("B", -2, 4), ("C", 0, 7), ("D", 2, 10), ("Ebar", -8, 30)]
     return [{"glider": n, "s": s, "T": T, "v_g": s / T, "m_disp": m_disp(T, s)}
             for n, s, T in cat]
 
@@ -103,10 +106,14 @@ def measure_period(window, max_lag=20):
 
 def recode_xor_left(field):
     """Invertible local recoding (gauge iii): XOR each cell with its left
-    neighbour. Bijective given a boundary cell; preserves the recurrence period,
-    changes the active-cell density."""
+    neighbour, the window's leftmost column kept as the boundary cell. Bijective
+    (cells are recovered left to right from the boundary); preserves the recurrence
+    period, changes the active-cell density. (A cyclic XOR, np.roll, would be 2-to-1:
+    a field and its complement collide.)"""
     f = field.astype(np.uint8)
-    return (f ^ np.roll(f, 1, axis=1)).astype(np.float64)
+    g = f.copy()
+    g[:, 1:] = f[:, 1:] ^ f[:, :-1]
+    return g.astype(np.float64)
 
 
 def koopman_reconstruct(window, r):

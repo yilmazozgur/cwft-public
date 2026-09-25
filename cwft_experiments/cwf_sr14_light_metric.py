@@ -220,9 +220,10 @@ def main():
              control_uniform_reaches_end=uniform_reaches_end,
              control_mirror_horizon_expected=photon_h_mirror,
              identification="the U(1) gauge sector is clocked by the substrate's lapse N(x)=max(g,0)/max g (status B); "
-                            "the photon horizon at N=0 is then by construction; measured content = the log-divergence "
-                            "surface gravity matching the metric's, coincidence with the reservoir's own transport horizon "
-                            "within the Test-6 tolerance, the kinematic blue-shift, and the controls.")
+                            "the photon horizon at N=0 is then by construction; measured content = coincidence with the "
+                            "reservoir's own transport horizon within the Test-6 tolerance, the kinematic blue-shift, and the "
+                            "controls. The log-divergence surface-gravity fits are NOT evidence (both flagged valid=false, and a "
+                            "log-divergence of the arrival time is not independent of the metric).")
     out = os.path.join(HERE, "results.json")
     res = json.load(open(out)); res["SR14_light_metric"] = R
     tmp = out + ".tmp"; json.dump(res, open(tmp, "w"), indent=2); os.replace(tmp, out)

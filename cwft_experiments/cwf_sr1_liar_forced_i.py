@@ -120,6 +120,10 @@ def complexify_corner():
     return dict(
         det_I=detI, det_NOT=detNOT,
         real_continuous_reversible_possible=bool(real_reversible_possible),
+        real_continuous_reversible_scope=("the bit's own two-dimensional real space, where "
+            "det NOT = -1; an enlarged real space, or negating one bit of a register of >= 2 "
+            "bits (even negation parity), admits a continuous real reversible path -- the "
+            "negation-parity rule, cwf_diag_arc.py B1a"),
         logm_imag_norm=log_imag_norm, logm_real_norm=log_real_norm,
         sqrtNOT=[[complex(x).__repr__() for x in row] for row in S],
         sqrt_squares_to_NOT_err=sq_err, sqrtNOT_unitary_err=unit_err,
@@ -174,13 +178,16 @@ def main():
 
     forced = cx["is_i"] and not cx["real_continuous_reversible_possible"]
     verdict = (
-        "FORCED-i CONFIRMED (ground truth for Route A). Self-negation has no "
-        "consistent Boolean value (the Liar obstruction). A real, faithful "
-        "description can only oscillate (nonlinear) or collapse to a 1-bit gap "
-        "(coarse-grained); the ONLY linear + faithful realization is unitary and "
-        "carries eigenvalue i. The imaginary unit is not chosen -- it is forced by "
-        "a topological obstruction (NOT is a reflection, det=-1, disconnected from "
-        "the identity over the reals, connected over the unitaries). Discrete "
+        "FORCED-i CONFIRMED on the bit's own two-dimensional real space (ground truth "
+        "for Route A). Self-negation has no consistent Boolean value (the Liar "
+        "obstruction). A real, faithful description can only oscillate (nonlinear) or "
+        "collapse to a 1-bit gap (coarse-grained); on that space the only continuous, "
+        "linear + faithful realization is unitary and carries eigenvalue i. The "
+        "imaginary unit is not chosen -- it is forced by a topological obstruction (NOT "
+        "is a reflection, det=-1, disconnected from the identity over the reals, "
+        "connected over the unitaries). Scope: an enlarged real space, or one bit inside "
+        "a >= 2-bit register, admits real roots; what every route needs is a rotation "
+        "generator J with J^2 = -I (negation-parity rule, cwf_diag_arc.py B1a). Discrete "
         "Stone's theorem: continuous+linear+reversible => imaginary generator => i. "
         "This is the conceptual ground truth; cwf_sr2 tests whether self-reference "
         "with NO definite ground produces the matching contextuality (CF>0)."

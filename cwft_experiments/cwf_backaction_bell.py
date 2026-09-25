@@ -36,6 +36,15 @@ Outcome logic:
   - back-action gives CF_ns>0 with S=0       => phase FORCED bottom-up. The
     strong conjecture's phase clause vindicated, localized to the Ch.4 register.
 
+STATUS OF THE RECORDED RUN (2026-09-25): degenerate. With the uniform ("mixed")
+preparation, randomising a bit leaves the joint law of X = s0, Z = s1, Y = s0^s1
+unchanged, so every context table is the uniform product at every beta: the recorded
+sweep shows NO signalling above the sampling floor and CF_ns = 0, and does not test
+back-action at all. A disturbing read also lies outside assumption (i) of the book's
+impossibility result (Section 6.7.1), which no longer reports a back-action leg. A
+valid test needs a non-uniform preparation and a signalling-corrected contextuality
+measure (Contextuality-by-Default); it is deferred.
+
 CPU-only. numpy + scipy.optimize.linprog. Reuses the AB LP from the phase script.
 """
 
@@ -253,6 +262,13 @@ def run():
             signaling=sig, CF_raw=cf_raw, CF_ns=cf_ns, verdict=v)
         print(f"{beta:>6.2f}{sig:>14.4f}{cf_raw:>11.4f}{cf_ns:>9.4f}{v:>22}")
 
+    max_sig = max(d["signaling"] for d in results["sweep"].values())
+    results["degenerate"] = bool(max_sig < 1e-2)
+    if results["degenerate"]:
+        results["note"] = ("degenerate run: under the uniform preparation every context table "
+                           "is the uniform product at every beta, so there is no signalling above "
+                           "the sampling floor (max %.4f) and CF_ns = 0; back-action is invisible "
+                           "and this is not a test of it (see the module docstring)" % max_sig)
     results["runtime_s"] = round(time.time() - t0, 1)
     out = os.path.join(HERE, "backaction_bell_results.json")
     with open(out, "w") as f:
@@ -278,6 +294,12 @@ def _interpret(results):
         print("   phase clause of the conjecture is vindicated and localized to the")
         print("   Ch.4 self-measurement register. This would be the first CWF")
         print("   substrate shown genuinely non-classical from its own dynamics.")
+    elif max(sigs) < 1e-2:
+        print(f"CF_ns = 0 and NO signalling above the sampling floor at ALL beta "
+              f"(max signaling seen: {max(sigs):.3f}).")
+        print("=> DEGENERATE: the uniform preparation hides the back-action (every")
+        print("   context table is the uniform product), so this run does not test")
+        print("   back-action. See the module docstring; a valid test is deferred.")
     else:
         print(f"CF_ns = 0 at ALL beta (max signaling seen: {max(sigs):.3f}).")
         print("=> THE SHARP NEGATIVE, and it is the informative one:")

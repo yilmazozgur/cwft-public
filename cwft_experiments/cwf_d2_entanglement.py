@@ -16,7 +16,7 @@ this scrambling tracks computational irreducibility, imported from C1.
 The honest result (a partial refutation, with the recurring rule-90 signature):
 scrambling and irreducibility are correlated but DISTINCT. The additive rule 90
 is the separator -- it scrambles like a chaotic rule, yet is computationally
-REDUCIBLE (exact GF(2) shortcut, Gottesman-Knill simulable), and the structured
+REDUCIBLE (exact GF(2)-linear shortcut, Martin-Odlyzko-Wolfram), and the structured
 rule 184 is irreducible yet scrambles little. So the Prediction holds only when
 "screen complexity" means RECONSTRUCTION complexity (= irreducibility, validated
 in C1/D1), NOT entanglement/scrambling. This is the same orthogonality C3 found
@@ -62,9 +62,14 @@ def scrambling(rule, n=128, T=48, M=600, seed=1):
     return float(np.mean(fr))
 
 
-def spearman(x, y):
+def spearman(x, y, decimals=9):
+    """Spearman rank correlation with TIES AVERAGED (Pearson on average ranks).
+    Values are rounded to `decimals` first, so scores that differ only by floating-point
+    noise (rules 90 and 170 both have irreducibility ~2e-12, i.e. zero) count as ties;
+    ranking the noise instead inflated the old record to +0.80 (true value 0.72, n = 5)."""
+    from scipy.stats import rankdata
     g = ~(np.isnan(x) | np.isnan(y))
-    xr = np.argsort(np.argsort(x[g])); yr = np.argsort(np.argsort(y[g]))
+    xr = rankdata(np.round(x[g], decimals)); yr = rankdata(np.round(y[g], decimals))
     return float(np.corrcoef(xr, yr)[0, 1])
 
 
@@ -102,9 +107,9 @@ def main():
                  "single-cell perturbation (OTOC-type entanglement-growth proxy)"),
         note=("The fractal-bridge Prediction (screen entanglement grows with bulk "
               "computational irreducibility) is only PARTIALLY supported by a scrambling/"
-              "entanglement-front measure: scrambling and irreducibility are correlated but "
+              "entanglement-front measure: scrambling and irreducibility co-trend (Spearman 0.72, n = 5, ties averaged; not significant) but are "
               "distinct, and the additive rule 90 separates them (scrambles like a chaotic "
-              "rule yet is reducible / Gottesman-Knill simulable; structured rule 184 is "
+              "rule yet is reducible via its exact GF(2)-linear shortcut; structured rule 184 is "
               "irreducible yet scrambles little). The Prediction holds for RECONSTRUCTION "
               "complexity (=irreducibility, C1/D1), not entanglement entropy. Genuine "
               "entanglement entropy for non-Clifford CAs needs exponential simulation; this "
@@ -131,10 +136,10 @@ def plot_results(rows, sp):
     a.set_xlabel("computational irreducibility (C1)")
     a.set_ylabel("scrambling / entanglement-front proxy")
     a.set_title("(a) Entanglement-front vs irreducibility")
-    a.text(0.5, 0.94, f"Spearman $={sp:+.2f}$ (correlated, not a clean law)", transform=a.transAxes,
+    a.text(0.5, 0.94, f"Spearman $={sp:+.2f}$ (n = 5, ties averaged; a co-trend, not significant)", transform=a.transAxes,
            ha="center", va="top", fontsize=9.5, bbox=dict(boxstyle="round", fc="#f0f0f0", ec="0.6"))
     r90 = rows["90"]
-    a.annotate("rule 90 (additive):\nscrambles, yet REDUCIBLE\n(Gottesman-Knill easy)",
+    a.annotate("rule 90 (additive):\nscrambles, yet REDUCIBLE\n(GF(2)-linear shortcut)",
                (r90["irreducibility"], r90["scrambling"]), xytext=(0.30, 0.62),
                textcoords="axes fraction", fontsize=8.2, color="#1b9e77",
                arrowprops=dict(arrowstyle="->", color="#1b9e77"))
@@ -152,11 +157,11 @@ def plot_results(rows, sp):
         "Prediction (fractal bridge): screen entanglement\n"
         "grows with bulk computational irreducibility.\n\n"
         "$\\bullet$  As entanglement / scrambling: PARTIALLY\n"
-        f"   (Spearman ${sp:+.2f}$ -- correlated, not a clean law).\n"
+        f"   (Spearman ${sp:+.2f}$, n = 5 -- a co-trend, not a law).\n"
         "   The additive rule 90 scrambles yet is reducible;\n"
         "   the structured rule 184 is irreducible yet barely\n"
         "   scrambles. So entanglement and computational\n"
-        "   hardness are correlated but distinct axes.\n\n"
+        "   hardness co-trend but are distinct axes.\n\n"
         "$\\bullet$  As RECONSTRUCTION complexity (C1/D1):\n"
         "   holds cleanly -- that measure IS irreducibility.\n\n"
         "Same orthogonality as C3 (Bell-nonlocality $\\neq$\n"
@@ -167,7 +172,7 @@ def plot_results(rows, sp):
     b.text(0.03, 0.85, txt, va="top", fontsize=8.8)
 
     fig.suptitle("D2: screen entanglement partially tracks computational irreducibility "
-                 "--- correlated, but the additive rule 90 separates the axes",
+                 "--- a co-trend, and the additive rule 90 separates the axes",
                  fontsize=12.5, fontweight="bold", y=1.02)
     fig.tight_layout()
     p = os.path.join(os.path.dirname(__file__) or ".", "fig_D2_entanglement.png")

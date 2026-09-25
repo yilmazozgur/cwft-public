@@ -72,7 +72,7 @@ def fig_b1():
                               edgecolor="none", zorder=0))
     a.text(0.02, 0.04, "empty corner\n(low $N$, high locality)", fontsize=8.3,
            style="italic", color="0.35")
-    a.set_xlabel("nonlocality  $1-\\tilde L$")
+    a.set_xlabel("degree load  $1-\\tilde L$  ($L_{\\rm deg}$)")
     a.set_ylabel("nonlinearity residual  $\\tilde N$")
     a.set_title("(a) Trade-off frontier")
     a.set_xlim(-0.02, 1.02)
@@ -95,7 +95,7 @@ def fig_b1():
     b.set_xticklabels([s.replace("CML-", "CML\n") for s in ORDER] + ["shared\naxis"],
                       fontsize=7.6, rotation=0)
     b.set_ylabel("conservation quality  $q=\\lambda_{\\min}/\\sum\\lambda$")
-    b.set_title("(b) A conserved combination exists")
+    b.set_title("(b) A conserved combination? (7-substrate pilot;\nretired at scale, T1.1)")
     b.set_ylim(0, 0.36)
 
     # --- (c) alignment with the single shared direction ----------------
@@ -112,7 +112,7 @@ def fig_b1():
     c.set_xlabel("$|\\cos\\angle|$ with shared axis $(0.15,\\,0.69,\\,-0.71)$")
     c.set_title("(c) One axis, system-dependent tilt")
 
-    fig.suptitle("Program I (B1): the dimensional trade-off and its conserved direction",
+    fig.suptitle("Program I (B1): the dimensional trade-off and the pilot's conserved direction",
                  fontsize=13, fontweight="bold", y=1.04)
     fig.legend(handles=handles, loc="lower center", ncol=8, fontsize=8,
                framealpha=0.9, bbox_to_anchor=(0.5, -0.07))

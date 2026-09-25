@@ -35,7 +35,8 @@ import os
 import numpy as np
 import stim
 
-from cwf_ap_phaseH_axes import (apply_1q, apply_2q, measure_z, stabilizer_renyi_entropy, T_GATE)
+from cwf_ap_phaseH_axes import (apply_1q, apply_2q, measure_z, stabilizer_renyi_entropy, T_GATE,
+                                random_clifford2)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -90,7 +91,8 @@ def main():
     n, T, reals = 8, 24, 40
     ps = [0.04, 0.08, 0.12, 0.16, 0.20, 0.26, 0.34]
     qs = [0.05, 0.10, 0.18, 0.30]
-    pool = [stim.Tableau.random(2).to_unitary_matrix(endian="little") for _ in range(400)]
+    pool_rng = np.random.default_rng(30999)   # seeded Clifford pool (was unseeded stim.Tableau.random)
+    pool = [random_clifford2(pool_rng).to_unitary_matrix(endian="little") for _ in range(400)]
     print(f"state vector N={n}, T={T}, reals={reals}; p={ps}; q={qs}\n")
 
     I3 = np.zeros((len(qs), len(ps))); M = np.zeros((len(qs), len(ps)))

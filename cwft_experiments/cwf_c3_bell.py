@@ -174,8 +174,9 @@ def main():
         no_signalling_bound=4.0,
         note=("C3 locates CWF substrates on the GPT axis. Classical computational "
               "substrates (CA/reservoir) are LHV-bounded (CHSH<=2); the stabilizer/"
-              "perfect-tensor class reaches Tsirelson (2sqrt2) and violates Mermin "
-              "(4) with Clifford measurements. Bell-nonlocality (C3) and computational-"
+              "perfect-tensor class is Bell-nonlocal: stabilizer states reach Tsirelson (2sqrt2) "
+              "with non-Pauli measurement settings and the Mermin maximum (4) with Pauli "
+              "(Clifford) measurements. Bell-nonlocality (C3) and computational-"
               "irreducibility (C1/C2) are ORTHOGONAL: the irreducible CAs are local, the "
               "nonlocal stabilizer substrate is efficiently simulable. The 'undecidability "
               "pays the Bell cost' fork is NOT tested here (status S)."))

@@ -110,8 +110,21 @@ def _validate_entropy():
 
 
 # ---------- one monitored-Clifford realization (PBC); returns (S(N/2), I3) ----------
+_CLIFFORD2 = None
+
+
+def random_clifford2(rng):
+    """A uniformly random 2-qubit Clifford tableau drawn from a SEEDED numpy rng
+    (stim.Tableau.random takes no seed, which broke bit-for-bit reproducibility): index
+    the full enumerated group (stim.Tableau.iter_all(2): all 11520 signed tableaux)."""
+    global _CLIFFORD2
+    if _CLIFFORD2 is None:
+        _CLIFFORD2 = list(stim.Tableau.iter_all(2))
+    return _CLIFFORD2[int(rng.integers(len(_CLIFFORD2)))]
+
+
 def run_realization(N, p, T, rng):
-    sim = stim.TableauSimulator()
+    sim = stim.TableauSimulator(seed=int(rng.integers(2**31)))
     for q in range(N):
         sim.x(q); sim.x(q)                      # allocate all N qubits
     for layer in range(T):
@@ -120,7 +133,7 @@ def run_realization(N, p, T, rng):
         else:                                    # odd layer: shifted + wrap (periodic)
             pairs = [(a, a + 1) for a in range(1, N - 1, 2)] + [(N - 1, 0)]
         for (a, b) in pairs:
-            sim.do_tableau(stim.Tableau.random(2), [a, b])
+            sim.do_tableau(random_clifford2(rng), [a, b])
         if p > 0:
             for q in np.nonzero(rng.random(N) < p)[0]:
                 sim.measure(int(q))

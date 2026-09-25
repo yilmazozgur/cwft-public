@@ -10,7 +10,7 @@ the ℓ² wave as compression yes / phase only under self-reference; and the sel
 route to the imaginary unit.
 
 The canonical statement of the framework is the book *Computational Wave Field Theory*
-(Zenodo, latest version: [10.5281/zenodo.20665921](https://doi.org/10.5281/zenodo.20665921)).
+(Zenodo concept DOI, which resolves to the latest edition: [10.5281/zenodo.19862755](https://doi.org/10.5281/zenodo.19862755)).
 This repository is its replicability companion: every number in the book, and in the
 manuscripts derived from it, traces to a script here and to a committed record. The book and
 the manuscripts themselves are not part of this repository. Everything is seeded, CPU-only
@@ -43,7 +43,13 @@ Each script is standalone: it seeds its own RNG, writes its record next to itsel
 its findings. Most finish in seconds to minutes; the handful of long ones (an hour or two) are
 listed in `cwft_experiments/README.md`. Records were produced with Python 3.10.12, NumPy 2.2.6,
 SciPy 1.15.3, Matplotlib 3.10.3, stim 1.16.0, networkx 3.4.2. Wall-clock timings that some
-scripts print depend on the machine and are not portable; the mathematical outputs are.
+scripts print depend on the machine and are not portable; the mathematical outputs are, with one
+exception. The scripts that draw random two-qubit Clifford gates (`cwf_pagecurve.py`,
+`cwf_a3_clifford_horizon.py`, the `cwf_hp_*` scripts, `cwf_a3b_emergent_geometry.py`,
+`cwf_ap_phaseF/G/H/I_*`) originally used `stim.Tableau.random`, which takes no seed, so their
+committed records are one draw of a random ensemble. The gate streams are now seeded; a re-run is
+deterministic and returns the same reported behaviour, but individual numbers differ from the
+committed records (the largest shift: the two-knob I3 crossing, 0.16 committed vs 0.20 re-run).
 
 ## Map by cluster
 

@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 import stim
 
 sys.path.insert(0, os.path.dirname(__file__) or ".")
-from cwf_hp_lib import make_sim, stabilizer_matrix, entropy_region, gf2_rank
+from cwf_hp_lib import make_sim, stabilizer_matrix, entropy_region, gf2_rank, random_clifford2
 
 
 # =========================================================================
@@ -59,6 +59,7 @@ def build_tree_code_state(k_bulk, n_layers, seed):
     """
     N = k_bulk * (2 ** n_layers)
     sim = make_sim(N, seed=seed)
+    rng = np.random.default_rng(seed + 54321)   # seeded gate stream
     # active: ordered list of "current active qubits". Initially the bulk.
     active = list(range(k_bulk))
     next_q = k_bulk
@@ -66,7 +67,7 @@ def build_tree_code_state(k_bulk, n_layers, seed):
         new_active = []
         for q in active:
             a = next_q; next_q += 1
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(rng)
             sim.do_tableau(tab, [int(q), int(a)])
             new_active.append(q)
             new_active.append(a)
@@ -82,7 +83,7 @@ def random_clifford_state(N, depth, seed):
         perm = rng.permutation(N)
         for i in range(N // 2):
             a, b = int(perm[2 * i]), int(perm[2 * i + 1])
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(rng)
             sim.do_tableau(tab, [a, b])
     return sim
 

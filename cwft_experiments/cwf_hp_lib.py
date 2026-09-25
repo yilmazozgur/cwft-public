@@ -37,6 +37,19 @@ import stim
 # GF(2) rank (inlined from cwf_pagecurve.py to avoid its import-time test).
 # =========================================================================
 
+_CLIFFORD2 = None
+
+
+def random_clifford2(rng):
+    """A uniformly random 2-qubit Clifford tableau drawn from a SEEDED numpy rng
+    (stim.Tableau.random takes no seed, which broke bit-for-bit reproducibility): index
+    the full enumerated group (stim.Tableau.iter_all(2): all 11520 signed tableaux)."""
+    global _CLIFFORD2
+    if _CLIFFORD2 is None:
+        _CLIFFORD2 = list(stim.Tableau.iter_all(2))
+    return _CLIFFORD2[int(rng.integers(len(_CLIFFORD2)))]
+
+
 def gf2_rank(M):
     M = M.copy().astype(np.uint8) & 1
     rows, cols = M.shape
@@ -156,7 +169,7 @@ class AllToAllScrambler(Scrambler):
         perm = self.rng.permutation(N)
         for i in range(N // 2):
             a, b = int(perm[2 * i]), int(perm[2 * i + 1])
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(self.rng)
             sim.do_tableau(tab, [a, b])
 
     def label(self) -> str:
@@ -194,7 +207,7 @@ class BrickWall2DScrambler(Scrambler):
         for k in range(2):
             sub_idx = (self._step_count + k) % 4
             for (a, b) in self.layers[sub_idx]:
-                tab = stim.Tableau.random(2)
+                tab = random_clifford2(self.rng)
                 sim.do_tableau(tab, [a, b])
         self._step_count += 2
 
@@ -246,7 +259,7 @@ class PowerLawScrambler(Scrambler):
                                 p=self.pair_probs, replace=True)
         for k in idxs:
             a, b = int(self.pairs[k, 0]), int(self.pairs[k, 1])
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(self.rng)
             sim.do_tableau(tab, [a, b])
 
     def label(self) -> str:
@@ -288,7 +301,7 @@ class MERATreeScrambler(Scrambler):
         # long-range at high levels (MERA's defining property).
         for level_pairs in self.levels:
             for (a, b) in level_pairs:
-                tab = stim.Tableau.random(2)
+                tab = random_clifford2(self.rng)
                 sim.do_tableau(tab, [int(a), int(b)])
 
     def label(self) -> str:
@@ -316,7 +329,7 @@ def prepare_random_clifford_state(sim: stim.TableauSimulator, qubits: List[int],
         perm = rng.permutation(qubits)
         for i in range(n // 2):
             a, b = int(perm[2 * i]), int(perm[2 * i + 1])
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(rng)
             sim.do_tableau(tab, [a, b])
 
 

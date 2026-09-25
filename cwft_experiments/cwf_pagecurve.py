@@ -60,6 +60,19 @@ def entropy_region(X, Z, A_qubits, N):
     return gf2_rank(GB) - B.size
 
 
+_CLIFFORD2 = None
+
+
+def random_clifford2(rng):
+    """A uniformly random 2-qubit Clifford tableau drawn from the SEEDED numpy rng
+    (stim.Tableau.random takes no seed, which broke bit-for-bit reproducibility): index
+    the full enumerated group (stim.Tableau.iter_all(2): all 11520 signed tableaux)."""
+    global _CLIFFORD2
+    if _CLIFFORD2 is None:
+        _CLIFFORD2 = list(stim.Tableau.iter_all(2))
+    return _CLIFFORD2[int(rng.integers(len(_CLIFFORD2)))]
+
+
 def random_clifford_state(N, depth, seed):
     rng = np.random.default_rng(seed)
     sim = stim.TableauSimulator(seed=int(seed))
@@ -67,7 +80,7 @@ def random_clifford_state(N, depth, seed):
         offset = d % 2
         pairs = [(i, i + 1) for i in range(offset, N - 1, 2)]
         for (a, b) in pairs:
-            t = stim.Tableau.random(2)
+            t = random_clifford2(rng)
             sim.do_tableau(t, [a, b])
     return sim
 
@@ -83,31 +96,36 @@ def page_curve(N=40, depth=60, seeds=8):
     return Ls, acc / seeds
 
 
-print("Test 3: Clifford Page curve ...")
-Ls, S = page_curve(N=40, depth=60, seeds=8)
-peak_L = int(Ls[np.argmax(S)])
-print(f"    N=40: S peaks at L={peak_L} (Page prediction N/2=20), S_max={S.max():.2f} bits")
-# Page-value comparison: ideal random-state S(L) ~ min(L, N-L) - small correction
-ideal = np.minimum(Ls, 40 - Ls)
-print(f"    S(N/2)={S[20]:.2f} bits  (max possible = N/2 = 20)")
+def main():
+    print("Test 3: Clifford Page curve ...")
+    Ls, S = page_curve(N=40, depth=60, seeds=8)
+    peak_L = int(Ls[np.argmax(S)])
+    print(f"    N=40: S peaks at L={peak_L} (Page prediction N/2=20), S_max={S.max():.2f} bits")
+    # Page-value comparison: ideal random-state S(L) ~ min(L, N-L) - small correction
+    ideal = np.minimum(Ls, 40 - Ls)
+    print(f"    S(N/2)={S[20]:.2f} bits  (max possible = N/2 = 20)")
 
-res = json.load(open("results.json"))
-res["Test3_PageCurve"] = {"N": 40, "depth": 60, "L": Ls.tolist(),
-                          "entropy_bits": S.tolist(), "peak_L": peak_L,
-                          "S_at_half": float(S[20]),
-                          "interpretation": ("scrambling produces the Page curve: "
-                                             "S(L) rises, peaks at N/2, falls -- "
-                                             "near-maximal entanglement, the "
-                                             "black-hole evaporation signature")}
-json.dump(res, open("results.json", "w"), indent=2)
+    res = json.load(open("results.json"))
+    res["Test3_PageCurve"] = {"N": 40, "depth": 60, "L": Ls.tolist(),
+                              "entropy_bits": S.tolist(), "peak_L": peak_L,
+                              "S_at_half": float(S[20]),
+                              "interpretation": ("scrambling produces the Page curve: "
+                                                 "S(L) rises, peaks at N/2, falls -- "
+                                                 "near-maximal entanglement, the "
+                                                 "black-hole evaporation signature")}
+    json.dump(res, open("results.json", "w"), indent=2)
 
-plt.figure(figsize=(7.2, 4.6))
-plt.plot(Ls, S, "o-", ms=4, label="Clifford scrambled state")
-plt.plot(Ls, ideal, "k--", alpha=0.5, label="Page ideal  min(L, N$-$L)")
-plt.axvline(20, color="r", ls=":", alpha=0.6, label="Page time (N/2)")
-plt.xlabel("subsystem size  L  (qubits revealed as 'radiation')")
-plt.ylabel("entanglement entropy  S  (bits)")
-plt.title("Test 3: Page curve from Clifford scrambling (N=40)")
-plt.legend(); plt.grid(alpha=0.3); plt.tight_layout()
-plt.savefig("fig_Test3_pagecurve.png", dpi=130); plt.close()
-print("Wrote fig_Test3_pagecurve.png")
+    plt.figure(figsize=(7.2, 4.6))
+    plt.plot(Ls, S, "o-", ms=4, label="Clifford scrambled state")
+    plt.plot(Ls, ideal, "k--", alpha=0.5, label="Page ideal  min(L, N$-$L)")
+    plt.axvline(20, color="r", ls=":", alpha=0.6, label="Page time (N/2)")
+    plt.xlabel("subsystem size  L  (qubits revealed as 'radiation')")
+    plt.ylabel("entanglement entropy  S  (bits)")
+    plt.title("Test 3: Page curve from Clifford scrambling (N=40)")
+    plt.legend(); plt.grid(alpha=0.3); plt.tight_layout()
+    plt.savefig("fig_Test3_pagecurve.png", dpi=130); plt.close()
+    print("Wrote fig_Test3_pagecurve.png")
+
+
+if __name__ == "__main__":
+    main()

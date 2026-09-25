@@ -52,7 +52,7 @@ import matplotlib.pyplot as plt
 import stim
 
 sys.path.insert(0, os.path.dirname(__file__) or ".")
-from cwf_hp_lib import make_sim, stabilizer_matrix, entropy_region
+from cwf_hp_lib import make_sim, stabilizer_matrix, entropy_region, random_clifford2
 
 
 # =========================================================================
@@ -149,7 +149,7 @@ def build_tree_clifford_substrate(depth, seed, n_rounds=2,
         order = list(edges)
         rng.shuffle(order)
         for (v, c) in order:
-            tab = stim.Tableau.random(2)
+            tab = random_clifford2(rng)
             sim.do_tableau(tab, [int(v), int(c)])
 
     if measure_bulk:

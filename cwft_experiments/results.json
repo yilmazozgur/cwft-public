@@ -126889,7 +126889,7 @@
       "YYX": -1
     },
     "no_signalling_bound": 4.0,
-    "note": "C3 locates CWF substrates on the GPT axis. Classical computational substrates (CA/reservoir) are LHV-bounded (CHSH<=2); the stabilizer/perfect-tensor class reaches Tsirelson (2sqrt2) and violates Mermin (4) with Clifford measurements. Bell-nonlocality (C3) and computational-irreducibility (C1/C2) are ORTHOGONAL: the irreducible CAs are local, the nonlocal stabilizer substrate is efficiently simulable. The 'undecidability pays the Bell cost' fork is NOT tested here (status S)."
+    "note": "C3 locates CWF substrates on the GPT axis. Classical computational substrates (CA/reservoir) are LHV-bounded (CHSH<=2); the stabilizer/perfect-tensor class is Bell-nonlocal: stabilizer states reach Tsirelson (2sqrt2) with non-Pauli measurement settings and the Mermin maximum (4) with Pauli (Clifford) measurements. Bell-nonlocality (C3) and computational-irreducibility (C1/C2) are ORTHOGONAL: the irreducible CAs are local, the nonlocal stabilizer substrate is efficiently simulable. The 'undecidability pays the Bell cost' fork is NOT tested here (status S)."
   },
   "D1_reconstruction": {
     "depths": [
@@ -126990,9 +126990,9 @@
         "affine_shortcut": true
       }
     },
-    "spearman_scrambling_irreducibility": 0.7999999999999999,
+    "spearman_scrambling_irreducibility": 0.7181848464596079,
     "measure": "scrambling / butterfly front = mean differing-cell fraction after a single-cell perturbation (OTOC-type entanglement-growth proxy)",
-    "note": "The fractal-bridge Prediction (screen entanglement grows with bulk computational irreducibility) is only PARTIALLY supported by a scrambling/entanglement-front measure: scrambling and irreducibility are correlated but distinct, and the additive rule 90 separates them (scrambles like a chaotic rule yet is reducible / Gottesman-Knill simulable; structured rule 184 is irreducible yet scrambles little). The Prediction holds for RECONSTRUCTION complexity (=irreducibility, C1/D1), not entanglement entropy. Genuine entanglement entropy for non-Clifford CAs needs exponential simulation; this is a tractable proxy. Same orthogonality as C3."
+    "note": "The fractal-bridge Prediction (screen entanglement grows with bulk computational irreducibility) is only PARTIALLY supported by a scrambling/entanglement-front measure: scrambling and irreducibility co-trend (Spearman 0.72, n = 5, ties averaged; not significant) but are distinct, and the additive rule 90 separates them (scrambles like a chaotic rule yet is reducible via its exact GF(2)-linear shortcut; structured rule 184 is irreducible yet scrambles little). The Prediction holds for RECONSTRUCTION complexity (=irreducibility, C1/D1), not entanglement entropy. Genuine entanglement entropy for non-Clifford CAs needs exponential simulation; this is a tractable proxy. Same orthogonality as C3."
   },
   "invariance_gate": {
     "catalog": [
@@ -127019,10 +127019,17 @@
       },
       {
         "glider": "D",
-        "s": 6,
-        "T": 30,
+        "s": 2,
+        "T": 10,
         "v_g": 0.2,
-        "m_disp": 0.20520797282589823
+        "m_disp": 0.6156239184776947
+      },
+      {
+        "glider": "Ebar",
+        "s": -8,
+        "T": 30,
+        "v_g": -0.26666666666666666,
+        "m_disp": 0.2018554583623394
       }
     ],
     "simulated_mode": {
@@ -127073,7 +127080,7 @@
       },
       "FAIL_m_act": {
         "raw_basis": 0.5811965811965812,
-        "recoded_basis": 0.4236874236874237
+        "recoded_basis": 0.4188034188034188
       },
       "FAIL_spurious_growth_vs_rank": {
         "1": 0.0,
@@ -127090,7 +127097,7 @@
     },
     "verdict": {
       "m_disp_rel_spread_all_gauges": 0.0,
-      "m_act_rel_spread_recoding": 0.3134872417976751,
+      "m_act_rel_spread_recoding": 0.3247863247856753,
       "spurious_growth_range_vs_rank": 3.3622194768803433,
       "catalog_C_class_m_disp": 0.8975979010256552
     }
@@ -130097,8 +130104,9 @@
       "cell": 1,
       "p1": 0.625,
       "p1_direct": 0.625,
-      "area_S_A": 1.8960382325345573,
-      "generated_faithful": true
+      "S_A_mixture": 1.8960382325345573,
+      "area_mincut": 1.625,
+      "p1_matches_truth_table": true
     },
     "leg_b_irreducibility": {
       "n": 12,
@@ -130266,7 +130274,7 @@
     ],
     "generated": true,
     "irreducibility_transfer": true,
-    "verdict": "EMERGENCE CONFIRMED (with the necessary asymptotic caveat). (A) A substrate's own unitary computation GENERATES the matter-weighted superposition of geometries -- the back-reaction is sourced by the dynamics, not hand-assigned (upgrades Option 1). (B) The emergent min-cut selector is a Boolean function of the matter seed whose ALGEBRAIC DEGREE is set by the substrate: additive rules [0, 60, 90, 150, 204] stay degree<=1 (affine closed form -> REDUCIBLE geometry, an O(n^3 log T) shortcut), while universal/chaotic rules [30, 45, 110] climb to high degree (IRREDUCIBLE geometry -- you must run the substrate to know the metric). So the back-reacted geometry inherits the substrate's computational irreducibility: 'the geometry of ignorance' with an exact number. (C) But a genuinely UNDECIDABLE geometry is not a finite object -- every finite run is decidable; only Rule-110 universality lifts it to undecidable in the limit (reduction, not witness). This occupies the encoding /\\ irreducible EDGE as a real finite object, but does NOT drag the phase along (irreducibility over a definite computed ground does not force complex interference) -- the triple point stays empty.",
+    "verdict": "DEGREE TRANSFER CONFIRMED (with the necessary asymptotic caveat). (A) The circuit computes f(x) and the reduced min-cut follows it by construction of the embedding (matter-weighted min-cut area 1 + p1; the mixture entropy S_A is reported separately). (B) The emergent min-cut selector is a Boolean function of the matter seed whose ALGEBRAIC DEGREE is set by the substrate: additive rules [0, 60, 90, 150, 204] stay degree<=1 (affine closed form -> REDUCIBLE geometry, an O(n^3 log T) shortcut), while universal/chaotic rules [30, 45, 110] climb to high degree (IRREDUCIBLE geometry -- you must run the substrate to know the metric). So the back-reacted geometry inherits the substrate's computational irreducibility: 'the geometry of ignorance' with an exact number. (C) But a genuinely UNDECIDABLE geometry is not a finite object -- every finite run is decidable; only Rule-110 universality lifts it to undecidable in the limit (reduction, not witness). This occupies the encoding /\\ irreducible EDGE as a real finite object, but does NOT drag the phase along (irreducibility over a definite computed ground does not force complex interference) -- the triple point stays empty.",
     "note": "Option 3 (emergence). LEG A: a unitary CA-step embedding GENERATES the geometry-superposition (faithful to the direct count). LEG B: ANF degree over GF(2) of the min-cut selector bit(x)=f_{rule,T}(x) -- additive rules stay affine (closed-form / reducible geometry), universal/chaotic rules climb to high degree (irreducible geometry; the metric inherits the substrate's irreducibility). LEG C: finite => decidable; genuine undecidability is asymptotic-only (reduction from halting, not a finite witness) -- parallels A3b3 and T2.1's asymptotic axis. Realizes the encoding/\\irreducible edge without the phase; triple point stays empty. Caveat: ANF-degree irreducibility is exact algebraic complexity, a strong proxy for 'no low-degree shortcut'; unconditional time-hardness of Rule 110 is a separate (open) complexity question -- status C/S."
   },
   "SR1_liar_forced_i": {
@@ -130301,6 +130309,7 @@
       "det_I": 1.0,
       "det_NOT": -1.0,
       "real_continuous_reversible_possible": false,
+      "real_continuous_reversible_scope": "the bit's own two-dimensional real space, where det NOT = -1; an enlarged real space, or negating one bit of a register of >= 2 bits (even negation parity), admits a continuous real reversible path -- the negation-parity rule, cwf_diag_arc.py B1a",
       "logm_imag_norm": 3.1415926535897922,
       "logm_real_norm": 2.9490299091605716e-16,
       "sqrtNOT": [
@@ -130334,7 +130343,7 @@
       "real": false
     },
     "forced": true,
-    "verdict": "FORCED-i CONFIRMED (ground truth for Route A). Self-negation has no consistent Boolean value (the Liar obstruction). A real, faithful description can only oscillate (nonlinear) or collapse to a 1-bit gap (coarse-grained); the ONLY linear + faithful realization is unitary and carries eigenvalue i. The imaginary unit is not chosen -- it is forced by a topological obstruction (NOT is a reflection, det=-1, disconnected from the identity over the reals, connected over the unitaries). Discrete Stone's theorem: continuous+linear+reversible => imaginary generator => i. This is the conceptual ground truth; cwf_sr2 tests whether self-reference with NO definite ground produces the matching contextuality (CF>0).",
+    "verdict": "FORCED-i CONFIRMED on the bit's own two-dimensional real space (ground truth for Route A). Self-negation has no consistent Boolean value (the Liar obstruction). A real, faithful description can only oscillate (nonlinear) or collapse to a 1-bit gap (coarse-grained); on that space the only continuous, linear + faithful realization is unitary and carries eigenvalue i. The imaginary unit is not chosen -- it is forced by a topological obstruction (NOT is a reflection, det=-1, disconnected from the identity over the reals, connected over the unitaries). Scope: an enlarged real space, or one bit inside a >= 2-bit register, admits real roots; what every route needs is a rotation generator J with J^2 = -I (negation-parity rule, cwf_diag_arc.py B1a). Discrete Stone's theorem: continuous+linear+reversible => imaginary generator => i. This is the conceptual ground truth; cwf_sr2 tests whether self-reference with NO definite ground produces the matching contextuality (CF>0).",
     "note": "Trichotomy on NOT=[[0,1],[1,0]]: nonlinearize (give up linearity, period-2 oscillation), coarse-grain (give up faithfulness, maximally-mixed 1-bit gap), complexify (give up realness -> i). The complexify corner is FORCED: NOT is a reflection (det -1), so no continuous real-orthogonal path I->NOT exists; the continuous reversible path is unitary, through sqrt(NOT), eigenvalue i. Discrete Stone's theorem. Ground truth for the self-reference->phase conjecture (Route A)."
   },
   "SR2_selfref_contextuality": {
@@ -130616,8 +130625,8 @@
       0.235,
       0.495
     ],
-    "verdict": "ANTECEDENT DERIVED (the gap closed, with the honest 'generic not universal' caveat). Frustration -- the no-definite-ground structure sr1/2/3 assume -- is PROVABLY IMPOSSIBLE without crossing the threshold or without negation: across every tested size and in-degree, the ACYCLIC (below-threshold) and MONOTONE (no-negation, Knaster-Tarski) ensembles are frustrated with probability EXACTLY 0 (max 0.000, as the two theorems require). The moment the grammar is CYCLIC AND NON-MONOTONE (genuine self-reference with negation), frustration is GENERIC: P(frustrated) stays bounded away from 0 across all tested K and N (range 0.23-0.49); the dense random-map limit is P(frustrated)=1/e~0.368 (one expected fixed point), and our sparse/structured ensembles sit at or above it -- the exact value depends on connectivity, but it is never near 0. The clean K=1 case reproduces the closed form 1-2^(-#cycles) (sr2's odd negation cycles arising from RANDOM wiring), and the arising frustration is the CONTEXTUAL kind (CF=1.00>0). So sr1/2/3's antecedent is not hand-picked: it is what GENERICALLY happens once a self-referential grammar can negate -- and is forbidden without cycles (acyclic) or without negation (monotone). Sharp antecedent: phase-producing self-reference = CYCLIC + NON-MONOTONE. HONEST CAVEAT: 'generic' = probability bounded away from 0 in a natural ensemble, NOT universal -- the fraction of systems whose negation-cycles are all even keep a definite ground and stay classical, which is physically sensible.",
-    "note": "Random self-referential Boolean systems (Kauffman ensemble). Definite ground = global fixed point of the definitional constraints. ACYCLIC (below threshold) and MONOTONE (no negation; Knaster-Tarski) are frustrated with probability EXACTLY 0 (all K,N); GENERAL cyclic (self-reference WITH negation) is frustrated GENERICALLY (P bounded from 0, range ~0.4-0.7; dense random-map limit P(frustrated)=1/e~0.368, sparse ensembles at or above it). K=1 reproduces 1-2^(-#cycles) (sr2 odd cycles from random wiring); the frustration is the contextual kind (CF>0). Derives sr1/2/3's antecedent: phase-producing self-reference = CYCLIC + NON-MONOTONE; generic, not universal (the all-even-cycle fraction stay classical)."
+    "verdict": "ANTECEDENT DERIVED (the gap closed, with the honest 'generic not universal' caveat). Frustration -- the no-definite-ground structure sr1/2/3 assume -- is PROVABLY IMPOSSIBLE without crossing the threshold or without negation: across every tested size and in-degree, the ACYCLIC (below-threshold) and MONOTONE (no-negation, Knaster-Tarski) ensembles are frustrated with probability EXACTLY 0 (max 0.000, as the two theorems require). The moment the grammar is CYCLIC AND NON-MONOTONE (genuine self-reference with negation), frustration is GENERIC: P(frustrated) stays bounded away from 0 across all tested K and N (range 0.23-0.49); the dense random-map limit is P(frustrated)=1/e~0.368 (one expected fixed point); our ensembles with in-degree K >= 2 sit at or above it, the sparsest (K = 1) below it (0.235) -- the exact value depends on connectivity, but it is never near 0. The clean K=1 case reproduces the closed form 1-2^(-#cycles) (sr2's odd negation cycles arising from RANDOM wiring), and the arising frustration is the CONTEXTUAL kind (CF=1.00>0). So sr1/2/3's antecedent is not hand-picked: it is what GENERICALLY happens once a self-referential grammar can negate -- and is forbidden without cycles (acyclic) or without negation (monotone). Sharp antecedent: phase-producing self-reference = CYCLIC + NON-MONOTONE. HONEST CAVEAT: 'generic' = probability bounded away from 0 in a natural ensemble, NOT universal -- the fraction of systems whose negation-cycles are all even keep a definite ground and stay classical, which is physically sensible.",
+    "note": "Random self-referential Boolean systems (Kauffman ensemble). Definite ground = global fixed point of the definitional constraints. ACYCLIC (below threshold) and MONOTONE (no negation; Knaster-Tarski) are frustrated with probability EXACTLY 0 (all K,N); GENERAL cyclic (self-reference WITH negation) is frustrated GENERICALLY (P bounded from 0, range ~0.4-0.7; dense random-map limit P(frustrated)=1/e~0.368; K >= 2 ensembles at or above it, K = 1 below at 0.235). K=1 reproduces 1-2^(-#cycles) (sr2 odd cycles from random wiring); the frustration is the contextual kind (CF>0). Derives sr1/2/3's antecedent: phase-producing self-reference = CYCLIC + NON-MONOTONE; generic, not universal (the all-even-cycle fraction stay classical)."
   },
   "SR5_renou_feasibility": {
     "gate_A": {
@@ -130733,7 +130742,7 @@
     "T_full": 8.485281374238566,
     "T_without_Y": 5.656854249492377,
     "real_bound": 7.66,
-    "theorem": "THEOREM (bridge (b), under H1+H2) -- PROVEN at the algebraic level, conditional as stated. The i in Renou's sigma_Y measurement is not an independent imaginary unit: (1)-(2) it is the action of the complex structure J0 = sigma_Z sigma_X (J0^2=-I, real antisymmetric), with sigma_Y = -i J0 = i[sigma_X,sigma_Z]/2; (3) J0 and sigma_Y share the eigenstates |y+->; (4) UNIQUENESS -- on the real 2-plane this complex structure is unique up to sign, so there is exactly ONE i; (5) sr1 [H1] forces precisely this structure (self-negation is a reflection with no real continuous realization; sqrt(NOT) eigenvalue i), and by (4) it is J0; (6) Renou's separation requires sigma_Y (removing it drops T below the real bound). Chaining: the doubling-proof separation needs sigma_Y -> sigma_Y is built from the single complex structure J [H2] -> J is unique -> J is the one self-negation forces [H1]. Hence the separation's complex resource IS the self-referential complex structure. Bridge (b) is a theorem under (H1) sr1 and (H2) the standard single-complex-structure quantum consistency. RESIDUAL CONJECTURE, flagged not closed: that physical nature realises (H1) -- derives its i from self-reference -- rather than postulating it. The theorem identifies the i; the CWF thesis is that nature does too.",
+    "theorem": "THEOREM 6.2 (algebraic core, parts (i)-(iv)): PROVEN. BRIDGE (b) (status B, under H1+H2): identifying the i in Renou's sigma_Y measurement with the sr1 complex structure is an identification -- automatic at the single-qubit level, contentful only through H2. The algebra: (1)-(2) sigma_Y is built from the action of the complex structure J0 = sigma_Z sigma_X (J0^2=-I, real antisymmetric), with sigma_Y = -i J0 = i[sigma_X,sigma_Z]/2; (3) J0 and sigma_Y share the eigenstates |y+->; (4) UNIQUENESS -- on the metricised, oriented real 2-plane the orthogonal complex structure is unique up to sign; (5) sr1 [H1] forces precisely this structure on the bit's own 2-D real space (self-negation is a reflection with no real continuous realization there; sqrt(NOT) eigenvalue i), identified with J0 by (4); (6) Renou's separation requires sigma_Y (removing the sigma_Y terms from both parties drops T below the real bound). Chaining: the doubling-proof separation needs sigma_Y -> sigma_Y is built from the single complex structure J [H2] -> J is unique -> J is the one self-negation forces [H1]. Hence, under the identification, the separation's complex resource is the self-referential complex structure. Bridge (b) is this identification under (H1) sr1 and (H2) one global complex structure agreeing with each source's own (operationally: every composite definite; cwf_ic1_sector_gate.py). RESIDUAL CONJECTURE, flagged not closed: that physical nature realises (H1) -- derives its i from self-reference -- rather than postulating it. The theorem identifies the i; the CWF thesis is that nature does too.",
     "note": "Promotes bridge (b) to a theorem under explicit hypotheses. Verified exact algebra: J0=sigmaZ\u00b7sigmaX is real antisymmetric with J0^2=-I; sigmaY=-i\u00b7J0=i[sigmaX,sigmaZ]/2 (the i in sigmaY = the action of J0); J0 and sigmaY share eigenstate |y+>; UNIQUENESS -- the complex structure on R^2 is unique up to sign (any real antisym J with J^2=-I is +-J0); sr1 (H1) forces this same J (NOT is a reflection, no real continuous realization, sqrt(NOT) eig i); and Renou's separation needs sigmaY (no-Y T=4sqrt2<7.66). Theorem: under (H1) sr1 + (H2) single-complex-structure quantum consistency, the i in sigmaY = the self-referential complex structure, so the doubling-proof separation is powered by self-reference. Residual conjecture (flagged): nature realises (H1) rather than postulating i."
   },
   "SR9_u1_cocycle": {
@@ -130771,7 +130780,7 @@
     "overlap": 0.7071067811865475,
     "det_NOT": -1.0,
     "forced_phase_over_pi": 0.5,
-    "theorem": "THEOREM (B) -- a complete, faithful, reversible measurement on a CLOSED substrate necessarily invokes the self-referential i; PROVEN modulo the isolated premise of closure. Chain (each link verified): (P-closure) the apparatus is part of the substrate, so a complete measurement is the substrate recording a part of itself; (1) by C11 a faithful COMMUTING self-record is impossible (no unitary clones non-commuting self-observables, <0|+>!=<0|+>^2), so the record must carry components anti-commuting with the pointer ({Z,X}=0); (2) recording such a component makes the pointer record the NEGATION of itself -- the measurement Liar P=NOT(P), with no definite outcome; (3) by sr1 the unique faithful + reversible realization is sqrt(NOT) (eigenvalue i), and it is genuinely complex -- det(NOT)=-1 forbids any real reversible realization; (4) by sr8 that i is J0=i*sigma_Y, exactly the measurement resource of Renou's separation (sr7). CONSEQUENCE: the physical wager H1 ('nature derives its i from self-reference') reduces, for the case of measurement, to its PREMISE -- closure (a final description has no external observer) -- which is far better motivated than postulating i. RESIDUAL (honest): (P-closure) is a premise, not a proof our world is such a substrate; the NOT of (2) is the canonical anti-commuting representative C11 makes generic, not the only self-record; and an irreversible/decohering measurement escapes to the classical corner (the sr1 trichotomy). So H1 is not eliminated but SHARPENED: from 'why i?' to 'is the world a closed self-describing substrate?'.",
+    "theorem": "CONDITIONAL BRIDGE (status B; the book's Proposition prop:measurement-selfref) -- a complete, faithful, continuous, reversible measurement on a CLOSED substrate uses the self-referential i, modulo the premise of closure AND two posited modelling links (marked 'posited' below). Chain (the algebra of each link verified): (P-closure) the apparatus is part of the substrate, so a complete measurement is the substrate recording a part of itself; (1) by C11 a faithful, nondisturbing self-record of a NONCOMMUTING state family is impossible (no unitary clones non-commuting self-states, <0|+>!=<0|+>^2); posited: the record then carries components anti-commuting with the pointer ({Z,X}=0); (2) posited: recording such a component makes the pointer record the NEGATION of itself -- the measurement Liar P=NOT(P), with no definite outcome; (3) by sr1 the faithful, continuous, reversible realization on the pointer's own 2-D real space is sqrt(NOT) (eigenvalue i), and it is genuinely complex -- det(NOT)=-1 forbids a real continuous one there; (4) by sr8 that i is J0=i*sigma_Y, exactly the measurement resource of Renou's separation (sr7). CONSEQUENCE: the physical wager H1 ('nature derives its i from self-reference') reduces, for the case of measurement, to its PREMISE -- closure (a final description has no external observer) -- which is far better motivated than postulating i. RESIDUAL (honest): (P-closure) is a premise, not a proof our world is such a substrate; the NOT of (2) is the canonical anti-commuting representative C11 makes generic, not the only self-record; and an irreversible/decohering measurement escapes to the classical corner (the sr1 trichotomy). So H1 is not eliminated but SHARPENED: from 'why i?' to 'is the world a closed self-describing substrate?'.",
     "note": "Push (B): a complete, faithful, reversible measurement on a CLOSED substrate is self-referential and forces the i. Chain: closure (apparatus in the substrate) -> C11 (no commuting self-broadcast; <0|+>!=<0|+>^2) -> the self-record anti-commutes with the pointer ({Z,X}=0) -> measurement Liar P=NOT(P), no definite outcome -> sr1: unique faithful reversible realization is sqrt(NOT), eigenvalue i, genuinely complex (det(NOT)=-1) -> sr8: that i is J0=i*sigma_Y, Renou's measurement resource. Reduces the physical wager H1 to the CLOSURE premise (no external observer). Residual: closure is a premise; the NOT is the canonical anti-commuting representative; irreversible measurement escapes classical. Atomic write."
   },
   "SR11_lattice_gauge": {
@@ -130896,7 +130905,6 @@
     "checks": {
       "rigid: matter cannot change any area (obstruction)": true,
       "dynamic: area back-reacts to matter (obstruction evaded)": true,
-      "back-reaction is causally local (wedge-side)": true,
       "first law: linear small-eps response": true,
       "back-reaction coefficient isotropic (rotations)": true,
       "back-reaction coefficient scale-universal": true,
@@ -130964,8 +130972,15 @@
         "reducible": false
       }
     },
-    "verdict": "DYNAMIC GEOMETRY EVADES THE RIGID-CODE OBSTRUCTION (toy min-cut/RT model). (1) On a fixed graph, bulk matter changes NO RT area (dArea=0 for all regions): matter does not gravitate -- the A3c obstruction, restated. (2) A LOCAL, causal rule (energy at a bulk node thickens its incident bonds) makes the areas back-react: matter now gravitates (dArea(eps=1)=2.000>0), LINEAR at small energy and SATURATING at large energy ([0.0, 0.5, 1.0, 2.0, 2.0, 2.0] for eps=[0.0, 0.25, 0.5, 1.0, 2.0, 4.0]) -- the RT surface reroutes around heavy matter, a sensible nonlinear onset. (3) The back-reaction is causally LOCAL -- matter on A's wedge side moves S(A) while matter behind the complementary surface does not (mean 0.000); all 9 responders are wedge nodes adjacent to gamma_A -- a holographic causality the min-cut structure respects, not imposed. (4) The small-energy response is linear, with a back-reaction coefficient that is ISOTROPIC (CV 0.000 over rotations) AND SCALE-UNIVERSAL (CV 0.000 over arc sizes) -- a single substrate Newton constant of LOCAL-LATTICE origin (a codim-1 surface crosses ~2 bonds per node). HONEST CAVEAT: this is the RT-surface-localised area response, NOT yet the full modular-Hamiltonian first law delta S = delta <H_mod> (whose weight spreads over the wedge); matching that is the remaining Einstein-consistency step. (5) When a CA decides the matter pattern, the back-reacted geometry inherits the CA's algebraic degree (Rule 110 deg 11 irreducible vs Rule 90 deg 1 reducible), linking dynamic geometry to the both-axes target. SCOPE: toy, substrate-relative; min-cut=RT is rigorous, the energy->bond rule is the simplest local modelling choice, eta_c=1 by convention.",
-    "note": "A3d dynamic-geometry back-reaction (min-cut=RT graph model). RIGID: matter that does not couple to edge weights changes no area (A3c obstruction restated). DYNAMIC: a local causal rule (energy thickens incident bonds) makes areas back-react -- matter gravitates. Back-reaction is causally local (wedge-side). Small-eps response is a linear first law; cross-region Newton-constant consistency reported (CV). When a CA decides the matter pattern the geometry inherits its ANF degree (t24 link) -- a step toward the both-axes substrate. SCOPE: toy; min-cut=RT rigorous, energy->bond rule a modelling choice, eta_c=1 convention. Atomic write."
+    "wedge_side_observation": {
+      "responders_on_wedge_side": true,
+      "mean_dS_in": 0.5142857142857142,
+      "mean_dS_out": 0.0,
+      "n_responders": 9,
+      "caveat": "min-cut tie-break (default partition among degenerate cuts); not a causal-locality test"
+    },
+    "verdict": "DYNAMIC GEOMETRY EVADES THE RIGID-CODE OBSTRUCTION (toy min-cut/RT model). (1) On a fixed graph, bulk matter changes NO RT area (dArea=0 for all regions): matter does not gravitate -- the A3c obstruction, restated. (2) A LOCAL, causal rule (energy at a bulk node thickens its incident bonds) makes the areas back-react: matter now gravitates (dArea(eps=1)=2.000>0), LINEAR at small energy and SATURATING at large energy ([0.0, 0.5, 1.0, 2.0, 2.0, 2.0] for eps=[0.0, 0.25, 0.5, 1.0, 2.0, 4.0]) -- the RT surface reroutes around heavy matter, a sensible nonlinear onset. (3) All 9 responders sit on A's wedge side (mean response outside 0.000), adjacent to gamma_A -- but this placement is set by the min-cut solver's default partition among degenerate cuts (a tie-break), so it is NOT evidence of causal locality and is not counted as a check. (4) The small-energy response is linear, with a back-reaction coefficient that is ISOTROPIC (CV 0.000 over rotations) AND SCALE-UNIVERSAL (CV 0.000 over arc sizes) -- a single substrate Newton constant of LOCAL-LATTICE origin (a codim-1 surface crosses ~2 bonds per node). HONEST CAVEAT: this is the RT-surface-localised area response, NOT yet the full modular-Hamiltonian first law delta S = delta <H_mod> (whose weight spreads over the wedge); matching that is the remaining Einstein-consistency step. (5) When a CA decides the matter pattern, the back-reacted geometry inherits the CA's algebraic degree (Rule 110 deg 11 irreducible vs Rule 90 deg 1 reducible), linking dynamic geometry to the both-axes target. SCOPE: toy, substrate-relative; min-cut=RT is rigorous, the energy->bond rule is the simplest local modelling choice, eta_c=1 by convention.",
+    "note": "A3d dynamic-geometry back-reaction (min-cut=RT graph model). RIGID: matter that does not couple to edge weights changes no area (A3c obstruction restated). DYNAMIC: a local causal rule (energy thickens incident bonds) makes areas back-react -- matter gravitates. The wedge-side placement of the responders is a min-cut tie-break, not a causal-locality result. Small-eps response is a linear first law; cross-region Newton-constant consistency reported (CV). When a CA decides the matter pattern the geometry inherits its ANF degree (t24 link) -- a step toward the both-axes substrate. SCOPE: toy; min-cut=RT rigorous, energy->bond rule a modelling choice, eta_c=1 convention. Atomic write."
   },
   "T25_both_axes": {
     "checks": {
@@ -132167,7 +132182,7 @@
     ],
     "control_uniform_reaches_end": true,
     "control_mirror_horizon_expected": 160,
-    "identification": "the U(1) gauge sector is clocked by the substrate's lapse N(x)=max(g,0)/max g (status B); the photon horizon at N=0 is then by construction; measured content = the log-divergence surface gravity matching the metric's, coincidence with the reservoir's own transport horizon within the Test-6 tolerance, the kinematic blue-shift, and the controls."
+    "identification": "the U(1) gauge sector is clocked by the substrate's lapse N(x)=max(g,0)/max g (status B); the photon horizon at N=0 is then by construction; measured content = coincidence with the reservoir's own transport horizon within the Test-6 tolerance, the kinematic blue-shift, and the controls. The log-divergence surface-gravity fits are NOT evidence (both flagged valid=false, and a log-divergence of the arrival time is not independent of the metric)."
   },
   "SR15_soft_horizon": {
     "seed": 970,
