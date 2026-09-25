@@ -200,7 +200,7 @@ def plot(g_great, g_contr, g_oct):
     ax.axhline(np.pi / 4, color="C3", ls=":", lw=1); ax.text(2.4, np.pi/4, r"$\pi/4$", va="center", fontsize=9)
     ax.set_ylabel(r"geometric phase $|\gamma| = |{-}\Omega/2|$")
     ax.set_title("QM geometric phase = holonomy of the self-referential structure:\n"
-                 r"real (X-Z) loops give only Z$_2$ phases $\{0,\pi\}$; genuine U(1) ($\pi/4$) needs $\sigma_Y$ = self-ref $J_0$")
+                 r"real (X-Z) loops give only Z$_2$ phases $\{0,\pi\}$; genuine U(1) ($\pi/4$) needs $\sigma_Y=-iJ_0$ ($J_0$ read as self-ref.: a bridge)")
     ax.set_ylim(0, np.pi * 1.18); ax.grid(alpha=0.3, axis="y")
     fig.tight_layout()
     pth = os.path.join(HERE, "fig_SR9_u1_cocycle.png")

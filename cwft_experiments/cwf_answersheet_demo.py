@@ -71,8 +71,8 @@ def draw_cycle(ax, n):
         else:
             ax.plot([xs[i], xs[j]], [ys[i], ys[j]], color="C3", lw=3.2, ls="--", zorder=1)
             mx, my = (xs[i] + xs[j]) / 2, (ys[i] + ys[j]) / 2
-            ax.text(mx * 1.55, my * 1.55, "X conflict:\nmust differ,\nforced equal", color="C3",
-                    ha="center", va="center", fontsize=8, fontweight="bold")
+            ax.text(mx + 0.8, my + 0.3, "X conflict:\nmust differ,\nforced equal", color="C3",
+                    ha="center", va="center", fontsize=9, fontweight="bold")
     for i in range(n):
         fc = "white" if color[i] == 0 else "black"
         ax.scatter([xs[i]], [ys[i]], s=430, c=fc, edgecolors="black", linewidths=1.5, zorder=3)
@@ -89,25 +89,26 @@ def main():
     print("HARD   Rule 110 (nonlinear, degree 3, universal): definite ground, CF=0, no shortcut")
     print(f"ABSENT odd cycle n={n_odd}: CF={cf_o:.3f}  holonomy=NOT? {holonomy_is_NOT(n_odd)}")
 
-    fig, axes = plt.subplots(1, 3, figsize=(16.5, 6.4))
+    # drawn near the placed width (\linewidth ~ 6.2 in) so text prints at ~7 pt (P2 / FP-06)
+    fig, axes = plt.subplots(1, 3, figsize=(8.4, 4.6))
     # EASY
     axes[0].imshow(g90, cmap="binary", interpolation="nearest", aspect="auto")
-    axes[0].set_title("EASY (reducible)\nRule 90:  $s' = L \\oplus R$   (degree 1, affine)", fontsize=10.5)
-    axes[0].set_xlabel("answer sheet EXISTS + closed-form shortcut (row $t = M^{t}s_0$)\n"
-                       "$\\rightarrow$ definite ground, CF $=0$, no phase", fontsize=9)
+    axes[0].set_title("EASY (reducible)\nRule 90: $s' = L \\oplus R$\n(degree 1, affine)", fontsize=10)
+    axes[0].set_xlabel("answer sheet EXISTS,\nclosed-form shortcut\n(row $t = M^{t}s_0$)\n"
+                       "$\\rightarrow$ definite ground,\nCF $=0$, no phase", fontsize=9.5)
     axes[0].set_xticks([]); axes[0].set_yticks([]); axes[0].set_ylabel("time $\\downarrow$")
     # HARD
     axes[1].imshow(g110, cmap="binary", interpolation="nearest", aspect="auto")
-    axes[1].set_title("HARD (irreducible)\nRule 110:  $s' = (C \\vee R) \\oplus (L \\wedge C \\wedge R)$   (degree 3, universal)", fontsize=10.5)
-    axes[1].set_xlabel("answer sheet EXISTS but NO shortcut (must run it, step by step)\n"
-                       "$\\rightarrow$ definite ground, CF $=0$, no phase", fontsize=9)
+    axes[1].set_title("HARD (irreducible)\nRule 110: $s' = (C \\vee R) \\oplus (L \\wedge C \\wedge R)$\n(degree 3, universal)", fontsize=10)
+    axes[1].set_xlabel("answer sheet EXISTS,\nbut NO shortcut\n(must run it, step by step)\n"
+                       "$\\rightarrow$ definite ground,\nCF $=0$, no phase", fontsize=9.5)
     axes[1].set_xticks([]); axes[1].set_yticks([])
     # ABSENT
     draw_cycle(axes[2], n_odd)
-    axes[2].set_title("ABSENT (no ground)\nodd Liar cycle:  no consistent assignment", fontsize=10.5)
-    axes[2].text(0, -1.86, "NO answer sheet (frustrated) $\\rightarrow$ no definite ground,\n"
-                 f"CF $={cf_o:.0f}$, genuine phase (holonomy $=$ NOT forces $i$)",
-                 ha="center", va="top", fontsize=9, color="C3")
+    axes[2].set_title("ABSENT (no ground)\nodd Liar cycle:\nno consistent assignment", fontsize=10)
+    axes[2].text(0, -1.86, "NO answer sheet (frustrated)\n$\\rightarrow$ no definite ground,\n"
+                 f"CF $={cf_o:.0f}$ (bare constraints);\nholonomy $=$ NOT, whose continuous\nrealisation forces $i$",
+                 ha="center", va="top", fontsize=9.5, color="C3")
 
     # (No suptitle: the LaTeX \caption carries the top-level framing in the book; the panel
     #  titles + per-panel captions keep the standalone figure self-explanatory.)

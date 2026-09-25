@@ -289,16 +289,16 @@ def main():
     json.dump(r_all, open(out, "w"), indent=2)
 
     # --- figures -----------------------------------------------------------
-    fig, axes = plt.subplots(1, 2, figsize=(13.5, 5.0))
+    # drawn near its placed width so text prints at ~7 pt; the no-horizon family is a note,
+    # not an empty axis (review FP-06 / F5-27, 2026-09-25)
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.8), gridspec_kw=dict(width_ratios=[1, 2.1]))
     colors_w = {8: "C0", 11: "C1", 14: "C2", 17: "C3"}
     for ax, sw, res, tag in [(axes[0], sweep_nn, res_nn, f"NN (c={C})"),
                               (axes[1], sweep_pl, res_pl, f"alpha=3 (c={C})")]:
         if not sw:
-            ax.text(0.5, 0.5, "(no horizons formed)", ha="center",
-                    va="center", transform=ax.transAxes, fontsize=14)
-            ax.set_title(f"{tag}: NO HORIZONS")
-            ax.set_xlabel("horizon area $A = 2\\pi r_h$")
-            ax.set_ylabel("computational mass $M_c$")
+            ax.axis("off")
+            ax.text(0.5, 0.5, f"{tag}:\nno horizon forms\nat any well depth\ntested", ha="center",
+                    va="center", transform=ax.transAxes, fontsize=9.5)
             continue
         by_w = {}
         for s in sw: by_w.setdefault(s["w"], []).append(s)
@@ -307,16 +307,22 @@ def main():
             ax.plot([s["A"] for s in sl], [s["Mc"] for s in sl], "o-",
                     color=colors_w.get(int(w), "k"), label=f"w={int(w)}", ms=5)
         ax.set_xscale("log"); ax.set_yscale("log")
-        ax.set_xlabel("horizon area $A = 2\\pi r_h$")
-        ax.set_ylabel("computational mass $M_c$")
+        ax.set_xlabel("horizon area $A = 2\\pi r_h$", fontsize=9)
+        ax.set_ylabel("computational mass $M_c$", fontsize=9)
+        ax.tick_params(labelsize=8, which="both")
+        from matplotlib.ticker import ScalarFormatter, NullFormatter, FixedLocator
+        _A = [s["A"] for s in sw]
+        _ticks = [v for v in (60, 80, 100, 125, 150, 200, 250) if min(_A) * 0.95 <= v <= max(_A) * 1.05]
+        ax.xaxis.set_major_locator(FixedLocator(_ticks))
+        ax.xaxis.set_major_formatter(ScalarFormatter()); ax.xaxis.set_minor_formatter(NullFormatter())
         p = res.get("mass_area_p", float("nan"))
         cv = res.get("eta_cv", float("nan"))
         r2 = res.get("clausius_R2", float("nan"))
         ax.set_title(f"{tag}: $M_c \\sim A^{{{p:.2f}}}$\n"
-                     f"$\\eta_c$ CV={cv:.2f}, $R^2$={r2:.2f}")
+                     f"$\\eta_c$ CV={cv:.2f}, $R^2$={r2:.2f}", fontsize=9.5)
         ax.grid(alpha=0.3, which="both"); ax.legend(fontsize=8)
     plt.suptitle("A2 phase 2: does fast scrambling (alpha=3) resurrect Clausius?",
-                 fontsize=11)
+                 fontsize=10)
     plt.tight_layout()
     fig_path = os.path.join(os.path.dirname(__file__) or ".",
                             "fig_A2_phase2_clausius.png")

@@ -209,7 +209,7 @@ def plot_results(lhv_max, ca_chsh, q_chsh, tsirelson, mermin):
                arrowprops=dict(arrowstyle="->", color="#1b9e77"))
     a.scatter([q_chsh], [0.45], s=130, color="#e7298a", marker="D", zorder=5,
               edgecolor="white")
-    a.annotate("perfect-tensor /\nstabilizer (Ch.5)", (q_chsh, 0.45), xytext=(q_chsh + 0.02, 0.27),
+    a.annotate("Bell pair (stabilizer state),\nnon-Pauli settings", (q_chsh, 0.45), xytext=(q_chsh + 0.02, 0.27),
                ha="center", fontsize=8.5, color="#e7298a",
                arrowprops=dict(arrowstyle="->", color="#e7298a"))
     a.set_xlim(1.5, 4.2); a.set_ylim(0, 1.25)

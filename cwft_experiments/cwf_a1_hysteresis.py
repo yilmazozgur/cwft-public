@@ -299,8 +299,17 @@ def run_sweep(out_path="results.json",
               open(raw_full, "w"), indent=2)
 
     # --- figures ---
-    fig, axes = plt.subplots(1, 3, figsize=(15.5, 4.7))
+    plot_results(summary, raw, N, w, L_low, L_high, n_levels_per_leg, seeds, verdict,
+                 slope, ratio, fig_path)
+    print(f"Wrote {out_full}  (key: A1_hysteresis)")
+    print(f"Wrote {raw_full}")
 
+def plot_results(summary, raw, N, w, L_low, L_high, n_levels_per_leg, seeds, verdict,
+                 slope, ratio, fig_path="fig_A1_hysteresis.png"):
+    """Draw fig_A1_hysteresis.png from the run's summary and raw snapshots. Drawn near its
+    placed width so text prints at ~7 pt (review FP-06, 2026-09-25); `--replot` redraws it
+    from a1_hysteresis_raw.json and results.json["A1_hysteresis"] without re-running."""
+    fig, axes = plt.subplots(1, 3, figsize=(7.4, 3.3))
     # (1) loops in (A, M_c) for each ramp speed, seed 0
     ax = axes[0]
     colors = plt.cm.viridis(np.linspace(0.15, 0.85, len(summary)))
@@ -309,48 +318,54 @@ def run_sweep(out_path="results.json",
         up = [s for s in snaps if s["leg"] == "up"]
         dn = [s for s in snaps if s["leg"] == "dn"]
         ax.plot([s["A"] for s in up], [s["Mc"] for s in up],
-                "o-", color=col, ms=3, label=f"spl={spl}  up", alpha=0.85)
+                "o-", color=col, ms=2.5, lw=1.0, label=f"spl={spl} up", alpha=0.85)
         ax.plot([s["A"] for s in dn], [s["Mc"] for s in dn],
-                "s--", color=col, ms=3, label=f"spl={spl}  dn", alpha=0.85)
-    ax.set_xlabel("horizon area $A=2\\pi r_h$")
-    ax.set_ylabel("computational mass $M_c$")
-    ax.set_title("Cycle loops in $(A, M_c)$ -- seed 0")
-    ax.legend(fontsize=7, ncol=2); ax.grid(alpha=0.3)
-
+                "s--", color=col, ms=2.5, lw=1.0, label=f"spl={spl} dn", alpha=0.85)
+    ax.set_xlabel("horizon area $A=2\\pi r_h$", fontsize=8)
+    ax.set_ylabel("computational mass $M_c$", fontsize=8)
+    ax.set_title("cycle loops in $(A, M_c)$, seed 0", fontsize=8.5)
+    ax.tick_params(labelsize=7); ax.grid(alpha=0.3)
+    handles, labels = ax.get_legend_handles_labels()
     # (2) |loop area| vs ramp speed
     ax = axes[1]
     ax.errorbar([a["steps_per_level"] for a in summary],
                 [abs(a["loop_area_AM_mean"]) for a in summary],
                 yerr=[a["loop_area_AM_std"] for a in summary],
-                fmt="o-", color="C3", capsize=4)
+                fmt="o-", color="C3", capsize=3, ms=3)
     ax.set_xscale("log"); ax.set_yscale("log")
-    ax.set_xlabel("steps per level (ramp slowness)")
-    ax.set_ylabel("$|\\oint M_c\\,dA|$  (loop area)")
-    ax.set_title(f"Loop area vs ramp speed\nlog-log slope $={slope:+.2f}$, ratio $={ratio:.2f}$")
-    ax.grid(alpha=0.3, which="both")
-
+    ax.set_xlabel("steps per level (ramp slowness)", fontsize=8)
+    ax.set_ylabel("$|\\oint M_c\\,dA|$  (loop area)", fontsize=8)
+    ax.set_title(f"loop area vs ramp speed\nslope $={slope:+.2f}$ (all ramps), ratio $={ratio:.2f}$", fontsize=8.5)
+    ax.tick_params(labelsize=7, which="both"); ax.grid(alpha=0.3, which="both")
     # (3) Clausius integral vs ramp speed
     ax = axes[2]
     means = [a["clausius_integral_mean"] for a in summary]
     stds = [a["clausius_integral_std"] for a in summary]
     ax.errorbar([a["steps_per_level"] for a in summary], means, yerr=stds,
-                fmt="s-", color="C2", capsize=4)
+                fmt="s-", color="C2", capsize=3, ms=3)
     ax.axhline(0, color="k", lw=0.6, ls=":")
     ax.set_xscale("log")
-    ax.set_xlabel("steps per level (ramp slowness)")
-    ax.set_ylabel("$\\oint dM_c/T_c$  (Clausius integral)")
-    ax.set_title("Entropy-production proxy")
-    ax.grid(alpha=0.3)
-
-    fig.suptitle(f"A1: hysteresis test  ($N$={N}, $w$={w}, $L\\in[{L_low},{L_high}]$, "
-                 f"{n_levels_per_leg} levels/leg, {len(seeds)} seeds) -- {verdict}",
-                 fontsize=10)
-    plt.tight_layout()
+    ax.set_xlabel("steps per level (ramp slowness)", fontsize=8)
+    ax.set_ylabel("$\\oint dM_c/T_c$  (Clausius integral)", fontsize=8)
+    ax.set_title("entropy-production proxy", fontsize=8.5)
+    ax.tick_params(labelsize=7, which="both"); ax.grid(alpha=0.3)
+    fig.legend(handles, labels, loc="lower center", ncol=5, fontsize=7, frameon=False)
+    fig.suptitle(f"A1: hysteresis test ($N$={N}, $w$={w}, $L\\in[{L_low},{L_high}]$, "
+                 f"{n_levels_per_leg} levels/leg, {len(seeds)} seeds)\n{verdict}", fontsize=9)
+    plt.tight_layout(rect=[0, 0.13, 1, 1])
     fig_full = os.path.join(os.path.dirname(__file__) or ".", fig_path)
-    plt.savefig(fig_full, dpi=130, bbox_inches="tight"); plt.close()
+    plt.savefig(fig_full, dpi=150, bbox_inches="tight"); plt.close()
     print(f"\nWrote {fig_full}")
-    print(f"Wrote {out_full}  (key: A1_hysteresis)")
-    print(f"Wrote {raw_full}")
+
+
+def replot_from_record(out_path="results.json", raw_path="a1_hysteresis_raw.json"):
+    here = os.path.dirname(__file__) or "."
+    rec = json.load(open(os.path.join(here, out_path)))["A1_hysteresis"]
+    rw = json.load(open(os.path.join(here, raw_path)))
+    plot_results(rw["summary"], rw["per_seed_per_speed"], rec["grid"], rec["w"],
+                 rec["L_low"], rec["L_high"], rec["n_levels_per_leg"], rec["seeds"],
+                 rec["verdict"], rec["loop_area_loglog_slope"],
+                 rec["loop_area_ratio_slow_over_fast"])
 
 # ------------------------------------------------------------------ main
 
@@ -359,4 +374,7 @@ if __name__ == "__main__":
     pilot = ("--pilot" in sys.argv)
     print("A1 -- computational-horizon hysteresis test"
           f"  ({'PILOT' if pilot else 'FULL'}) {N}x{N}, m={M}")
-    run_sweep(pilot=pilot)
+    if "--replot" in sys.argv:
+        replot_from_record()
+    else:
+        run_sweep(pilot=pilot)

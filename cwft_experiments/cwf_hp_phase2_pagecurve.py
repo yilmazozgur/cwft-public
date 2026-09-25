@@ -104,40 +104,60 @@ def main():
     r_all["A3a_phase2_pagecurves"] = dict(n_seeds=n_seeds, by_substrate=all_results)
     json.dump(r_all, open(out, "w"), indent=2)
 
-    fig, axes = plt.subplots(1, len(substrate_configs),
-                              figsize=(4.0 * len(substrate_configs), 4.5),
-                              sharey=False)
-    if len(substrate_configs) == 1:
-        axes = [axes]
+    plot_results(all_results)
+    print(f"Wrote results.json key: A3a_phase2_pagecurves")
+
+
+def plot_results(all_results):
+    """Draw fig_A3a_phase2_pagecurves.png from the phase-2 record (by_substrate dict).
+    Drawn near its placed width so the text prints at ~7 pt (review FP-06, 2026-09-25);
+    `python3 cwf_hp_phase2_pagecurve.py --replot` redraws it from results.json without
+    re-running the (seeded) Clifford simulations."""
+    names = list(all_results.keys())
+    fig, axs = plt.subplots(2, 3, figsize=(7.4, 5.0))
+    axs = np.ravel(axs)
     cmap = plt.cm.viridis
-    for ax, (sub_name, _, Ns) in zip(axes, substrate_configs):
+    for ax, sub_name in zip(axs, names):
+        recs = all_results[sub_name]
+        Ns = sorted(int(key.split("=")[1]) for key in recs)
         colors = cmap(np.linspace(0.1, 0.85, len(Ns)))
         for N, col in zip(Ns, colors):
-            rec = all_results[sub_name].get(f"N={N}")
+            rec = recs.get(f"N={N}")
             if rec is None: continue
             Ls = np.arange(N + 1)
             S = np.array(rec["S_mean"])
             page = np.minimum(Ls, N - Ls)
-            ax.plot(Ls / N, S / (N / 2), "-", color=col, lw=1.5, label=f"N={N}")
+            ax.plot(Ls / N, S / (N / 2), "-", color=col, lw=1.3, label=f"N={N}")
             ax.plot(Ls / N, page / (N / 2), ":", color=col, lw=0.7, alpha=0.7)
         ax.axhline(1.0, color="k", ls=":", lw=0.5)
         ax.axvline(0.5, color="r", ls="--", lw=0.6, alpha=0.4)
-        ax.set_title(sub_name)
-        ax.set_xlabel("L/N")
-        ax.set_ylabel("S/(N/2)")
+        ax.set_title(sub_name, fontsize=9)
+        ax.set_xlabel("L/N", fontsize=8.5)
+        ax.set_ylabel("S/(N/2)", fontsize=8.5)
+        ax.tick_params(labelsize=7.5)
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1.1)
         ax.grid(alpha=0.3)
-        ax.legend(fontsize=7)
-    fig.suptitle("Phase 2: normalized Page curves -- all 5 substrates", fontsize=11)
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+        ax.legend(fontsize=7, loc="lower center")
+    for ax in axs[len(names):]:
+        ax.axis("off")
+        ax.text(0.02, 0.5, "solid: $S(L)/(N/2)$, seed average\n"
+                           "dotted: Page bound $\\min(L, N-L)$\n"
+                           "dashed red: Page time $L/N = 1/2$",
+                transform=ax.transAxes, fontsize=8.5, va="center")
+    fig.suptitle("Phase 2: normalized Page curves, all five substrates", fontsize=10)
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
     fig_path = os.path.join(os.path.dirname(__file__) or ".",
                              "fig_A3a_phase2_pagecurves.png")
-    plt.savefig(fig_path, dpi=130, bbox_inches="tight")
+    plt.savefig(fig_path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Wrote {fig_path}")
-    print(f"Wrote results.json key: A3a_phase2_pagecurves")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--replot" in sys.argv:
+        _out = os.path.join(os.path.dirname(__file__) or ".", "results.json")
+        plot_results(json.load(open(_out))["A3a_phase2_pagecurves"]["by_substrate"])
+    else:
+        main()

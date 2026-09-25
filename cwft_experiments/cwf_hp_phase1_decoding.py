@@ -163,52 +163,67 @@ def main():
     )
     json.dump(r_all, open(out, "w"), indent=2)
 
-    # plot: one row per substrate, columns are k values
+    plot_results(all_results, ks)
+    print(f"Wrote results.json key: A3a_phase1_hp_decoding")
+
+
+def plot_results(all_results, ks):
+    """Draw fig_A3a_phase1_decoding.png (rows: substrates, columns: k) from the phase-1
+    record. Drawn near its placed width so the text prints at ~7 pt (review FP-06,
+    2026-09-25); `python3 cwf_hp_phase1_decoding.py --replot` redraws it from results.json
+    without re-running the (seeded) Clifford simulations."""
+    substrates = list(all_results.keys())
     fig, axes = plt.subplots(len(substrates), len(ks),
-                              figsize=(5.0 * len(ks), 3.2 * len(substrates)),
+                              figsize=(7.2, 1.75 * len(substrates)),
                               sharex=False, sharey=False)
     if len(substrates) == 1:
         axes = axes[np.newaxis, :]
     cmap = plt.cm.viridis
-    for r, (sub_name, _, _) in enumerate(substrates):
+    for r, sub_name in enumerate(substrates):
         results = all_results.get(sub_name, {})
         for c, k in enumerate(ks):
             ax = axes[r, c]
             recs = sorted([(rec["N_BH"], rec) for key, rec in results.items()
-                            if rec["k"] == k])
+                            if rec["k"] == k], key=lambda x: x[0])
             colors = cmap(np.linspace(0.1, 0.85, max(len(recs), 1)))
             for (NB, rec), col in zip(recs, colors):
                 xs = np.array(rec["n_revealed"])
                 Im = np.array(rec["I_mean"])
                 Is = np.array(rec["I_std"])
                 xs_norm = xs / rec["N"]
-                ax.plot(xs_norm, Im / (2 * k), "-", color=col, lw=1.3,
+                ax.plot(xs_norm, Im / (2 * k), "-", color=col, lw=1.1,
                         label=f"$N_{{BH}}={NB}$")
                 ax.fill_between(xs_norm, (Im - Is) / (2 * k), (Im + Is) / (2 * k),
                                 color=col, alpha=0.12)
             ax.axhline(1.0, color="k", ls=":", lw=0.6, alpha=0.6)
             ax.axvline(0.5, color="r", ls="--", lw=0.6, alpha=0.4)
+            ax.tick_params(labelsize=7)
             if r == 0:
-                ax.set_title(f"k={k}")
+                ax.set_title(f"k={k}", fontsize=9)
             if c == 0:
-                ax.set_ylabel(f"{sub_name}\n$I(R,L)/2k$", fontsize=9)
+                ax.set_ylabel(f"{sub_name}\n$I(R,L)/2k$", fontsize=8)
             if r == len(substrates) - 1:
-                ax.set_xlabel("$|L|/N$  (fraction revealed)")
+                ax.set_xlabel("$|L|/N$  (fraction revealed)", fontsize=8)
             ax.set_ylim(-0.1, 1.15)
             ax.set_xlim(0, 1)
             ax.grid(alpha=0.3)
             if r == 0 and c == 0:
-                ax.legend(fontsize=6, loc="upper left", ncol=2)
-    fig.suptitle("Phase 1: Hayden-Preskill recovery -- normalized $I(R, L)/2k$ vs revealed fraction",
-                 fontsize=11)
-    plt.tight_layout(rect=[0, 0, 1, 0.97])
+                ax.legend(fontsize=6.5, loc="upper left", ncol=1)
+    fig.suptitle("Phase 1: Hayden-Preskill recovery, $I(R, L)/2k$ vs revealed fraction",
+                 fontsize=9.5)
+    plt.tight_layout(rect=[0, 0, 1, 0.975])
     fig_path = os.path.join(os.path.dirname(__file__) or ".",
                              "fig_A3a_phase1_decoding.png")
-    plt.savefig(fig_path, dpi=130, bbox_inches="tight")
+    plt.savefig(fig_path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"Wrote {fig_path}")
-    print(f"Wrote results.json key: A3a_phase1_hp_decoding")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--replot" in sys.argv:
+        _out = os.path.join(os.path.dirname(__file__) or ".", "results.json")
+        _rec = json.load(open(_out))["A3a_phase1_hp_decoding"]
+        plot_results(_rec["by_substrate"], _rec["ks"])
+    else:
+        main()

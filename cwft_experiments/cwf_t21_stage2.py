@@ -238,7 +238,7 @@ def plot_stage2(alphas, nl, loc):
     b = ax[1]
     b.plot(al, [r["M2_boundary"] for r in nl], "o-", color="C0", label="M2 boundary non-local")
     b.plot(al, [r["M2_boundary"] for r in loc], "s--", color="C4", label="M2 boundary local")
-    b.set_xlabel(r"$\alpha$"); b.set_ylabel(r"$M_2$ boundary (phase)")
+    b.set_xlabel(r"$\alpha$"); b.set_ylabel(r"$M_2$ boundary (magic)")
     b.set_title("(b) phase: BOTH modes raise\nboundary non-stabilizerness")
     b.legend(fontsize=8); b.grid(alpha=0.3)
     c = ax[2]
@@ -246,7 +246,7 @@ def plot_stage2(alphas, nl, loc):
            label="non-local (gravity vs phase)")
     c.plot([r["M2_boundary"] for r in loc], [r["VarK"] for r in loc], "s--", color="C1",
            label="local (phase only)")
-    c.set_xlabel(r"$M_2$ boundary (phase)"); c.set_ylabel(r"Var$(K)$ (gravity)")
+    c.set_xlabel(r"$M_2$ boundary (magic)"); c.set_ylabel(r"Var$(K)$ (gravity)")
     c.set_title("(c) gravity vs phase:\nco-onset (non-local) vs decouple (local)")
     c.legend(fontsize=8); c.grid(alpha=0.3)
     fig.suptitle("T2.1 Stage 2: gravity ^ phase on a genuine 2-bond RT surface", fontsize=12)

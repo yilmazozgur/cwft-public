@@ -245,23 +245,24 @@ def plot(t_noY, real_bound, t_complex, target):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(8.2, 4.6))
-    bars = ["no $i$ (real obs.\nonly, control)", "REAL QM bound\n(Renou SDP)",
-            "Renou strategy w/\nself-ref $i$ (sr1)"]
-    vals = [t_noY, real_bound, t_complex]
-    cols = ["C7", "C0", "C3"]
+    bars = ["$\\sigma_Y$ terms dropped\n(control; not the\nreal-QM optimum)",
+            "Renou strategy,\n$i$ read as sr1 (bridge)"]
+    vals = [t_noY, t_complex]
+    cols = ["C7", "C3"]
     ax.bar(bars, vals, color=cols)
     ax.axhline(real_bound, color="C0", ls="--", lw=1.2)
+    ax.text(-0.45, real_bound + 0.12, "real-QM bound 7.66 (Renou SDP, cited)", color="C0", fontsize=9)
     ax.axhline(target, color="C3", ls=":", lw=1.0)
     for i, v in enumerate(vals):
         ax.text(i, v + 0.06, f"{v:.3f}", ha="center", fontsize=9)
-    ax.annotate("", xy=(2, t_complex), xytext=(2, real_bound),
+    ax.annotate("", xy=(1, t_complex), xytext=(1, real_bound),
                 arrowprops=dict(arrowstyle="<->", color="k"))
-    ax.text(2.18, (t_complex + real_bound) / 2, "doubling-proof\nseparation",
+    ax.text(1.12, (t_complex + real_bound) / 2, "doubling-proof\nseparation",
             fontsize=8, va="center")
     ax.set_ylabel(r"Renou bilocal functional $T$")
     ax.set_ylim(0, 9.3)
     ax.set_title("Renou's exact separating strategy, realized with the self-referential $i$:\n"
-                 r"$T=6\sqrt{2}\approx8.49 > 7.66$ (real QM); the $\sigma_Y$ resource is the sr1 holonomy")
+                 r"$T=6\sqrt{2}\approx8.49 > 7.66$ (real QM); its $i$ is identified with the sr1 structure (bridge)")
     ax.grid(alpha=0.3, axis="y")
     fig.tight_layout()
     pth = os.path.join(HERE, "fig_SR7_renou_realize.png")
