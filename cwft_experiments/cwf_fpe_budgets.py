@@ -51,8 +51,10 @@ RESULTS (measured, this run; 16 trials/k, median over 5 seeds):
     (cell wider than R) capacity is 0-1 and untestable.
   - Large sigma: statistical plateau -- N=512: 47.3 (0.092 N), N=1024: 78.3
     (0.076 N) over the non-exhausted points; part 3's 0.07 N band, with a mild
-    decline in sigma consistent with the N/(2 ln n_lib) log-dependence as the
-    library grows.  Per-seed scatter on the plateau remains large (quenched
+    decline in sigma.  (Not the N/(2 ln n_lib) law: that concerns a library-wide
+    maximum, while the per-candidate FP < 1% criterion here predicts
+    k/N < 1/(2 z_0.99^2) ~ 0.09 independent of n_lib; the decline is
+    unexplained.)  Per-seed scatter on the plateau remains large (quenched
     codebook effect, e.g. 29-92 at one point); the median is the estimator.
   - The kink: measured sigma* = 3.78 (N=512) and 6.26 (N=1024) vs the protocol
     prediction 2 hbar_c k_plateau / (packing R) = 3.55 / 6.17 -- within 7%,

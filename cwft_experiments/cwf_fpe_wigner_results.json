@@ -170,7 +170,9 @@
     "mixture": 0.055349224798324305,
     "floor": 0.05532278587440373,
     "frac_removed": 0.9998376145395431,
-    "killed": true
+    "killed": true,
+    "matched_incoherent": 0.0512798171664163,
+    "frac_removed_matched": 0.9756116701384463
   },
   "part3_bundle_size": [
     {

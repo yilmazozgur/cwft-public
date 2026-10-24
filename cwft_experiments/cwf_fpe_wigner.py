@@ -215,8 +215,18 @@ if __name__ == "__main__":
     print(f"    -> decoherence removes {removed*100:.0f}% of the genuine negativity"
           f" ({'KILLS it -> ' if killed else ''}witnesses COHERENT (l2) superposition,")
     print(f"       not an l1 classical mixture).")
+    # matched incoherent reference for THIS run (added 2026-10 after external review):
+    # the same two atoms summed incoherently, W1 + W2 -- the reference the manuscript's
+    # removal statistics use (the single-value floor above is kept for continuity)
+    neg_inc = negativity(wigner_ville(bundle_profile([centers[0]], theta, xs))
+                         + wigner_ville(bundle_profile([centers[1]], theta, xs)))
+    removed_matched = (neg_coh - neg_mix) / (neg_coh - neg_inc + 1e-12)
+    print(f"    matched incoherent pair:  negativity = {neg_inc:.4f}  -> phase averaging "
+          f"removes {removed_matched*100:.1f}% of the excess over it")
     out["part2_decoherence"] = {"coherent": neg_coh, "mixture": neg_mix, "floor": base,
-                                "frac_removed": removed, "killed": killed}
+                                "frac_removed": removed, "killed": killed,
+                                "matched_incoherent": neg_inc,
+                                "frac_removed_matched": removed_matched}
 
     # ---- Part 3: negativity vs bundle size k ----
     print(f"\n[3] negativity vs bundle size k (well-separated values):")

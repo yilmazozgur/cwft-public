@@ -8,10 +8,10 @@ operation on the hypervector), never accuracy.
 
 This script measures the classical routes THAT SEE THE RAW VALUES:
 
-  1-D chords (task of cwf_fpe_invariant.py, same types via the same seed):
+  1-D chords (task of cwf_fpe_invariant.py, the SAME six types -- see below):
      canonicalize = sort the m notes, subtract the lowest -> nearest interval
      template in L2.  O(m log m) per item on the raw values.
-  m-D constellations (task family of cwf_fpe_invariant_md.py, generic instance):
+  m-D constellations (task of cwf_fpe_invariant_md.py, the SAME class library):
      canonicalize = subtract the centroid, take the SORTED pairwise-distance
      multiset -> nearest template.  O(m^2) per item, translation- (and
      rotation-) invariant.
@@ -29,8 +29,15 @@ import time
 
 import numpy as np
 
-RNG = np.random.default_rng(0)     # same seed => same 6 chord types as
-K, m = 6, 4                        # cwf_fpe_invariant.py (types drawn first)
+import cwf_fpe_invariant_md as md   # m-D class generator (main is guarded)
+
+# Same seed AND the same draw order as cwf_fpe_invariant.py, which draws its
+# N=2000, sigma=4 codebook from this generator before the chord types.  (Fixed
+# 2026-10 after external review: the original skipped that draw and so tested a
+# different class library from the bundle experiment.)
+RNG = np.random.default_rng(0)
+RNG.normal(0, 4.0, 2000)           # the codebook draw of cwf_fpe_invariant.py
+K, m = 6, 4
 types = []
 for _ in range(K):
     iv = np.sort(RNG.choice(np.arange(1, 13), size=m - 1, replace=False))
@@ -77,7 +84,8 @@ def main():
     rows_md = []
     for mdim in [1, 2, 3, 4]:
         rng = np.random.default_rng(50 + mdim)
-        classes = [rng.uniform(0, 8, size=(4, mdim)) for _ in range(K)]
+        # the class library of cwf_fpe_invariant_md.py (shapes from default_rng(7))
+        classes, _ = md.make_classes(mdim, np.random.default_rng(7))
 
         def feat(pts):
             d = np.linalg.norm(pts[:, None, :] - pts[None, :, :], axis=-1)

@@ -17,10 +17,13 @@ EXACT construction (their Appendix E):
   * S^b_xz = <A_x (x) Pi_b (x) C_z>;  T_b(P) = (eq. E3, sign combination);  T = sum_b T_b.
   * Complex max T = 6 sqrt2; real max T <= 7.66.
 
-THE POINT (closing the sr6 gap, conditionally). The single complex resource the
-strategy requires is Alice's sigma_Y measurement -- and that i is EXACTLY the i that
-self-reference forces under the linear+faithful (wave) demand (cwf_sr1: sqrt(NOT) has
-eigenvalue i; Stone's theorem). The two independent maximally-entangled sources are
+THE POINT (closing the sr6 gap, conditionally). The complex resource the strategy
+requires is sigma_Y: Alice's third setting and the sigma_Y components of four of
+Charlie's six settings (D_zy, E_zy, D_xy, E_xy). On the CWF identification (status B),
+that i is the i that self-reference forces under the linear+faithful (wave) demand
+(cwf_sr1: sqrt(NOT) has eigenvalue i; Stone's theorem). (Corrected 2026-10-21: an
+earlier version of this docstring and of the verdict said Alice's sigma_Y was the only
+complex ingredient; the control below removes sigma_Y from BOTH parties.) The two independent maximally-entangled sources are
 producible by self-reference loops held unitary (cwf_sr5). So self-reference supplies
 the genuine-complexity ingredient of a DOUBLING-PROOF, network separation:
   - WE compute T and VALIDATE it equals the paper's 6 sqrt2 (the implementation check).
@@ -28,7 +31,8 @@ the genuine-complexity ingredient of a DOUBLING-PROOF, network separation:
     holonomy, and the sources are self-reference-compatible.
   - The REAL bound 7.66 is Renou et al.'s published SDP theorem; we CITE it, we do
     NOT re-derive it. 8.49 > 7.66 => genuinely complex STATISTICS, realized.
-  - CONTROL: drop sigma_Y (use only the real observables sigma_Z, sigma_X) -- T falls
+  - CONTROL: drop sigma_Y from both parties (Alice's third setting and Charlie's
+    Y components; use only the real observables sigma_Z, sigma_X) -- T falls
     well below 8.49, exhibiting that the i is the essential resource (a sanity check;
     the rigorous real bound is theirs).
 
@@ -197,8 +201,9 @@ def main():
         "independent maximally-entangled sources are realized by self-reference loops "
         f"held unitary (sr5): with a loop phase on a source, T is unchanged at {abs(T_selfref):.4f} "
         "(the phase is local-unitary removable), so self-reference loops are valid "
-        "independent sources. (3) The ONLY complex ingredient the strategy needs is "
-        "Alice's sigma_Y measurement; removing it collapses T to "
+        "independent sources. (3) The complex ingredient the strategy needs is sigma_Y, "
+        "in Alice's third setting and in four of Charlie's six settings; removing the sigma_Y "
+        "terms from both parties collapses T to "
         f"{abs(T_noY):.3f} (< real bound). And that i is EXACTLY the i self-reference "
         "forces under the linear+faithful wave demand (sr1: sqrt(NOT) eigenvalue i; "
         "Stone's theorem). (4) Renou's published SDP theorem bounds REAL quantum theory "
@@ -228,9 +233,10 @@ def main():
               "strategy. Implementation validated: T=6sqrt2~8.485 for sources |phi+>, "
               "Alice {Z,X,Y}, Charlie {(sigma_i+-sigma_j)/sqrt2}, Bob Bell measurement, "
               "T_b per their eq. E3. Self-referential phased sources (sr5) give the same T "
-              "(phase local-unitary removable) -> valid independent sources. The sole "
-              "complex resource is Alice's sigma_Y, whose i is the self-reference holonomy "
-              "(sr1, sqrt(NOT) eigenvalue i / Stone's theorem); removing Y collapses T below "
+              "(phase local-unitary removable) -> valid independent sources. The complex "
+              "resource is sigma_Y (Alice's third setting and four of Charlie's six "
+              "settings), whose i is identified (B) with the self-reference holonomy "
+              "(sr1, sqrt(NOT) eigenvalue i / Stone's theorem); removing Y from both parties collapses T below "
               "the real bound. Renou's published SDP bounds real QM at T<=7.66 (CITED, not "
               "re-derived); 8.485 > 7.66 => doubling-proof genuinely-complex statistics, "
               "realized with the self-referential i. Closes the sr6 'genuinely complex "

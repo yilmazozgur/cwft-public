@@ -54,11 +54,15 @@ COSM = np.cos(np.outer(DS, THETA))           # precomputed readout matrix (fair
                                              # precomputed)
 
 
-def fingerprint(values, phases=None):
-    """autocorrelation = interval histogram (translation-invariant)."""
-    P = np.abs(bundle(values, phases)) ** 2
+def fingerprint_b(b):
+    """autocorrelation = interval histogram (translation-invariant), from a bundle."""
+    P = np.abs(b) ** 2
     fp = (COSM @ P) / N
     return fp / (np.linalg.norm(fp) + 1e-12)
+
+
+def fingerprint(values, phases=None):
+    return fingerprint_b(bundle(values, phases))
 
 
 def decohered_fingerprint(values, ntrials=15):
@@ -107,16 +111,22 @@ if __name__ == "__main__":
     # kernel energy), which inflates between-class cosines (max off-diagonal
     # template sim 0.93 plain vs 0.82 centered, mean 0.72 vs 0.42) -- centering
     # is the plain variant with the larger margin, so it is the one reported.
-    def rawspec(values):
-        P = np.abs(bundle(values)) ** 2
+    def rawspec_b(b):
+        P = np.abs(b) ** 2
         P = P - P.mean()
         return P / (np.linalg.norm(P) + 1e-12)
 
+    def rawspec(values):
+        return rawspec_b(bundle(values))
+
     rs_templ = [rawspec(iv) for iv in types]
 
-    def classify_rawspec(values):            # nearest template raw spectrum
-        rs = rawspec(values)
+    def classify_rawspec_b(b):               # nearest template raw spectrum
+        rs = rawspec_b(b)
         return int(np.argmax([rs @ rt for rt in rs_templ]))
+
+    def classify_rawspec(values):
+        return classify_rawspec_b(bundle(values))
 
     # decode-then-compare-intervals: the honest classical route (also invariant).
     # Peak-pick m values from the similarity profile, take offsets from the
@@ -126,7 +136,10 @@ if __name__ == "__main__":
     iv_templ = [np.sort(t) - np.min(t) for t in types]
 
     def classify_decode(values):
-        sim = np.real(dec_book @ bundle(values)) / N
+        return classify_decode_b(bundle(values))
+
+    def classify_decode_b(b):
+        sim = np.real(dec_book @ b) / N
         peaks = []
         s = sim.copy()
         for _ in range(m):
@@ -143,14 +156,28 @@ if __name__ == "__main__":
     # Costs one peak-pick instead of m -- so if this also succeeds, the
     # fingerprint's advantage is "no per-item recovery at all", not "fewer peaks".
     # The reference must be CANONICAL or the alignment is to a random chord member,
-    # so we take the LOWEST note above a threshold rather than the global argmax
-    # (still a single left-to-right pass over the same profile; this is the
-    # baseline's best case, not a strawman).
+    # so we take the LOWEST note: the first above-threshold region of the profile,
+    # climbed to its local maximum and refined to sub-grid precision by a
+    # three-point parabola.  (Fixed 2026-10 after external review: the original
+    # took the first grid point above threshold -- a point on that note's rising
+    # flank, not its peak -- and so unbound at a biased reference.)
     def classify_refunbind(values, thr=0.45):
-        b = bundle(values)
+        return classify_refunbind_b(bundle(values), thr)
+
+    def classify_refunbind_b(b, thr=0.45):
         sim = np.real(dec_book @ b) / N
         above = np.where(sim > thr * sim.max())[0]
-        x_ref = dec_grid[above[0]] if len(above) else dec_grid[int(np.argmax(sim))]
+        if len(above):
+            i = int(above[0])
+            while i + 1 < len(sim) and sim[i + 1] >= sim[i]:
+                i += 1                                   # climb to the local peak
+            d = 0.0
+            if 0 < i < len(sim) - 1:
+                den = sim[i - 1] - 2 * sim[i] + sim[i + 1]
+                d = 0.5 * (sim[i - 1] - sim[i + 1]) / den if den < 0 else 0.0
+            x_ref = dec_grid[i] + d * (dec_grid[1] - dec_grid[0])
+        else:
+            x_ref = dec_grid[int(np.argmax(sim))]
         b_shift = b * np.exp(-1j * x_ref * THETA)      # unbind: translate to 0
         b_shift = b_shift / (np.linalg.norm(b_shift) + 1e-12)
         return int(np.argmax([np.real(np.vdot(bt, b_shift)) for bt in bd_templ]))
@@ -179,25 +206,34 @@ if __name__ == "__main__":
         print(f"  {R:>14} | {acc_c:>11.2f} | {acc_n:>12.2f} | {acc_d:>12.2f} | "
               f"decode {acc_dec:.2f} | ref-unbind {acc_ru:.2f} | raw-spec {acc_rs:.2f}")
 
-    # cost of the two invariant routes (per classification, same machine)
+    # cost per classification, QUERY ONLY (revised 2026-10 after external review):
+    # the test bundle is built once outside the timed loop -- the post-discard regime,
+    # and the same boundary as cwf_fpe_invariant_md.py -- and BLAS is limited to one
+    # thread, because multithreaded small products made per-item times swing several-
+    # fold with machine load.  20 warm-up calls; median over 5 blocks of 300 calls.
     import time as _time
-    vals = types[0] + 10.0
-    t0 = _time.perf_counter()
-    for _ in range(300):
-        classify_fp(fingerprint(vals))
-    t_fp = (_time.perf_counter() - t0) / 300
-    t0 = _time.perf_counter()
-    for _ in range(300):
-        classify_decode(vals)
-    t_dec = (_time.perf_counter() - t0) / 300
-    t0 = _time.perf_counter()
-    for _ in range(300):
-        classify_refunbind(vals)
-    t_ru = (_time.perf_counter() - t0) / 300
-    t0 = _time.perf_counter()
-    for _ in range(300):
-        classify_rawspec(vals)
-    t_rs = (_time.perf_counter() - t0) / 300
+    from threadpoolctl import threadpool_limits
+    b_test = bundle(types[0] + 10.0)
+    routes = dict(fingerprint=lambda b: classify_fp(fingerprint_b(b)),
+                  decode=classify_decode_b, refunbind=classify_refunbind_b,
+                  rawspec=classify_rawspec_b)
+    blocks = {}
+    with threadpool_limits(limits=1):
+        for name, fn in routes.items():
+            for _ in range(20):
+                fn(b_test)
+            per = []
+            for _ in range(5):
+                t0 = _time.perf_counter()
+                for _ in range(300):
+                    fn(b_test)
+                per.append((_time.perf_counter() - t0) / 300)
+            blocks[name] = per
+    t_fp, t_dec, t_ru, t_rs = (float(np.median(blocks[k])) for k in
+                               ("fingerprint", "decode", "refunbind", "rawspec"))
+    out["route_cost_blocks_ms"] = {k: [v * 1e3 for v in vv] for k, vv in blocks.items()}
+    out["timing_protocol"] = ("query only (test bundle prebuilt), single-threaded BLAS, "
+                              "20 warm-up calls, median of 5 blocks x 300 calls")
     out["route_cost_ms"] = dict(fingerprint=t_fp * 1e3, decode=t_dec * 1e3,
                                 refunbind=t_ru * 1e3, rawspec=t_rs * 1e3)
     print(f"\n  route cost per classification: fingerprint {t_fp*1e3:.2f} ms | "

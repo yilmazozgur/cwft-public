@@ -112,6 +112,7 @@ first docstring (or comment) line. Library modules (imported, not run): `cwf_sub
 | `cwf_primon_records.py` | cwf_primon_records.py  --  Classical records from the Bost-Connes SSB. (Option B.) |
 | `cwf_psi_l2_vs_l1.py` | cwf_psi_l2_vs_l1.py  --  The l2-vs-l1 horse-race. |
 | `cwf_psi_scaleup.py` | cwf_psi_scaleup.py  --  Scale-up of the l2-compression result. |
+| `cwf_psi_unifilar.py` | cwf_psi_unifilar.py  --  The compression clause, re-estimated with a unifilar |
 | `cwf_r5_phase1.py` | [R5 STATUS -- RETIRED 2026-06-05, KEPT as a record.] The R5 "learnable substrate for the |
 | `cwf_r5_phase2.py` | [R5 STATUS -- RETIRED 2026-06-05, kept as a dated record.] Executed and correct, but low added |
 | `cwf_r5_phase3a.py` | [R5 STATUS -- RETIRED 2026-06-05, kept as a dated record.] Executed and clean, but its |
@@ -148,6 +149,7 @@ first docstring (or comment) line. Library modules (imported, not run): `cwf_sub
 | `cwf_substrate_nonclassicality.py` | cwf_substrate_nonclassicality.py  --  A uniform, substrate-intrinsic |
 | `cwf_t11_ca_entropy.py` | T1.1 Phase 2 (cont.) -- a FAITHFUL symbolic entropy estimator for cellular automata. |
 | `cwf_t11_ca_faithful.py` | T1.1 Phase 2 (cont.) -- re-test the trade-off law and the a_c <= F(N*,D) bound on the CA |
+| `cwf_t11_matched.py` | cwf_t11_matched.py  --  the within-automata trade-off law on a matched protocol. |
 | `cwf_t11_reservoir.py` | T1.1 Phase 1b -- a continuous-state RANDOMLY-COUPLED RECURRENT LATTICE (RCL). |
 | `cwf_t11_scale.py` | T1.1 -- the trade-off law at scale (FUTURE_WORK Tier 1, item 1). |
 | `cwf_t11_theorem_check.py` | T1.1 Phase 2 -- empirical check of the candidate trade-off bound |
@@ -165,3 +167,4 @@ first docstring (or comment) line. Library modules (imported, not run): `cwf_sub
 | `cwf_tp_stage0.py` | Triple-Point Stage 0 -- the make-or-break feasibility test for the temporal |
 | `cwf_tsp_sat.py` | cwf_tsp_sat.py -- CWFT reads NP-hard combinatorial optimization. |
 | `test_identities.py` | UNIT TESTS FOR THE IDENTITIES THE MANUSCRIPT RESTS ON. |
+| `test_psi_unifilar.py` | UNIT TESTS FOR THE COMPRESSION PIPELINE (cwf_psi_unifilar.py, version 2.6). |

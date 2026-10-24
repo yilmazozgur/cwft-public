@@ -44,7 +44,7 @@
       "naive": 1.0,
       "decohered": 0.2,
       "decode": 1.0,
-      "refunbind": 0.97,
+      "refunbind": 1.0,
       "rawspec": 1.0
     },
     {
@@ -53,7 +53,7 @@
       "naive": 0.51,
       "decohered": 0.12,
       "decode": 1.0,
-      "refunbind": 0.99,
+      "refunbind": 1.0,
       "rawspec": 1.0
     },
     {
@@ -62,7 +62,7 @@
       "naive": 0.22,
       "decohered": 0.16,
       "decode": 1.0,
-      "refunbind": 0.98,
+      "refunbind": 1.0,
       "rawspec": 1.0
     },
     {
@@ -71,7 +71,7 @@
       "naive": 0.22,
       "decohered": 0.2,
       "decode": 1.0,
-      "refunbind": 0.99,
+      "refunbind": 1.0,
       "rawspec": 1.0
     },
     {
@@ -80,15 +80,46 @@
       "naive": 0.14,
       "decohered": 0.19,
       "decode": 1.0,
-      "refunbind": 0.99,
+      "refunbind": 1.0,
       "rawspec": 1.0
     }
   ],
+  "route_cost_blocks_ms": {
+    "fingerprint": [
+      0.07278898333121712,
+      0.0734156766642021,
+      0.07359596999473676,
+      0.07103333999718112,
+      0.06904051000068041
+    ],
+    "decode": [
+      1.655998023331146,
+      1.6875665166662657,
+      1.5929682533351297,
+      1.6037649333338777,
+      1.625715396664115
+    ],
+    "refunbind": [
+      1.7039634066653284,
+      1.6721828066692979,
+      1.686574403332391,
+      1.6735488799956026,
+      1.6661882866659046
+    ],
+    "rawspec": [
+      0.012407446671810854,
+      0.012436743333334258,
+      0.01229971666665127,
+      0.012346873336355202,
+      0.012363519999780692
+    ]
+  },
+  "timing_protocol": "query only (test bundle prebuilt), single-threaded BLAS, 20 warm-up calls, median of 5 blocks x 300 calls",
   "route_cost_ms": {
-    "fingerprint": 0.27489128999150125,
-    "decode": 0.5499858733310248,
-    "refunbind": 0.5288229233337916,
-    "rawspec": 0.22301099665734606
+    "fingerprint": 0.07278898333121712,
+    "decode": 1.625715396664115,
+    "refunbind": 1.6735488799956026,
+    "rawspec": 0.012363519999780692
   },
   "noise": [
     {
@@ -143,6 +174,6 @@
   "rawspec": {
     "variant": "cosine similarity on mean-centered raw |b|^2 N-vectors; templates = root-0 class bundles (fingerprint protocol)",
     "overall_acc": 1.0,
-    "cost_ms": 0.22301099665734606
+    "cost_ms": 0.012363519999780692
   }
 }

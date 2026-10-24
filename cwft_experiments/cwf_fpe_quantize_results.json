@@ -21,49 +21,77 @@
       "excess_mean": -0.003261687396650191,
       "excess_std": 0.004176591570792523,
       "peak_ratio": 3.402234912912796,
-      "period_found": 0.9
+      "period_found": 0.9,
+      "matched_excess_mean": 0.07225583285513296,
+      "matched_excess_std": 0.002254116590004974,
+      "matched_excess_min": 0.067273305417766,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 3,
       "excess_mean": 0.17578808653481523,
       "excess_std": 0.012971948222418987,
       "peak_ratio": 2.9358667584283547,
-      "period_found": 0.975
+      "period_found": 0.975,
+      "matched_excess_mean": 0.08664704981500564,
+      "matched_excess_std": 0.004318729438085847,
+      "matched_excess_min": 0.07798045324123828,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 4,
       "excess_mean": 0.191483473480476,
       "excess_std": 0.011709267202398978,
       "peak_ratio": 3.59511606635118,
-      "period_found": 0.925
+      "period_found": 0.925,
+      "matched_excess_mean": 0.10934089666425192,
+      "matched_excess_std": 0.003736628541986881,
+      "matched_excess_min": 0.10135903910170418,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 8,
       "excess_mean": 0.14355187394674215,
       "excess_std": 0.012664313517641369,
       "peak_ratio": 4.376307737687261,
-      "period_found": 0.975
+      "period_found": 0.975,
+      "matched_excess_mean": 0.16592800435416905,
+      "matched_excess_std": 0.007270585544996436,
+      "matched_excess_min": 0.14725931885868693,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 16,
       "excess_mean": 0.1438761851657212,
       "excess_std": 0.012617167105230491,
       "peak_ratio": 5.019861481434114,
-      "period_found": 0.975
+      "period_found": 0.975,
+      "matched_excess_mean": 0.1662144178056635,
+      "matched_excess_std": 0.007697946353415145,
+      "matched_excess_min": 0.1465100566042942,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 64,
       "excess_mean": 0.14416799793353052,
       "excess_std": 0.012770966649049824,
       "peak_ratio": 5.277426361639689,
-      "period_found": 0.975
+      "period_found": 0.975,
+      "matched_excess_mean": 0.1664843000078858,
+      "matched_excess_std": 0.00778739710215772,
+      "matched_excess_min": 0.14610572486111473,
+      "matched_excess_positive": 1.0
     },
     {
       "q": 0,
       "excess_mean": 0.1441664093919605,
       "excess_std": 0.012784791805779424,
       "peak_ratio": 5.318894905748304,
-      "period_found": 0.975
+      "period_found": 0.975,
+      "matched_excess_mean": 0.16649261463399823,
+      "matched_excess_std": 0.007768516936683723,
+      "matched_excess_min": 0.14619789751105797,
+      "matched_excess_positive": 1.0
     }
   ]
 }

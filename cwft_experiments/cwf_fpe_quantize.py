@@ -6,13 +6,22 @@ FHRR stores continuous phases; bipolar/binary VSAs and hardware phasor
 implementations quantize them.  Sweep q = phase levels (component phases snapped to
 the nearest multiple of 2pi/q; q=2 is the bipolar limit) and measure, vs q:
 
-  (a) the genuine (excess-above-floor) Wigner negativity of a two-value bundle
-      (the coherence order parameter of the manuscript's sec. 5);
+  (a) the excess Wigner negativity of a two-value bundle (the coherence witness of
+      the manuscript's Wigner section), against TWO references:
+        - excess_mean / excess_std: over a single quantized atom at x=5 (the
+          original reference).  This is NOT the incoherent version of the pair:
+          a single quantized atom is itself non-Gaussian and carries its own,
+          position-dependent negativity, so at q=2 this reference swallows the
+          excess (-0.003) and at q=3,4 it overshoots the continuous value.
+        - matched_excess_*: over the matched incoherent pair W[psi_2]+W[psi_8]
+          (same codebook, atoms, decoder, grid and q) -- the phase-averaged limit
+          of the same two atoms, and the reference the manuscript uses.
+        (added 2026-10 after external review; single-atom numbers unchanged)
   (b) the period-finding peak ratio (coherent peak at the planted lag / decohered
       value there) of sec. 6.
 
 This turns the witness into a design tool: how many phase levels does a pipeline
-need before the interference-borne capabilities are FHRR-grade?  4 codebook seeds
+need before the interference-borne capabilities are FHRR-grade?  40 codebook seeds
 per point.  Writes cwf_fpe_quantize_results.json.
 """
 import json
@@ -66,6 +75,10 @@ def one_seed(seed, q):
     floor = negativity(wigner_ville(dec(atom(5.0))))
     coh = negativity(wigner_ville(dec(atom(CENTERS[0]) + atom(CENTERS[1]))))
     excess = coh - floor
+    # matched incoherent reference: the SAME two quantized atoms, summed incoherently
+    matched = negativity(wigner_ville(dec(atom(CENTERS[0])))
+                         + wigner_ville(dec(atom(CENTERS[1]))))
+    excess_matched = coh - matched
     # (b) period-finding peak ratio with atom phases quantized BEFORE bundling
     # (the hardware-relevant scheme: each stored atom carries q-level phases;
     # the bundle's component magnitudes |b_k| -- which carry the relational
@@ -82,7 +95,7 @@ def one_seed(seed, q):
     peak = float(score[i0 - 12:i0 + 13].max())
     bg = float(np.median(np.abs(score)))
     found = bool(abs(PF_DS[np.argmax(score)] - PF_DELTA) < 0.3)
-    return excess, peak / (bg + 1e-9), found
+    return excess, peak / (bg + 1e-9), found, excess_matched
 
 
 def main():
@@ -96,10 +109,16 @@ def main():
         row = dict(q=q, excess_mean=float(res[:, 0].mean()),
                    excess_std=float(res[:, 0].std()),
                    peak_ratio=float(res[:, 1].mean()),
-                   period_found=float(res[:, 2].mean()))
+                   period_found=float(res[:, 2].mean()),
+                   matched_excess_mean=float(res[:, 3].mean()),
+                   matched_excess_std=float(res[:, 3].std()),
+                   matched_excess_min=float(res[:, 3].min()),
+                   matched_excess_positive=float((res[:, 3] > 0).mean()))
         out["rows"].append(row)
         print(f"  q={q if q else 'cont':>4}: Wigner excess = "
-              f"{row['excess_mean']:+.3f} +/- {row['excess_std']:.3f}   "
+              f"{row['excess_mean']:+.3f} +/- {row['excess_std']:.3f}  "
+              f"(matched pair: {row['matched_excess_mean']:+.3f} +/- "
+              f"{row['matched_excess_std']:.3f}, min {row['matched_excess_min']:+.3f})  "
               f"period peak/bg = {row['peak_ratio']:6.1f}  "
               f"found = {row['period_found']:.2f}")
     with open("cwf_fpe_quantize_results.json", "w") as f:
